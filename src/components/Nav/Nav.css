@@ -1,0 +1,21 @@
+.Nav_link {
+  display: block;
+  text-decoration: none;
+  font-size: 25px;
+  padding: 1vh;
+  color: #90a4ae;
+}
+.hamburger {
+  font-size: 25px;
+  position: absolute;
+  top: 15px;
+  left: 30px;
+}
+.Nav_link_1 {
+  margin-top: 2vh;
+}
+.Nav_link:hover {
+  color: white;
+  background-color: #212121;
+  transition: 0.3s;
+}
