@@ -1,21 +1,14 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { auth } from "../../../firebase/auth";
-import { doCreateUserWithEmailAndPassword } from "../../../firebase/auth";
-import routes from "../../../myRoutes/routes";
 
-import routes_landing from "../../../myRoutes/routes_landing";
-
+import * as routes from "../constants/routes";
+import { auth } from "../firebase";
 const SignUpPage = ({ history }) => (
   <div>
     <h1>SignUp</h1>
     <SignUpForm history={history} />
   </div>
 );
-
-const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value
-});
 
 const INITIAL_STATE = {
   username: "",
@@ -25,24 +18,23 @@ const INITIAL_STATE = {
   error: null
 };
 
+const byPropKey = (propertyName, value) => () => ({
+  [propertyName]: value
+});
 class SignUpForm extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      ...INITIAL_STATE
-    };
+    this.state = { ...INITIAL_STATE };
   }
 
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;
     const { history } = this.props;
-
-    doCreateUserWithEmailAndPassword(email, passwordOne)
+    auth
+      .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         this.setState(() => ({ ...INITIAL_STATE }));
-        console.log(this.state);
-        history.push("/home");
+        history.push(routes.HOME);
       })
       .catch(error => {
         this.setState(byPropKey("error", error));
@@ -60,6 +52,7 @@ class SignUpForm extends Component {
       username === "";
     return (
       <form onSubmit={this.onSubmit}>
+        {" "}
         <input
           value={username}
           onChange={event =>
@@ -103,10 +96,9 @@ class SignUpForm extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to="/signup">Sign Up</Link>
+    Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
   </p>
 );
-
 export default withRouter(SignUpPage);
 
 export { SignUpForm, SignUpLink };
