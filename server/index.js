@@ -3,6 +3,8 @@ const app = express();
 const path = require("path");
 // app.use(express.static(path.join(__dirname, "../build")));
 
+const mc = require(`./controllers/classRCtrl.js`);
+
 require("dotenv").config();
 const { json } = require("body-parser");
 const cors = require("cors");
@@ -32,6 +34,9 @@ app.use(cors());
 // );
 
 // AUTH ENDPOINTS
+
+//CLASSROOM ENDPOINTS
+app.post(`/api/class`, mc.submitFamily);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
