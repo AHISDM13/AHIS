@@ -35,6 +35,13 @@ class Nav extends Component {
           <Link to="/profile" className="Nav_link" onClick={this.handleClose}>
             Profile
           </Link>
+          <Link
+            to="/createclass"
+            className="Nav_link"
+            onClick={this.handleClose}
+          >
+            Create Class
+          </Link>
         </Drawer>
       </div>
     );
