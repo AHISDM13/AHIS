@@ -1,0 +1,30 @@
+.profile-page {
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  position: relative;
+  height: 25px;
+  width: 150px;
+  margin: 10px;
+}
+
+.form-input {
+  box-sizing: border-box;
+  position: relative;
+  padding: 5px 10px 5px 25px;
+}
+.profile-page i {
+  position: absolute;
+  top: 25%;
+  left: 5px;
+  z-index: 2;
+}
+
+.submit {
+  /* padding: 10px 8px; */
+}
