@@ -34,7 +34,6 @@ app.use(cors());
 // );
 
 // AUTH ENDPOINTS
-
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
 app.get("/api/classroom/:id");
