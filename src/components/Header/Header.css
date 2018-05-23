@@ -12,3 +12,11 @@
   font-size: 40px;
   color: #072a24bb;
 }
+.Header_nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.Header_nav_link {
+  text-decoration: none;
+}

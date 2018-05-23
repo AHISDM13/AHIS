@@ -1,38 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "./Header.css";
 import * as routes from "../../constants/routes";
 import SignOutButton from "../SignOut";
 const Header = ({ authUser }) => (
-  <div>{authUser ? <NavigationAuth /> : <NavigationNonAuth />}</div>
+  <div className="Header">
+    {authUser ? <NavigationAuth /> : <NavigationNonAuth />}
+  </div>
 );
 
 const NavigationAuth = () => (
-  <ul>
-    <li>
-      <Link to={routes.LANDING}>Landing</Link>
-    </li>
-    <li>
-      <Link to={routes.HOME}>Home</Link>
-    </li>
-    <li>
-      <Link to={routes.PROFILE}>Profile</Link>
-    </li>
-    <li>
-      <SignOutButton />
-    </li>
-  </ul>
+  <div className="Header_nav">
+    <Link className="Header_nav_link" to={routes.HOME}>
+      Home
+    </Link>
+    <Link className="Header_nav_link" to={routes.PROFILE}>
+      Profile
+    </Link>
+    <SignOutButton />
+  </div>
 );
 
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
-      <Link to={routes.LANDING}>Landing</Link>
-    </li>
-    <li>
-      <Link to={routes.SIGN_IN}>Sign In</Link>
-    </li>
-  </ul>
+  <div className="Header_nav">
+    <Link className="Header_nav_link" to={routes.LANDING}>
+      Sign In
+    </Link>
+  </div>
 );
 
 export default Header;

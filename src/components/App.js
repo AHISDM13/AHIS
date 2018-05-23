@@ -13,6 +13,7 @@ import PasswordForgetPage from "./PasswordForget";
 import CreateClass from "./Classroom/CreateClassroom";
 import { connect } from "react-redux";
 import { getUser } from "../ducks/userReducer";
+import Nav from "./Nav/Nav";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -35,21 +36,27 @@ class App extends Component {
       <Router>
         <div>
           <Header authUser={this.state.authUser} />
-          <Route exact path={routes.LANDING} component={() => <Landing />} />
-          <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
-          <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
-          <Route
-            exact
-            path={routes.PASSWORD_FORGET}
-            component={() => <PasswordForgetPage />}
-          />
-          <Route exact path={routes.HOME} component={() => <Home />} />
-          <Route exact path={routes.PROFILE} component={() => <Profile />} />
-          <Route
-            exact
-            path={routes.CREATECLASS}
-            component={() => <CreateClass />}
-          />
+          <Nav />
+          <div className="Main">
+            <Route exact path={routes.LANDING} component={() => <Landing />} />
+            <Route
+              exact
+              path={routes.SIGN_UP}
+              component={() => <SignUpPage />}
+            />
+            <Route
+              exact
+              path={routes.SIGN_IN}
+              component={() => <SignInPage />}
+            />
+            <Route
+              exact
+              path={routes.PASSWORD_FORGET}
+              component={() => <PasswordForgetPage />}
+            />
+            <Route exact path={routes.HOME} component={() => <Home />} />
+            <Route exact path={routes.PROFILE} component={() => <Profile />} />
+          </div>
         </div>
       </Router>
     );
