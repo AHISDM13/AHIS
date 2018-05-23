@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-const createClassRoom = (req, res) => {
-  console.log("hit the post /api/classroom");
-};
-module.exports = {
-  createClassRoom
-=======
 const axios = require("axios");
 
 module.exports = {
@@ -15,5 +8,4 @@ module.exports = {
       .then(response => res.status(200).send(response))
       .catch(() => res.status(500).send());
   }
->>>>>>> 84945820520073ae8be13a129fc3e9de75f9ddad
 };
