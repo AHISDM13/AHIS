@@ -10,6 +10,7 @@ import SignUpPage from "./SignUp";
 import Home from "./Home/Home";
 import Profile from "./Profile/Profile";
 import PasswordForgetPage from "./PasswordForget";
+import CreateClass from "./Classroom/CreateClassroom";
 import { connect } from "react-redux";
 import { getUser } from "../ducks/userReducer";
 class App extends Component {
@@ -44,6 +45,11 @@ class App extends Component {
           />
           <Route exact path={routes.HOME} component={() => <Home />} />
           <Route exact path={routes.PROFILE} component={() => <Profile />} />
+          <Route
+            exact
+            path={routes.CREATECLASS}
+            component={() => <CreateClass />}
+          />
         </div>
       </Router>
     );
