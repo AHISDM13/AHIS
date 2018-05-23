@@ -23,7 +23,7 @@ module.exports = {
     const { ownerid } = req.params;
     const dbInstance = req.app.get("db");
     dbInstance
-      .get_student_classes([ownerid])
+      .get_student_classes([owner_id])
       .then(response => res.status(200).send(response))
       .catch(() => res.status(500).send());
   }
