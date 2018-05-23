@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Profile.css";
-import ClassView from "../Classroom/ClassView";
+import ClassView from "../Classroom/ClassView/ClassView";
 
 class Profile extends Component {
   constructor() {

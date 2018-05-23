@@ -1,0 +1,21 @@
+/* QuizClassView */
+.each-quiz {
+  width: 80%;
+  height: 50px;
+  display: flex;
+}
+
+/* Resources */
+.resources-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  flex-wrap: wrap;
+}
+
+.each-resource {
+  width: 20%;
+  height: 200px;
+  border: 1px solid black;
+}
