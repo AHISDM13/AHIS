@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Profile.css";
+import ClassView from "../Classroom/ClassView/ClassView";
 
 class Profile extends Component {
   constructor() {
@@ -48,7 +49,7 @@ class Profile extends Component {
               onChange={this.handleInput}
             />
           </div>
-          <p>Picture</p>
+          {/* <p>Picture</p>
           <div className="container">
             <input
               className="form-input"
@@ -57,7 +58,7 @@ class Profile extends Component {
               name="pic"
               onChange={this.handleInput}
             />
-          </div>
+          </div> */}
           <p>Update Email</p>
           <div className="container">
             <i className="fas fa-at" />
@@ -72,6 +73,8 @@ class Profile extends Component {
 
           <input className="submit" type="submit" value="submit" />
         </form>
+        {/* putting ClassView here, so that I can see the changes */}
+        <ClassView />
       </div>
     );
   }
