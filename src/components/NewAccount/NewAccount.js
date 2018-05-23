@@ -2,14 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Profile.css";
 
-class Profile extends Component {
+class NewAccount extends Component {
   constructor() {
     super();
 
     this.state = {
-      first_name: "",
-      last_name: "",
-      email: "",
       pic: "",
       birth: ""
     };
@@ -19,36 +16,25 @@ class Profile extends Component {
   handleInput(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
+  //   question(e) {
+  //     return (
+  //       <div className="question">
+  //         <p>
+  //           Nito is for all ages, but we do require all users to provide their
+  //           date of birth
+  //         </p>
+  //       </div>
+  //     );
+  //   }
   handleSubmit() {}
   render() {
     return (
-      <div className="profile-page">
-        <h2>Update your account details</h2>
+      <div className="newaccount-page">
+        <div>
+          <h2>Complete your account</h2>
+        </div>
         <form onSubmit={() => this.handleSubmit()}>
-          <p>First Name</p>
-          <div className="container">
-            <i className="far fa-user-circle" />
-            <input
-              className="form-input"
-              type="text"
-              value={this.props.first_name || this.state.first_name}
-              name="first_name"
-              onChange={this.handleInput}
-            />
-          </div>
-          <p>Last Name</p>
-          <div className="container">
-            <i className="far fa-user-circle" />
-            <input
-              className="form-input"
-              type="text"
-              value={this.state.last_name}
-              name="last_name"
-              onChange={this.handleInput}
-            />
-          </div>
-          <p>Picture</p>
+          <p>Upload a Picture</p>
           <div className="container">
             <input
               className="form-input"
@@ -58,18 +44,19 @@ class Profile extends Component {
               onChange={this.handleInput}
             />
           </div>
-          <p>Update Email</p>
+          <i className="far fa-question-circle fa-3x" />
+
+          <p>Date of Birth</p>
           <div className="container">
-            <i className="fas fa-at" />
+            <i className="fas fa-birthday-cake" />
             <input
               className="form-input"
               type="text"
-              value={this.state.email}
-              name="email"
+              value={this.state.birth}
+              name="birth"
               onChange={this.handleInput}
             />
           </div>
-
           <input className="submit" type="submit" value="submit" />
         </form>
       </div>
@@ -83,4 +70,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Profile);
+export default NewAccount;
