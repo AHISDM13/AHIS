@@ -5,23 +5,29 @@ class Card extends Component {
     super(props);
 
     this.state = {
-      display: "none"
+      a: "flex",
+      b: "none"
     };
+    this.flipRight = this.flipRight.bind(this);
+    this.flipLeft = this.flipLeft.bind(this);
   }
 
   flipRight() {
-    this.setState({ display: "inline-block" });
+    this.setState(() => ({ b: "flex", a: "none" }));
+  }
+  flipLeft() {
+    this.setState(() => ({ b: "none", a: "flex" }));
   }
   render() {
     return (
       <div className="each-card">
-        <div className="a-side">
+        <div style={{ display: this.state.a }} onClick={this.flipRight}>
           <p>
             - passed a resolution requiring a 2/3 vote in Congress for
-            declaration of war in the futuren
+            declaration of war in the future
           </p>
         </div>
-        <div style={{ display: this.state.display }} className="b-side">
+        <div style={{ display: this.state.b }} onClick={this.flipLeft}>
           <p>Hartford Convention</p>
         </div>
       </div>
