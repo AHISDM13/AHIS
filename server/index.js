@@ -3,8 +3,6 @@ const app = express();
 const path = require("path");
 // app.use(express.static(path.join(__dirname, "../build")));
 
-const mc = require(`./controllers/classRCtrl.js`);
-
 require("dotenv").config();
 const { json } = require("body-parser");
 const cors = require("cors");
@@ -12,6 +10,8 @@ const session = require("express-session");
 const massive = require("massive");
 const passport = require("passport");
 // console.log(__dirname);
+
+const { createClassRoom } = require(`${__dirname}/controllers/classRCtrl`);
 
 const port = process.env.PORT || 3001;
 
@@ -34,9 +34,12 @@ app.use(cors());
 // );
 
 // AUTH ENDPOINTS
-
-//CLASSROOM ENDPOINTS
-app.post(`/api/class`, mc.submitFamily);
+//CLASS ROOM ENDPOINTS
+app.get("/api/classrooms");
+app.get("/api/classroom/:id");
+app.post("/api/classroom", createClassRoom);
+app.put("/api/classroom/:id");
+app.delete("/api/classroom/:id");
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
