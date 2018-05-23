@@ -42,6 +42,14 @@ app.post("/api/classroom", cc.submitClassRoom);
 app.put("/api/classroom/:id");
 app.delete("/api/classroom/:id");
 
+//QUIZ ENDPOINTS
+app.post("/api/quiz");
+app.get("/api/quiz/:classid");
+
+//QUESTION ENDPOINTS
+app.post("/api/question");
+app.get("/api/question/:quizid");
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
