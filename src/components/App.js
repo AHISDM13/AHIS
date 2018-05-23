@@ -12,6 +12,7 @@ import Profile from "./Profile/Profile";
 import PasswordForgetPage from "./PasswordForget";
 import { connect } from "react-redux";
 import { getUser } from "../ducks/userReducer";
+
 class App extends Component {
   constructor(props) {
     super(props);

@@ -3,7 +3,7 @@ import { Bar } from "react-chartjs-2";
 import axios from "axios";
 import { connect } from "react-redux";
 
-class TeacherAverageAnswerBar extends Component {
+class TeacherAverageStudentBar extends Component {
   constructor() {
     super();
 
@@ -52,4 +52,4 @@ class TeacherAverageAnswerBar extends Component {
   }
 }
 
-export default TeacherAverageAnswerBar;
+export default TeacherAverageStudentBar;
