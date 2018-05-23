@@ -1,4 +1,6 @@
 .profile-page {
+  height: 90vh;
+  /* background-color: rgb(104, 156, 151, 0.4); */
 }
 
 form {
@@ -25,6 +27,6 @@ form {
   z-index: 2;
 }
 
-.submit {
-  /* padding: 10px 8px; */
+.submit input {
+  padding: 10px 8px;
 }
