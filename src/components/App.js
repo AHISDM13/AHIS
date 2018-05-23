@@ -50,6 +50,7 @@ class App extends Component {
               path={routes.SIGN_IN}
               component={() => <SignInPage />}
             />
+
             <Route
               exact
               path={routes.PASSWORD_FORGET}
