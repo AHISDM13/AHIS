@@ -52,7 +52,7 @@ class CreateQuiz extends React.Component {
   };
 
   render() {
-    console.log(this.state.questions);
+    console.log(this.state);
     return (
       <form>
         <h4>Quiz Creator</h4>

@@ -45,6 +45,7 @@ class App extends Component {
               path={routes.SIGN_UP}
               component={() => <SignUpPage />}
             />
+
             <Route
               exact
               path={routes.SIGN_IN}
