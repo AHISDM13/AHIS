@@ -11,8 +11,6 @@ const massive = require("massive");
 const passport = require("passport");
 // console.log(__dirname);
 
-const { createClassRoom } = require(`${__dirname}/controllers/classRCtrl`);
-
 const port = process.env.PORT || 3001;
 
 massive(process.env.CONNECTION_STRING)
@@ -37,7 +35,7 @@ app.use(cors());
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
 app.get("/api/classroom/:id");
-app.post("/api/classroom", createClassRoom);
+app.post("/api/classroom");
 app.put("/api/classroom/:id");
 app.delete("/api/classroom/:id");
 

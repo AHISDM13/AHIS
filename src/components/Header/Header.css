@@ -1,3 +1,11 @@
 .Header {
   margin: 25px;
 }
+.Header_nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.Header_nav_link {
+  text-decoration: none;
+}
