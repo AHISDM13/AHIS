@@ -1,8 +1,17 @@
+.box {
+  border: 1px solid gray;
+  box-shadow: 1px 1px 2px gray;
+}
+
 /* QuizClassView */
+.quizzes-container {
+  margin: 20px;
+}
 .each-quiz {
   width: 80%;
   height: 50px;
   display: flex;
+  margin: auto;
 }
 
 /* Resources */
@@ -12,10 +21,10 @@
   align-items: center;
   overflow: scroll;
   flex-wrap: wrap;
+  margin: 20px;
 }
 
 .each-resource {
   width: 20%;
   height: 200px;
-  border: 1px solid black;
 }
