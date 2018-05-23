@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Flashcards from "../../Flashcards/Flashcards";
 import "./ClassView.css";
 
 function QuizClassView(props) {
@@ -58,6 +59,7 @@ class ClassView extends Component {
           {/* {classResource} */}
           <Resources />
         </div>
+        <Flashcards />
       </div>
     );
   }

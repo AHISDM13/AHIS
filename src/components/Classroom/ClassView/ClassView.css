@@ -8,9 +8,14 @@
   box-shadow: 1px 1px 2px gray;
 }
 
+.box:hover {
+  cursor: pointer;
+}
+
 /* QuizClassView */
 .quizzes-container {
   margin: 20px;
+  overflow: scroll;
 }
 .each-quiz {
   width: 80%;

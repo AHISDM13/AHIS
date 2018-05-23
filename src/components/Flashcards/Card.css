@@ -1,0 +1,14 @@
+@media (min-width: 767px) {
+  .each-card {
+    width: 58vw;
+    height: 50vh;
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+  }
+  .each-card:hover {
+    cursor: pointer;
+  }
+}
