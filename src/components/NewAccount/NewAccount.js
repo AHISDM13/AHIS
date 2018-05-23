@@ -34,7 +34,7 @@ class NewAccount extends Component {
           <h2>Complete your account</h2>
         </div>
         <form onSubmit={() => this.handleSubmit()}>
-          <p>Picture</p>
+          <p>Upload a Picture</p>
           <div className="container">
             <input
               className="form-input"

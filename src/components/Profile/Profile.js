@@ -24,6 +24,7 @@ class Profile extends Component {
   render() {
     return (
       <div className="profile-page">
+        <h2>Update your account details</h2>
         <form onSubmit={() => this.handleSubmit()}>
           <p>First Name</p>
           <div className="container">
