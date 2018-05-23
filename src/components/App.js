@@ -14,6 +14,7 @@ import CreateClass from "./Classroom/CreateClassroom";
 import { connect } from "react-redux";
 import { getUser } from "../ducks/userReducer";
 import Nav from "./Nav/Nav";
+
 class App extends Component {
   constructor(props) {
     super(props);

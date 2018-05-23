@@ -9,17 +9,27 @@ class CreateQuiz extends React.Component {
       questions: [{ question: "", answer: "" }]
     };
 
-    // this.handleAddQuestionBox = this.handleAddQuestionBox.bind(this);
-    // this.handleRemove = this.handleRemove.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    this.handleAddQuestionBox = this.handleAddQuestionBox.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
 
-  handleChange = index => e => {
+  handleChangeQuestion = index => e => {
     const newQuestions = this.state.questions.map((quest, sidx) => {
       if (index !== sidx) return quest;
       return { ...quest, question: e.target.value };
     });
 
     this.setState({ questions: newQuestions });
+  };
+
+  handleChangeAnswer = index => e => {
+    const newAnswer = this.state.questions.map((answers, sidx) => {
+      if (index !== sidx) return answers;
+      return { ...answers, answer: e.target.value };
+    });
+
+    this.setState({ questions: newAnswer });
   };
 
   handleAddQuestionBox = () => {
@@ -29,30 +39,30 @@ class CreateQuiz extends React.Component {
   };
 
   handleRemove = index => () => {
+    console.log(index);
     this.setState({
-      questions: this.state.questions.filter((s, sidx) => index !== sidx)
+      questions: this.state.questions.filter((e, index) => e[index] === index)
     });
+    return this.state.questions;
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.state.questions);
     return (
       <form>
         <h4>Quiz Creator</h4>
 
-        {this.state.questions.map((question, index) => (
+        {this.state.questions.map((e, index) => (
           <div className="quiz-box">
             <input
               type="text"
               placeholder={`Question #${index + 1}`}
-              // value={this.questions.question}
-              onChange={this.handleChange(index)}
+              onChange={this.handleChangeQuestion(index)}
             />
             <input
               type="text"
               placeholder={`Answer #${index + 1}`}
-              // value={this.state.answer}
-              onChange={this.handleChange(index)}
+              onChange={this.handleChangeAnswer(index)}
             />
             <button
               type="button"
