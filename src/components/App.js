@@ -10,6 +10,7 @@ import SignUpPage from "./SignUp";
 import Home from "./Home/Home";
 import Profile from "./Profile/Profile";
 import PasswordForgetPage from "./PasswordForget";
+import CreateClass from "./Classroom/CreateClassroom";
 import { connect } from "react-redux";
 import { getUser } from "../ducks/userReducer";
 import Nav from "./Nav/Nav";

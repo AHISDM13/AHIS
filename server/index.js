@@ -11,6 +11,9 @@ const massive = require("massive");
 const passport = require("passport");
 // console.log(__dirname);
 
+// const { submitClassRoom } = require(`${__dirname}/controllers/classRCtrl`);
+const cc = require("./controllers/classRCtrl");
+
 const port = process.env.PORT || 3001;
 
 massive(process.env.CONNECTION_STRING)
@@ -34,8 +37,8 @@ app.use(cors());
 // AUTH ENDPOINTS
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
-app.get("/api/classroom/:id");
-app.post("/api/classroom");
+app.get("/api/classroom/:ownerid", cc.getClassRoom);
+app.post("/api/classroom", cc.submitClassRoom);
 app.put("/api/classroom/:id");
 app.delete("/api/classroom/:id");
 

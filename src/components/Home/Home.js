@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Home.css";
 import { connect } from "react-redux";
+import Nav from "../Nav/Nav";
 class Home extends Component {
   render() {
     // const displayUser = this.props.user.map((el,i)=>{
@@ -9,7 +10,12 @@ class Home extends Component {
     //     </div>
     // })
     console.log(this.props.user);
-    return <div className="Home">{/* {this.props.user} */}</div>;
+    return (
+      <div className="Home">
+        {/* {this.props.user} */}
+        <Nav />
+      </div>
+    );
   }
 }
 

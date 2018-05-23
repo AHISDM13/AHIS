@@ -1,5 +1,16 @@
 .Header {
-  margin: 25px;
+  padding: 25px;
+  background-color: rgb(104, 156, 151, 0.4);
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Header h1 {
+  padding-left: 45px;
+  font-size: 40px;
+  color: #072a24bb;
 }
 .Header_nav {
   display: flex;
