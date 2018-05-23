@@ -49,7 +49,7 @@ class Profile extends Component {
               onChange={this.handleInput}
             />
           </div>
-          <p>Picture</p>
+          {/* <p>Picture</p>
           <div className="container">
             <input
               className="form-input"
@@ -58,7 +58,7 @@ class Profile extends Component {
               name="pic"
               onChange={this.handleInput}
             />
-          </div>
+          </div> */}
           <p>Update Email</p>
           <div className="container">
             <i className="fas fa-at" />

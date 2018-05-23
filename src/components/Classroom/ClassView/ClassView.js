@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "./ClassView.css";
 
 function QuizClassView(props) {
   return (
-    <div className="each-quiz box">
-      <p>Title</p>
-      <p>Questions</p>
+    <div className="link-div">
+      <Link to="/">
+        {/* not sure how the quiz should be displayed once someone clicks on it */}
+        <div className="each-quiz box">
+          <p>Title</p>
+          <p>Questions</p>
+        </div>
+      </Link>
     </div>
   );
 }
@@ -24,7 +30,8 @@ class ClassView extends Component {
     //getQuizzes
     //getResources
   }
-  removeQuiz() {}
+  launchQuiz() {}
+
   render() {
     // let classQuiz = this.props.quizzes.map((quiz, i) => {
     //   return <QuizClassView key={i} title={quiz.quiz_name} number={e.count} />;
@@ -38,7 +45,6 @@ class ClassView extends Component {
     //   )
     // })
 
-    let resoursyy;
     return (
       <div className="classview-page">
         <h2>Quizzes</h2>
