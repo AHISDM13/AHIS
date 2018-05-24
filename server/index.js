@@ -40,7 +40,7 @@ app.post("/api/user", ac.addNewUser);
 app.get("/api/user/:email", ac.getUser);
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
-app.get("/api/classroom/:ownerid", cc.getClassRoom);
+app.get("/api/classes/:user_id", cc.getStudentClasses);
 app.post("/api/classroom", cc.submitClassRoom);
 app.put("/api/classroom/:id");
 app.delete("/api/classroom/:id");
