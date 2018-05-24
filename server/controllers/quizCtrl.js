@@ -2,14 +2,17 @@ const axios = require("axios");
 
 module.exports = {
   createQuiz: (req, res, next) => {
-    var { classid, quizName } = req.body;
+    const { classroom_id, quiz_name } = req.body;
     const dbInstance = req.app.get("db");
     dbInstance
-      .create_quiz([classid, quizName])
-      .then(res => {
+      .create_quiz([classroom_id, quiz_name])
+      .then(response => {
         res.status(200).send(response);
       })
-      .catch(() => res.status(500).send());
+      .catch(err => {
+        console.log(err);
+        res.status(500).send(err);
+      });
   },
 
   getQuiz: (req, res, next) => {
@@ -23,7 +26,7 @@ module.exports = {
 
   addQuestion: (req, res, next) => {
     const {
-      quizid,
+      quiz_id,
       question,
       answer,
       dummydata_a,
@@ -33,7 +36,7 @@ module.exports = {
     const dbInstance = req.app.get("db");
     dbInstance
       .add_question([
-        quizid,
+        quiz_id,
         question,
         answer,
         dummydata_a,
@@ -45,11 +48,18 @@ module.exports = {
   },
 
   getQuestions: (req, res, next) => {
-    const { quizid } = req.params;
+    // console.log(`HIT`);
+    const { quiz_id } = req.params;
     const dbInstance = req.app.get("db");
     dbInstance
-      .get_questions([quizid])
-      .then(response => res.status(200).send(response))
-      .catch(() => res.status(500).send());
+      .get_questions([quiz_id])
+      .then(response => {
+        // console.log(response);
+        res.status(200).send(response);
+      })
+      .catch(err => {
+        // console.log(err);
+        res.status(500).send(err);
+      });
   }
 };

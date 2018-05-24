@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Drawer from "material-ui/Drawer";
 import { getClassroom } from "../../ducks/classRoomReducer";
 import { getUser } from "../../ducks/userReducer";
-import MyClassRoom from "./ClassRoom";
 import { connect } from "react-redux";
 import { firebase } from "../../firebase";
 
