@@ -18,9 +18,10 @@ const getUser = (req, res) => {
   const { email } = req.params;
   req.app
     .get("db")
-    .get_user(email)
+    .get_user([email])
     .then(user => {
-      res.status(200).send(user);
+      console.log(user);
+      res.status(200).send(user[0]);
     })
     .catch(err => {
       res.status(500).send(err);
