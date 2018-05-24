@@ -19,12 +19,15 @@ module.exports = {
       .catch(() => res.status(500).send());
   },
 
-  getClassRoom: (req, res, next) => {
-    const { ownerid } = req.params;
+  getStudentClasses: (req, res, next) => {
+    const { user_id } = req.params;
     const dbInstance = req.app.get("db");
     dbInstance
-      .get_student_classes([owner_id])
-      .then(response => res.status(200).send(response))
+      .get_student_classes([user_id])
+      .then(response => {
+        console.log(response);
+        res.status(200).send(response);
+      })
       .catch(() => res.status(500).send());
   }
 };
