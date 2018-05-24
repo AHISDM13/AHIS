@@ -11,9 +11,8 @@ import Home from "./Home/Home";
 import Profile from "./Profile/Profile";
 import PasswordForgetPage from "./PasswordForget";
 import CreateClass from "./Classroom/CreateClassroom";
-import { connect } from "react-redux";
-import { getUser } from "../ducks/userReducer";
 import Nav from "./Nav/Nav";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,9 +24,7 @@ class App extends Component {
   componentDidMount() {
     firebase.auth.onAuthStateChanged(authUser => {
       authUser
-        ? (console.log(authUser.email),
-          this.props.getUser(authUser.email),
-          this.setState(() => ({ authUser })))
+        ? this.setState(() => ({ authUser }))
         : this.setState(() => ({ authUser: null }));
     });
   }
@@ -35,7 +32,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Header authUser={this.state.authUser} />
+          <Header user={this.state.authUser} />
           <Nav />
           <div className="Main">
             <Route exact path={routes.LANDING} component={() => <Landing />} />
@@ -63,9 +60,4 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    ...state.userReducer
-  };
-}
-export default connect(mapStateToProps, { getUser })(App);
+export default App;

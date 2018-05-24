@@ -4,10 +4,9 @@ import { withRouter } from "react-router-dom";
 import { SignUpLink } from "./SignUp";
 import { auth } from "../firebase";
 import * as routes from "../constants/routes";
-
-const SignInPage = ({ history }) => (
+const SignInPage = ({ history, getUser }) => (
   <div>
-    <SignInForm history={history} />
+    <SignInForm history={history} getUser={getUser} />
     <SignUpLink />
   </div>
 );
@@ -32,12 +31,13 @@ class SignInForm extends Component {
   onSubmit = event => {
     const { email, password } = this.state;
 
-    const { history } = this.props;
+    const { history, getUser } = this.props;
 
     auth
       .doSignInWithEmailAndPassword(email, password)
-      .then(() => {
+      .then(authUser => {
         this.setState(() => ({ ...INITIAL_STATE }));
+        getUser(authUser.user.email);
         history.push(routes.HOME);
       })
       .catch(error => {
