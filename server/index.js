@@ -11,10 +11,10 @@ const massive = require("massive");
 const passport = require("passport");
 // console.log(__dirname);
 
-// const { submitClassRoom } = require(`${__dirname}/controllers/classRCtrl`);
 const cc = require("./controllers/classRCtrl");
 const qc = require("./controllers/quizCtrl");
 
+const ac = require("./controllers/userCtrl");
 const port = process.env.PORT || 3001;
 
 massive(process.env.CONNECTION_STRING)
@@ -36,6 +36,8 @@ app.use(cors());
 // );
 
 // AUTH ENDPOINTS
+app.post("/api/user", ac.addNewUser);
+app.get("/api/user/:email", ac.getUser);
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
 app.get("/api/classroom/:ownerid", cc.getClassRoom);

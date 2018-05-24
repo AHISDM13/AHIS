@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-
+import { connect } from "react-redux";
 import * as routes from "../constants/routes";
 import { auth } from "../firebase";
-const SignUpPage = ({ history }) => (
+import { addUser } from "../ducks/userReducer";
+const SignUpPage = ({ history, addUser }) => (
   <div>
     <h1>SignUp</h1>
-    <SignUpForm history={history} />
+    <SignUpForm history={history} addUser={addUser} />
   </div>
 );
 
@@ -29,12 +30,15 @@ class SignUpForm extends Component {
 
   onSubmit = event => {
     const { username, email, passwordOne } = this.state;
-    const { history } = this.props;
+    const { history, addUser } = this.props;
     auth
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
+        console.log(username, authUser.user.email);
         this.setState(() => ({ ...INITIAL_STATE }));
-        history.push(routes.HOME);
+        addUser(username, authUser.user.email).then(() =>
+          history.push(routes.HOME)
+        );
       })
       .catch(error => {
         this.setState(byPropKey("error", error));
@@ -52,7 +56,6 @@ class SignUpForm extends Component {
       username === "";
     return (
       <form onSubmit={this.onSubmit}>
-        {" "}
         <input
           value={username}
           onChange={event =>
@@ -94,11 +97,14 @@ class SignUpForm extends Component {
   }
 }
 
-const SignUpLink = () => (
+export const SignUpLink = () => (
   <div>
     Don't have an account? <Link to={routes.SIGN_UP}>Sign Up</Link>
   </div>
 );
-export default withRouter(SignUpPage);
-
-export { SignUpForm, SignUpLink };
+function mapStateToProps(state) {
+  return {
+    ...state.userReducer
+  };
+}
+export default withRouter(connect(mapStateToProps, { addUser })(SignUpPage));
