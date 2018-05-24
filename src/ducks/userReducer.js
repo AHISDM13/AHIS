@@ -1,6 +1,7 @@
 import axios from "axios";
 const GET_USER = "GET_USER";
 const ADD_USER = "ADD_USER";
+const UPDATE_USER = "UPDATE_USER";
 const initialState = {
   users: [],
   user: {}
@@ -18,6 +19,13 @@ export function addUser(displayName, email) {
     payload: axios.post("/api/user", { displayName, email })
   };
 }
+
+export function updateUser(firstname, lastname, email, id) {
+  return {
+    type: UPDATE_USER,
+    payload: axios.put(`/api/user/${id}`, { firstname, lastname, email })
+  };
+}
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case `${GET_USER}_FULFILLED`:
@@ -26,6 +34,12 @@ export default function userReducer(state = initialState, action) {
         user: action.payload.data
       };
     case `${ADD_USER}_FULFILLED`:
+      return {
+        ...state,
+        user: action.payload.data
+      };
+    case `${UPDATE_USER}_FULFILLED`:
+      console.log(action);
       return {
         ...state,
         user: action.payload.data

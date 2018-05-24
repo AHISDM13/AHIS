@@ -38,6 +38,7 @@ app.use(cors());
 // AUTH ENDPOINTS
 app.post("/api/user", ac.addNewUser);
 app.get("/api/user/:email", ac.getUser);
+app.put("/api/user/:id", ac.updateUser);
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
 app.get("/api/classes/:owner_id", cc.getOwnerClasses);

@@ -1,0 +1,97 @@
+import React, { Component } from "react";
+
+class ReQuiz extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      question: [],
+      answer: [],
+      inputAnswer: "",
+      inputQuestion: ""
+    };
+  }
+
+  handleQuestion(val) {
+    this.setState({
+      inputQuestion: val
+    });
+  }
+
+  handleAnswer(val) {
+    this.setState({
+      inputAnswer: val
+    });
+  }
+
+  handleSubmitQuestion() {
+    const { question, inputAnswer, inputQuestion } = this.state;
+    let newQ = { Q: inputQuestion, A: inputAnswer };
+    let copy = question.slice();
+    console.log(copy, newQ);
+    copy.push(newQ);
+    console.log(copy);
+    this.setState(() => ({
+      question: copy,
+      inputQuestion: "",
+      inputAnswer: ""
+    }));
+  }
+
+  removeQuestion(ind) {
+    console.log(ind);
+    let removeQues = this.state.question.slice();
+    let removed = removeQues.filter((ques, index) => ind !== index);
+    console.log(removed);
+    this.setState({
+      question: removed
+    });
+  }
+
+  render() {
+    console.log(this.state);
+
+    let ques = this.state.question.map((quest, i) => {
+      return (
+        <div key={i}>
+          <p>
+            {" "}
+            {quest.Q} - {quest.A}{" "}
+          </p>
+          <button onClick={() => this.removeQuestion(i)}>Remove</button>
+        </div>
+      );
+    });
+    return (
+      <div>
+        <div>
+          <form>
+            <button
+              onClick={() => {
+                this.handleSubmitQuestion();
+              }}
+            >
+              submit
+            </button>
+            <h1>Questions</h1>
+            <input
+              value={this.state.inputQuestion}
+              onChange={e => this.handleQuestion(e.target.value)}
+            />
+            <h1>Answers</h1>
+            <input
+              value={this.state.inputAnswer}
+              onChange={e => this.handleAnswer(e.target.value)}
+            />
+          </form>
+        </div>
+        <div>
+          <h1>Quiz Box {ques}</h1>
+        </div>
+        {/* <div>{answerBox}</div> */}
+      </div>
+    );
+  }
+}
+
+export default ReQuiz;
