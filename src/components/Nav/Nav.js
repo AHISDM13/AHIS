@@ -3,33 +3,38 @@ import "./Nav.css";
 import { Link } from "react-router-dom";
 import Drawer from "material-ui/Drawer";
 import { getClassroom } from "../../ducks/classRoomReducer";
-import MyClassRoom from "./ClassRoom";
+import { getUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
+import { firebase } from "../../firebase";
 
 class Nav extends Component {
-  // state = { open: false };
-  // handleToggle = () => this.setState({ open: !this.state.open });
-  // handleClose = () => this.setState({ open: false });
+  state = { open: false };
+  handleToggle = () => this.setState({ open: !this.state.open });
+  handleClose = () => this.setState({ open: false });
 
   componenDidMount() {
-    console.log(this.props);
-    // this.props.getClassroom(this.props.match.params.id);
+    //    this.props.getClassroom(this.props.match.params.id);
+    const { getUser, user } = this.props;
+    firebase.auth.onAuthStateChanged(authUser => {
+      authUser ? getUser(authUser.providerData[0]) : null;
+    });
+    console.log(user);
   }
   render() {
-    // const styles = {
-    //   nav: {
-    //     background: "#546E7A"
-    //   }
-    // };
+    const styles = {
+      nav: {
+        background: "#546E7A"
+      }
+    };
 
-    // const { classRoom } = this.props;
+    // const { classRoom } = this.props;/.
     // const classlist = classRoom.map((e, i) => {
     //   return <MyClassRoom key={i} className={e.className} />;
     // });
 
     return (
       <div className="Nav">
-        {/* <span className="hamburger">
+        <span className="hamburger">
           <a onClick={this.handleToggle}>&#9776;</a>
         </span>
         <Drawer
@@ -56,12 +61,7 @@ class Nav extends Component {
           >
             Create Class
           </Link>
-          <Link to="/home" className="Nav_link" onClick={this.handleClose}>
-            {classRoom}
-          </Link>
-        </Drawer> */}
-
-        {/* <div>{classlist}</div> */}
+        </Drawer>
       </div>
     );
   }
@@ -69,8 +69,9 @@ class Nav extends Component {
 
 function mapStateToProps(state) {
   return {
-    classRoom: state.classRoomReducer.classroom
+    classRoom: state.classRoomReducer.classroom,
+    user: state.userReducer.user
   };
 }
 
-export default connect(mapStateToProps, { getClassroom })(Nav);
+export default connect(mapStateToProps, { getClassroom, getUser })(Nav);
