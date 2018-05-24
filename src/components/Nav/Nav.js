@@ -2,35 +2,20 @@ import React, { Component } from "react";
 import "./Nav.css";
 import { Link } from "react-router-dom";
 import Drawer from "material-ui/Drawer";
-import { getClassroom } from "../../ducks/classRoomReducer";
-import { getUser } from "../../ducks/userReducer";
 import { connect } from "react-redux";
-import { firebase } from "../../firebase";
-
 class Nav extends Component {
-  state = { open: false };
+  state = { open: false, user: {}, classrooms: [] };
   handleToggle = () => this.setState({ open: !this.state.open });
   handleClose = () => this.setState({ open: false });
 
-  componenDidMount() {
-    //    this.props.getClassroom(this.props.match.params.id);
-    const { getUser, user } = this.props;
-    firebase.auth.onAuthStateChanged(authUser => {
-      authUser ? getUser(authUser.providerData[0]) : null;
-    });
-    console.log(user);
-  }
+  componenDidMount() {}
   render() {
     const styles = {
       nav: {
         background: "#546E7A"
       }
     };
-
-    // const { classRoom } = this.props;/.
-    // const classlist = classRoom.map((e, i) => {
-    //   return <MyClassRoom key={i} className={e.className} />;
-    // });
+    // console.log(this.props);
 
     return (
       <div className="Nav">
@@ -74,4 +59,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getClassroom, getUser })(Nav);
+export default connect(mapStateToProps)(Nav);
