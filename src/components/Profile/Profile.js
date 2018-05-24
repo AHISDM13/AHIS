@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "./Profile.css";
 import ClassView from "../Classroom/ClassView/ClassView";
 
+import { updateUser } from "../../ducks/userReducer";
 class Profile extends Component {
   constructor() {
     super();
@@ -26,7 +27,15 @@ class Profile extends Component {
     return (
       <div className="profile-page">
         <h2>Update your account details</h2>
-        <form onSubmit={() => this.handleSubmit()}>
+        <form
+          onSubmit={() =>
+            this.props.updateUser(
+              this.state.first_name,
+              this.state.last_name,
+              this.state.email
+            )
+          }
+        >
           <p>First Name</p>
           <div className="container">
             <i className="far fa-user-circle" />
@@ -82,8 +91,8 @@ class Profile extends Component {
 
 function mapStateToProps(state) {
   return {
-    state
+    ...state.userReducer
   };
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, { updateUser })(Profile);

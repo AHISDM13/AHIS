@@ -21,8 +21,8 @@ module.exports = {
 
   getStudentClasses: (req, res, next) => {
     const { user_id } = req.params;
-    const dbInstance = req.app.get("db");
-    dbInstance
+    req.app
+      .get("db")
       .get_student_classes([user_id])
       .then(response => {
         console.log(response);
