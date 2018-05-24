@@ -24,11 +24,8 @@ class ReQuiz extends Component {
 
   addToQuiz(e) {
     e.preventDefault();
-    const { question } = this.state;
-    const quizsheet = this.quizsheet.value;
-
     this.setState({
-      question: { ...this.state.question, quizsheet }
+      question: { ...this.state.question, answer }
     });
   }
 
@@ -37,11 +34,7 @@ class ReQuiz extends Component {
     return (
       <div>
         <div>
-          <form
-            onSubmit={e => {
-              this.addToQuiz(e);
-            }}
-          >
+          <form>
             <button onClick={() => this.addToQuiz()}>Submit</button>
             <h1>Questions</h1>
             <input onChange={e => this.handleQuestion(e.target.value)} />
@@ -50,11 +43,7 @@ class ReQuiz extends Component {
           </form>
         </div>
         <div>
-          {this.state.question.map((e, i) => {
-            return <ul key={i}>{e => this.state.question}</ul>;
-          })}
           <h1>Quiz Box</h1>
-          {/* <ul>{this.state.question}</ul> */}
         </div>
       </div>
     );
