@@ -1,30 +1,29 @@
 import React, { Component } from "react";
 import "./Home.css";
 import { connect } from "react-redux";
-import { withRouter, BrowserRouter as Router, Route } from "react-router-dom";
+import { withRouter, Switch, Route } from "react-router-dom";
 import * as routes from "../../constants/routes";
 import Nav from "../Nav/Nav";
 import Profile from "../Profile/Profile";
+import CreateClassroom from "../Classroom/CreateClassroom";
 class Home extends Component {
   render() {
-    console.log(this.props.user);
+    console.log(this.props);
     const { location } = this.props;
     return (
       <div>
         <Nav />
-        {
-          (location.pathname = "/home" ? (
-            <div className="Home" />
-          ) : (
-            <Router>
-              <Route
-                exact
-                path={routes.PROFILE}
-                component={() => <Profile />}
-              />
-            </Router>
-          ))
-        }
+
+        <div>
+          <Switch>
+            <Route exact path={routes.PROFILE} component={() => <Profile />} />
+            <Route
+              exact
+              path={routes.CREATECLASS}
+              component={() => <CreateClassroom />}
+            />
+          </Switch>
+        </div>
       </div>
     );
   }
@@ -32,7 +31,8 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    classRooms: state.classRoomReducer.classRooms
   };
 }
 export default withRouter(connect(mapStateToProps)(Home));

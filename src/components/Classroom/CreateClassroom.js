@@ -3,18 +3,13 @@ import { connect } from "react-redux";
 import { submitClassRoom } from "../../ducks/classRoomReducer";
 import swal from "sweetalert";
 import "./CreateClassroom.css";
-
 class CreateClassroom extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      className: "",
-      password: "",
-      subject: "Math"
-    };
-    this.handleClassRoom = this.handleClassRoom.bind(this);
-  }
-
+  state = {
+    classTitle: "",
+    ////I changed this to classtitle cause className is a built in keyword
+    password: "",
+    subject: "Math"
+  };
   handleClassRoom(prop, value) {
     this.setState({
       [prop]: value
@@ -22,44 +17,45 @@ class CreateClassroom extends React.Component {
   }
 
   render() {
-    console.log(this.state);
+    const { classTitle, password, subject } = this.state;
+    const { user, submitClassRoom } = this.props;
     return (
       <div className="classroom">
         <div className="createclass">
           <h1 className="title">Create Classroom</h1>
           <form
-            class="pure-form pure-form-aligned"
+            className="pure-form pure-form-aligned"
             onSubmit={e => e.preventDefault()}
           >
-            <div class="pure-control-group">
+            <div className="pure-control-group">
               <label>Class Room Name</label>
               <input
                 type="text"
                 id="Class Name"
                 placeholder="Name Your Classroom"
-                value={this.state.className}
+                value={classTitle}
                 onChange={e =>
-                  this.handleClassRoom("className", e.target.value)
+                  this.handleClassRoom("classTitle", e.target.value)
                 }
                 required
               />
             </div>
-            <div class="pure-control-group">
+            <div className="pure-control-group">
               <label>Password</label>
               <input
                 type="text"
                 id="Class Pass"
                 placeholder="Classroom Password"
-                value={this.state.password}
+                value={password}
                 onChange={e => this.handleClassRoom("password", e.target.value)}
               />
             </div>
-            <div class="pure-control-group">
+            <div className="pure-control-group">
               <label>Subject</label>
               <select
                 id="subject"
                 name="subject"
-                value={this.state.subject}
+                value={subject}
                 onChange={e => this.handleClassRoom("subject", e.target.value)}
               >
                 <option>Math</option>
@@ -70,20 +66,14 @@ class CreateClassroom extends React.Component {
             </div>
             <button
               onClick={e => {
-                this.props
-                  .submitClassRoom(
-                    this.state.className,
-                    this.state.password,
-                    this.state.subject
-                  )
-                  .then(
-                    swal({
-                      title: "Your Classroom has been created.",
-                      text: "Let's create a quiz.",
-                      icon: "success",
-                      button: "Create Quiz"
-                    })
-                  );
+                submitClassRoom(user.id, classTitle, password, subject).then(
+                  swal({
+                    title: "Your Classroom has been created.",
+                    text: "Let's create a quiz.",
+                    icon: "success",
+                    button: "Create Quiz"
+                  })
+                );
               }}
             >
               Create
@@ -97,9 +87,7 @@ class CreateClassroom extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    className: state.className,
-    password: state.password,
-    subject: state.subject
+    user: state.userReducer.user
   };
 };
 

@@ -6,9 +6,14 @@ import { auth } from "../firebase";
 import * as routes from "../constants/routes";
 import { connect } from "react-redux";
 import { getUser } from "../ducks/userReducer";
-const SignInPage = ({ history, getUser }) => (
+import { getOwnerClasses } from "../ducks/classRoomReducer";
+const SignInPage = ({ history, getUser, getOwnerClasses }) => (
   <div>
-    <SignInForm history={history} getUser={getUser} />
+    <SignInForm
+      history={history}
+      getUser={getUser}
+      getOwnerClasses={getOwnerClasses}
+    />
     <SignUpLink />
   </div>
 );
@@ -33,13 +38,18 @@ class SignInForm extends Component {
   onSubmit = event => {
     const { email, password } = this.state;
 
-    const { history, getUser } = this.props;
+    const { history, getUser, getOwnerClasses } = this.props;
 
     auth
       .doSignInWithEmailAndPassword(email, password)
       .then(authUser => {
         this.setState(() => ({ ...INITIAL_STATE }));
-        getUser(authUser.user.email).then(() => history.push(routes.HOME));
+        getUser(authUser.user.email).then(user => {
+          console.log(user.value.data.id);
+          getOwnerClasses(user.value.data.id).then(() =>
+            history.push(routes.HOME)
+          );
+        });
       })
       .catch(error => {
         this.setState(byPropKey("error", error));
@@ -86,6 +96,8 @@ function mapStateToProps(state) {
     ...state.userReducer
   };
 }
-export default withRouter(connect(mapStateToProps, { getUser })(SignInPage));
+export default withRouter(
+  connect(mapStateToProps, { getUser, getOwnerClasses })(SignInPage)
+);
 
 export { SignInForm };
