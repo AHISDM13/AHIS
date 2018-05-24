@@ -1,11 +1,17 @@
-import React from "react";
-import QuizQuestion from "./QuizQuestion/QuizQuestion";
+import React, { Component } from "react";
+import QuizQuestion from "../QuizQuestion";
 
-class CreateQuiz extends React.Component {
-  state = {
-    id: 1,
-    questions: [{ id: 1, question: "", answer: "" }]
-  };
+class CreateQuiz extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      id: 1,
+      question: props.question,
+      answer: props.answer,
+      questions: [{ id: 1, question: "", answer: "" }]
+    };
+  }
 
   // handleChangeQuestion = (index, e) => {
   //   const newQuestions = this.state.questions.map((quest, sidx) => {
@@ -30,16 +36,21 @@ class CreateQuiz extends React.Component {
   // };
 
   handleAddQuestionBox = () => {
-    console.log();
+    console.log(this.props.question);
     this.setState({
       questions: this.state.questions.concat([
-        { id: this.state.id + 1, question: "", answer: "" }
+        {
+          id: this.state.id + 1,
+          question: this.props.question,
+          answer: this.props.answer
+        }
       ]),
       id: this.state.id + 1
     });
   };
 
   handleRemove = ind => {
+    console.log(this.props.question);
     console.log(ind);
     let newArr = this.state.questions.filter(e => {
       console.log(e.id, ind);
@@ -52,7 +63,6 @@ class CreateQuiz extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <form>
         <h4>Quiz Creator</h4>
