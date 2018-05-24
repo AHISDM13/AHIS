@@ -27,7 +27,20 @@ const getUser = (req, res) => {
     });
 };
 
+const updateUser = (req, res) => {
+  const db = req.app.get("db");
+  const { first_name, last_name, email } = req.body;
+  const { id } = req.params;
+  db
+    .update_user([first_name, last_name, email, id])
+    .then(response => {
+      console.log(response);
+    })
+    .catch(e => console.log(e));
+};
+
 module.exports = {
   addNewUser,
-  getUser
+  getUser,
+  updateUser
 };
