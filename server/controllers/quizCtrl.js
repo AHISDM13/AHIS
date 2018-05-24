@@ -43,8 +43,11 @@ module.exports = {
         dummydata_b,
         dummydata_c
       ])
-      .then(response => res.status(200).send(response))
-      .catch(() => res.status(500).send());
+      .then(response => {
+        console.log(response);
+        res.status(200).send(response);
+      })
+      .catch(() => res.status(500).send(response));
   },
 
   getQuestions: (req, res, next) => {
