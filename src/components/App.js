@@ -8,10 +8,7 @@ import Landing from "./Landing/Landing";
 import SignInPage from "./SignIn";
 import SignUpPage from "./SignUp";
 import Home from "./Home/Home";
-import Profile from "./Profile/Profile";
 import PasswordForgetPage from "./PasswordForget";
-import CreateClass from "./Classroom/CreateClassroom";
-import Nav from "./Nav/Nav";
 
 class App extends Component {
   constructor(props) {
@@ -29,33 +26,20 @@ class App extends Component {
     });
   }
   render() {
+    const { authUser } = this.state;
     return (
       <Router>
         <div>
-          <Header user={this.state.authUser} />
-          <Nav />
-          <div className="Main">
-            <Route exact path={routes.LANDING} component={() => <Landing />} />
-            <Route
-              exact
-              path={routes.SIGN_UP}
-              component={() => <SignUpPage />}
-            />
-
-            <Route
-              exact
-              path={routes.SIGN_IN}
-              component={() => <SignInPage />}
-            />
-
-            <Route
-              exact
-              path={routes.PASSWORD_FORGET}
-              component={() => <PasswordForgetPage />}
-            />
-            <Route exact path={routes.HOME} component={() => <Home />} />
-            <Route exact path={routes.PROFILE} component={() => <Profile />} />
-          </div>
+          <Header user={authUser} />
+          <Route exact path={routes.LANDING} component={() => <Landing />} />
+          <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
+          <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
+          <Route
+            exact
+            path={routes.PASSWORD_FORGET}
+            component={() => <PasswordForgetPage />}
+          />
+          <Route exact path={routes.HOME} component={() => <Home />} />
         </div>
       </Router>
     );

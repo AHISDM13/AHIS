@@ -20,10 +20,15 @@ export function addUser(displayName, email) {
 }
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
-    case "GET_USER":
+    case `${GET_USER}_FULFILLED`:
       return {
         ...state,
-        user: action.payload
+        user: action.payload.data
+      };
+    case `${ADD_USER}_FULFILLED`:
+      return {
+        ...state,
+        user: action.payload.data
       };
     default:
       return state;
