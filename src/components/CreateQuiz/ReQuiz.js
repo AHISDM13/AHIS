@@ -12,19 +12,19 @@ class ReQuiz extends Component {
     };
   }
 
-  handleQuestion(val) {
+  handleQuestion = val => {
     this.setState({
       inputQuestion: val
     });
-  }
+  };
 
-  handleAnswer(val) {
+  handleAnswer = val => {
     this.setState({
       inputAnswer: val
     });
-  }
+  };
 
-  handleSubmitQuestion() {
+  handleSubmitQuestion = event => {
     const { question, inputAnswer, inputQuestion } = this.state;
     let newQ = { Q: inputQuestion, A: inputAnswer };
     let copy = question.slice();
@@ -36,9 +36,10 @@ class ReQuiz extends Component {
       inputQuestion: "",
       inputAnswer: ""
     }));
-  }
+    event.preventDefault();
+  };
 
-  removeQuestion(ind) {
+  removeQuestion = ind => {
     console.log(ind);
     let removeQues = this.state.question.slice();
     let removed = removeQues.filter((ques, index) => ind !== index);
@@ -46,7 +47,7 @@ class ReQuiz extends Component {
     this.setState({
       question: removed
     });
-  }
+  };
 
   render() {
     console.log(this.state);
@@ -65,14 +66,8 @@ class ReQuiz extends Component {
     return (
       <div>
         <div>
-          <form>
-            <button
-              onClick={() => {
-                this.handleSubmitQuestion();
-              }}
-            >
-              submit
-            </button>
+          <form onSubmit={this.handleSubmitQuestion}>
+            <input type="submit" value="Submit" />
             <h1>Questions</h1>
             <input
               value={this.state.inputQuestion}
