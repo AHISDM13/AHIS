@@ -15,8 +15,6 @@ class Nav extends Component {
         background: "#546E7A"
       }
     };
-    // console.log(this.props);
-
     return (
       <div className="Nav">
         <span className="hamburger">

@@ -1,33 +1,29 @@
-// const createClassRoom = (req, res) => {
-//   console.log("hit the post /api/classroom");
-// };
-// module.exports = {
-//   createClassRoom
 const axios = require("axios");
-var id = 2;
 
 module.exports = {
   submitClassRoom: (req, res, next) => {
-    var { className, password, subject } = req.body;
-    const dbInstance = req.app.get("db");
-    dbInstance
-      .create_class([id, className, subject, true, password])
-      .then(response => {
-        id++;
-        res.status(200).send(response);
+    console.log("hit the endpoint post /api/classroom");
+    const { className, password, subject, ownerid } = req.body;
+    console.log(ownerid);
+    req.app
+      .get("db")
+      .create_class([ownerid, className, subject, true, password])
+      .then(classes => {
+        res.status(200).send(classes);
       })
-      .catch(() => res.status(500).send());
+      .catch(err => res.status(500).send(err));
   },
 
-  getStudentClasses: (req, res, next) => {
+  getOwnerClasses: (req, res, next) => {
+    console.log("hit the endpoint get /api/classes/:user_id");
     const { user_id } = req.params;
-    const dbInstance = req.app.get("db");
-    dbInstance
-      .get_student_classes([user_id])
-      .then(response => {
-        console.log(response);
-        res.status(200).send(response);
+    req.app
+      .get("db")
+      .get_Owner_Classes([user_id])
+      .then(classes => {
+        console.log(classes);
+        res.status(200).send(classes);
       })
-      .catch(() => res.status(500).send());
+      .catch(err => res.status(500).send(err));
   }
 };

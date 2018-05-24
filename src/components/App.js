@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { firebase } from "../firebase";
 import * as routes from "../constants/routes";
 import "../App.css";
@@ -9,6 +9,8 @@ import SignInPage from "./SignIn";
 import SignUpPage from "./SignUp";
 import Home from "./Home/Home";
 import PasswordForgetPage from "./PasswordForget";
+import Profile from "./Profile/Profile";
+import CreateClassroom from "./Classroom/CreateClassroom";
 
 class App extends Component {
   constructor(props) {
@@ -28,9 +30,9 @@ class App extends Component {
   render() {
     const { authUser } = this.state;
     return (
-      <Router>
-        <div>
-          <Header user={authUser} />
+      <div>
+        <Header user={authUser} />
+        <Switch>
           <Route exact path={routes.LANDING} component={() => <Landing />} />
           <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
           <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
@@ -40,8 +42,14 @@ class App extends Component {
             component={() => <PasswordForgetPage />}
           />
           <Route exact path={routes.HOME} component={() => <Home />} />
-        </div>
-      </Router>
+          <Route exact path={routes.PROFILE} component={() => <Profile />} />
+          <Route
+            exact
+            path={routes.CREATECLASS}
+            component={() => <CreateClassroom />}
+          />
+        </Switch>
+      </div>
     );
   }
 }
