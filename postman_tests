@@ -1,1 +1,14 @@
 Alexx
+get student classes
+
+const res = pm.response.json()
+
+pm.test('Should be an array', ()=>{
+    pm.expect(Array.isArray(res)).to.eql(true)
+})
+
+pm.test('Should receive classes', ()=>{
+    pm.expect(res.length > 0).to.eql(true)
+})
+
+
