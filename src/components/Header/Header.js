@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import * as routes from "../../constants/routes";
 import SignOutButton from "../SignOut";
-const Header = ({ authUser }) => (
+const Header = ({ user }) => (
   <div className="Header">
-    {authUser ? <NavigationAuth /> : <NavigationNonAuth />}
+    {user ? <NavigationAuth /> : <NavigationNonAuth />}
   </div>
 );
 
