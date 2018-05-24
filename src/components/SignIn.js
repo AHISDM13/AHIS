@@ -4,6 +4,8 @@ import { withRouter } from "react-router-dom";
 import { SignUpLink } from "./SignUp";
 import { auth } from "../firebase";
 import * as routes from "../constants/routes";
+import { connect } from "react-redux";
+import { getUser } from "../ducks/userReducer";
 const SignInPage = ({ history, getUser }) => (
   <div>
     <SignInForm history={history} getUser={getUser} />
@@ -37,8 +39,7 @@ class SignInForm extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(authUser => {
         this.setState(() => ({ ...INITIAL_STATE }));
-        getUser(authUser.user.email);
-        history.push(routes.HOME);
+        getUser(authUser.user.email).then(() => history.push(routes.HOME));
       })
       .catch(error => {
         this.setState(byPropKey("error", error));
@@ -80,6 +81,11 @@ class SignInForm extends Component {
   }
 }
 
-export default withRouter(SignInPage);
+function mapStateToProps(state) {
+  return {
+    ...state.userReducer
+  };
+}
+export default withRouter(connect(mapStateToProps, { getUser })(SignInPage));
 
 export { SignInForm };
