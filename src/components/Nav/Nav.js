@@ -3,7 +3,6 @@ import "./Nav.css";
 import { Link } from "react-router-dom";
 import Drawer from "material-ui/Drawer";
 import { getClassroom } from "../../ducks/classRoomReducer";
-import MyClassRoom from "./ClassRoom";
 import { connect } from "react-redux";
 
 class Nav extends Component {
@@ -13,7 +12,6 @@ class Nav extends Component {
 
   componenDidMount() {
     console.log(this.props);
-    // this.props.getClassroom(this.props.match.params.id);
   }
   render() {
     // const styles = {
@@ -69,7 +67,8 @@ class Nav extends Component {
 
 function mapStateToProps(state) {
   return {
-    classRoom: state.classRoomReducer.classroom
+    classRoom: state.classRoomReducer.classroom,
+    user: state.userReducer.user
   };
 }
 

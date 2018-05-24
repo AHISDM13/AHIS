@@ -13,6 +13,7 @@ const passport = require("passport");
 
 // const { submitClassRoom } = require(`${__dirname}/controllers/classRCtrl`);
 const cc = require("./controllers/classRCtrl");
+const qc = require("./controllers/quizCtrl");
 
 const port = process.env.PORT || 3001;
 
@@ -43,12 +44,12 @@ app.put("/api/classroom/:id");
 app.delete("/api/classroom/:id");
 
 //QUIZ ENDPOINTS
-app.post("/api/quiz");
-app.get("/api/quiz/:classid");
+app.post("/api/quiz", qc.createQuiz);
+app.get("/api/quiz/:classid", qc.getQuiz);
 
 //QUESTION ENDPOINTS
-app.post("/api/question");
-app.get("/api/question/:quizid");
+app.post("/api/question", qc.addQuestion);
+app.get("/api/question/:quiz_id", qc.getQuestions);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
