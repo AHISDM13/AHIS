@@ -16,10 +16,10 @@ module.exports = {
 
   getOwnerClasses: (req, res, next) => {
     console.log("hit the endpoint get /api/classes/:user_id");
-    const { user_id } = req.params;
+    const { owner_id } = req.params;
     req.app
       .get("db")
-      .get_Owner_Classes([user_id])
+      .get_Owner_Classes([owner_id])
       .then(classes => {
         console.log(classes);
         res.status(200).send(classes);
