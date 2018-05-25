@@ -9,12 +9,14 @@ import PasswordForgetPage from "../components/PasswordForget";
 import Profile from "../components/Profile/Profile";
 import CreateClassroom from "../components/Classroom/CreateClassroom";
 import Classroom from "../components/Classroom/Classroom";
+import CreateQuiz from "../components/CreateQuiz/CreateQuiz";
+
 export default (
   <Switch>
     <Route exact path={routes.LANDING} component={() => <Landing />} />
     <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
     <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
-
+    <Route exact path={routes.CREATEQUIZ} component={() => <CreateQuiz />} />
     <Route
       exact
       path={routes.PASSWORD_FORGET}
