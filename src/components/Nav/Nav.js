@@ -14,6 +14,8 @@ class Nav extends Component {
     this.props.getClassroom(2);
   }
   render() {
+    console.log("hello");
+    console.log(this.props.classRooms);
     const styles = {
       nav: {
         background: "#546E7A"
@@ -63,7 +65,9 @@ class Nav extends Component {
 
 function mapStateToProps(state) {
   return {
-    classRoom: state.classRoomReducer.classRoom,
+
+    classRooms: state.classRoomReducer.classRooms,
+
     user: state.userReducer.user
   };
 }
