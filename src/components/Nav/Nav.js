@@ -11,18 +11,22 @@ class Nav extends Component {
 
   componenDidMount() {}
   render() {
-    console.log("hello");
     console.log(this.props.classRooms);
     const styles = {
       nav: {
         background: "#546E7A"
       }
     };
-    // console.log(this.props);
-
-    let createdClasses = this.props.classRoom.map((e, i) => {
-      return <div key={i}>{e.title}</div>;
-    });
+    const { classRooms } = this.props;
+    const createdClasses = classRooms
+      ? classRooms.map((e, i) => {
+          return (
+            <Link key={i} to={`/classroom/${e.classroom_id}`}>
+              {e.title}
+            </Link>
+          );
+        })
+      : null;
 
     return (
       <div className="Nav">
@@ -62,7 +66,7 @@ class Nav extends Component {
 
 function mapStateToProps(state) {
   return {
-    classRoom: state.classRoomReducer.classRooms,
+    classRooms: state.classRoomReducer.classRooms,
     user: state.userReducer.user
   };
 }
