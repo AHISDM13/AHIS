@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addQuestion } from "../../ducks/quizReducer";
 
 class ReQuiz extends Component {
   constructor() {
@@ -10,6 +12,7 @@ class ReQuiz extends Component {
       inputAnswer: "",
       inputQuestion: ""
     };
+    this.postQuestion = this.postQuestion.bind(this);
   }
 
   handleQuestion = val => {
@@ -49,6 +52,13 @@ class ReQuiz extends Component {
     });
   };
 
+  postQuestion() {
+    let newentry = this.state.question.map((e, i) => {
+      this.props.addQuestion(e.Q, e.A);
+    });
+    return newentry;
+  }
+
   render() {
     console.log(this.state);
 
@@ -83,10 +93,15 @@ class ReQuiz extends Component {
         <div>
           <h1>Quiz Box {ques}</h1>
         </div>
-        {/* <div>{answerBox}</div> */}
+        <button onClick={() => this.postQuestion()}>Submit Quiz </button>
       </div>
     );
   }
 }
 
-export default ReQuiz;
+function mapStateToProps(state) {
+  return {
+    ...state
+  };
+}
+export default connect(mapStateToProps, { addQuestion })(ReQuiz);
