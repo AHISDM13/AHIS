@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { addQuestion } from "../../ducks/quizReducer";
 
 class ReQuiz extends Component {
   constructor() {
@@ -10,21 +12,22 @@ class ReQuiz extends Component {
       inputAnswer: "",
       inputQuestion: ""
     };
+    this.postQuestion = this.postQuestion.bind(this);
   }
 
-  handleQuestion(val) {
+  handleQuestion = val => {
     this.setState({
       inputQuestion: val
     });
-  }
+  };
 
-  handleAnswer(val) {
+  handleAnswer = val => {
     this.setState({
       inputAnswer: val
     });
-  }
+  };
 
-  handleSubmitQuestion() {
+  handleSubmitQuestion = event => {
     const { question, inputAnswer, inputQuestion } = this.state;
     let newQ = { Q: inputQuestion, A: inputAnswer };
     let copy = question.slice();
@@ -36,9 +39,10 @@ class ReQuiz extends Component {
       inputQuestion: "",
       inputAnswer: ""
     }));
-  }
+    event.preventDefault();
+  };
 
-  removeQuestion(ind) {
+  removeQuestion = ind => {
     console.log(ind);
     let removeQues = this.state.question.slice();
     let removed = removeQues.filter((ques, index) => ind !== index);
@@ -46,6 +50,13 @@ class ReQuiz extends Component {
     this.setState({
       question: removed
     });
+  };
+
+  postQuestion() {
+    let newentry = this.state.question.map((e, i) => {
+      this.props.addQuestion(e.Q, e.A);
+    });
+    return newentry;
   }
 
   render() {
@@ -65,14 +76,8 @@ class ReQuiz extends Component {
     return (
       <div>
         <div>
-          <form>
-            <button
-              onClick={() => {
-                this.handleSubmitQuestion();
-              }}
-            >
-              submit
-            </button>
+          <form onSubmit={this.handleSubmitQuestion}>
+            <input type="submit" value="Submit" />
             <h1>Questions</h1>
             <input
               value={this.state.inputQuestion}
@@ -88,10 +93,15 @@ class ReQuiz extends Component {
         <div>
           <h1>Quiz Box {ques}</h1>
         </div>
-        {/* <div>{answerBox}</div> */}
+        <button onClick={() => this.postQuestion()}>Submit Quiz </button>
       </div>
     );
   }
 }
 
-export default ReQuiz;
+function mapStateToProps(state) {
+  return {
+    ...state
+  };
+}
+export default connect(mapStateToProps, { addQuestion })(ReQuiz);
