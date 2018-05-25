@@ -10,7 +10,10 @@ class ReQuiz extends Component {
       question: [],
       answer: [],
       inputAnswer: "",
-      inputQuestion: ""
+      inputQuestion: "",
+      dummy_data_a: "",
+      dummy_data_b: "",
+      dummy_data_c: ""
     };
   }
 
@@ -26,9 +29,40 @@ class ReQuiz extends Component {
     });
   };
 
+  dummyOne = val => {
+    this.setState({
+      dummy_data_a: val
+    });
+  };
+
+  dummyTwo = val => {
+    this.setState({
+      dummy_data_b: val
+    });
+  };
+
+  dummyThree = val => {
+    this.setState({
+      dummy_data_c: val
+    });
+  };
+
   handleSubmitQuestion = event => {
-    const { question, inputAnswer, inputQuestion } = this.state;
-    let newQ = { Q: inputQuestion, A: inputAnswer };
+    const {
+      question,
+      inputAnswer,
+      inputQuestion,
+      dummy_data_a,
+      dummy_data_b,
+      dummy_data_c
+    } = this.state;
+    let newQ = {
+      Q: inputQuestion,
+      A: inputAnswer,
+      One: dummy_data_a,
+      Two: dummy_data_b,
+      Three: dummy_data_c
+    };
     let copy = question.slice();
     console.log(copy, newQ);
     copy.push(newQ);
@@ -36,7 +70,10 @@ class ReQuiz extends Component {
     this.setState(() => ({
       question: copy,
       inputQuestion: "",
-      inputAnswer: ""
+      inputAnswer: "",
+      dummy_data_a: "",
+      dummy_data_b: "",
+      dummy_data_c: ""
     }));
     event.preventDefault();
   };
@@ -66,7 +103,7 @@ class ReQuiz extends Component {
         <div key={i}>
           <p>
             {" "}
-            {quest.Q} - {quest.A}{" "}
+            {quest.Q} - {quest.A} - {quest.One} - {quest.Two} - {quest.Three}
           </p>
           <button onClick={() => this.removeQuestion(i)}>Remove</button>
         </div>
@@ -86,6 +123,21 @@ class ReQuiz extends Component {
             <input
               value={this.state.inputAnswer}
               onChange={e => this.handleAnswer(e.target.value)}
+            />
+            <h1>Dummy 1</h1>
+            <input
+              value={this.state.dummy_data_a}
+              onChange={e => this.dummyOne(e.target.value)}
+            />
+            <h1>Dummy 2</h1>
+            <input
+              value={this.state.dummy_data_b}
+              onChange={e => this.dummyTwo(e.target.value)}
+            />
+            <h1>Dummy 3</h1>
+            <input
+              value={this.state.dummy_data_c}
+              onChange={e => this.dummyThree(e.target.value)}
             />
           </form>
         </div>
