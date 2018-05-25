@@ -13,6 +13,7 @@ function classRoomReducer(state = initialState, action) {
       return Object.assign({}, state, { classRoom: action.payload });
 
     case `${GET_CLASSROOM}_FULFILLED`:
+      console.log(action);
       return Object.assign({}, state, { classRoom: action.payload.data });
     default:
       return state;
@@ -32,9 +33,9 @@ export function submitClassRoom(className, password, subject) {
   };
 }
 
-export function getClassroom(ownerid) {
+export function getClassroom() {
   return {
     type: GET_CLASSROOM,
-    payload: axios.get(`/api/classroom/${ownerid}`)
+    payload: axios.get(`/api/classroom/2`)
   };
 }
