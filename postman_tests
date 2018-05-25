@@ -12,3 +12,139 @@ pm.test('Should receive classes', ()=>{
 })
 
 
+POST - USER
+
+const responseJSON = pm.response.json();
+
+pm.test("Returned is arr with length = 1", function (){
+    pm.expect(Array.isArray(responseJSON)).to.eql(true);
+    pm.expect(responseJSON.length).to.eql(1);
+})
+
+const user = responseJSON[0];
+const expecteduser = {
+    id : 29
+}
+
+pm.test("Returned user id is expected", function () {
+  pm.expect( user ).to.eql( expecteduser );
+});
+
+pm.test("response is a body", function () {
+    pm.response.to.be.ok;
+    pm.response.to.be.withBody;
+});
+
+POST - CLASSROOM
+
+const responseJSON = pm.response.json();
+
+pm.test("Returned is arr with length = 1", function (){
+    pm.expect(Array.isArray(responseJSON)).to.eql(true);
+    pm.expect(responseJSON.length).to.eql(1);
+})
+
+const classRoom = responseJSON[0];
+const expectedClassroom = {
+    classroom_id: 16,
+	owner_id: 6,
+	title: "egg egg egg",
+	subject: "Math",
+	active: "TRUE",
+	password: "super egg"
+}
+
+pm.test("Returned class is expected", function () {
+  pm.expect( classRoom ).to.eql( expectedClassroom );
+});
+
+pm.test("response is a body", function () {
+    pm.response.to.be.ok;
+    pm.response.to.be.withBody;
+});
+
+POST - QUIZ
+
+pm.test("response is a body", function () {
+    pm.response.to.be.ok;
+    pm.response.to.be.withBody;
+});
+
+pm.test("response does not error", function () { 
+    pm.response.to.not.be.error; 
+});
+
+pm.test("Quiz should have a name",function (){
+    response.body.quiz_name.should.be.a('string').and.not.empty;
+})
+
+POST - QUESTION
+
+const responseJSON = pm.response.json();
+
+pm.test("Returned is arr with length = 1", function (){
+    pm.expect(Array.isArray(responseJSON)).to.eql(true);
+    pm.expect(responseJSON.length).to.eql(1);
+})
+
+const question = responseJSON[0];
+const expectedquestion = {
+	question_id : 16,
+	quiz_id: 17,
+	question: "destiny babababa",
+	answer: "destiny babababa",
+	dummy_data_a: "destiny babababa",
+	dummy_data_b: "destiny babababa",
+	dummy_data_c: "destiny babababa"
+}
+
+pm.test("Returned user is expected", function () {
+  pm.expect( question ).to.eql( expectedquestion );
+});
+
+GET - USER
+
+const obj = {
+    id: 1,
+    authid: "8978978907",
+    username: "billy_bob",
+    email: "billybob@gmail.com",
+    first_name: "Billy",
+    last_name: "Bob",
+    dob: "05-19-1992"
+}
+const responseJSON = pm.response.json();
+
+pm.test("user is expected", function (){
+    pm.expect(responseJSON[0]).to.eql(obj)
+})
+
+const user = responseJSON[0];
+pm.test("user id is a number", function (){
+    pm.expect(typeof(user.id)).to.eql('number');
+});
+
+GET - classes
+
+
+const responseJSON = pm.response.json();
+
+pm.test("get classes for user", function (){
+    pm.expect(Array.isArray(pm.response.json())).to.eql(true)
+});
+
+pm.test("returns 2 classes", function (){
+    pm.expect(pm.response.json().length).to.eql(2);
+});
+
+GET - QUESTIONS
+
+const responseJSON = pm.response.json();
+
+pm.test("returns an array of questions for quiz", function (){
+    pm.expect(Array.isArray(pm.response.json())).to.eql(true)
+});
+
+pm.test("returns 3 quizzes", function (){
+    pm.expect(pm.response.json().length).to.eql(3);
+});
