@@ -11,6 +11,8 @@ class Nav extends Component {
 
   componenDidMount() {}
   render() {
+    console.log("hello");
+    console.log(this.props.classRooms);
     const styles = {
       nav: {
         background: "#546E7A"
