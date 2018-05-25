@@ -1,4 +1,4 @@
-import React, { Component } from "React";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import Flashcards from "../../../Flashcards/Flashcards";
 
@@ -49,4 +49,4 @@ function mapStateToProps(state) {
     ...state.classRoomReducer
   };
 }
-export default Student;
+export default connect(mapStateToProps)(Student);

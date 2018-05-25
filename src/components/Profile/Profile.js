@@ -5,8 +5,8 @@ import ClassView from "../Classroom/ClassView/ClassView";
 
 import { updateUser } from "../../ducks/userReducer";
 class Profile extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       first_name: "",
@@ -28,13 +28,14 @@ class Profile extends Component {
       <div className="profile-page">
         <h2>Update your account details</h2>
         <form
-          onSubmit={() =>
+          onSubmit={() => {
             this.props.updateUser(
               this.state.first_name,
               this.state.last_name,
-              this.state.email
-            )
-          }
+              this.state.email,
+              this.props.user.id
+            );
+          }}
         >
           <p>First Name</p>
           <div className="container">
@@ -42,7 +43,7 @@ class Profile extends Component {
             <input
               className="form-input"
               type="text"
-              value={this.props.first_name || this.state.first_name}
+              value={this.state.first_name}
               name="first_name"
               onChange={this.handleInput}
             />

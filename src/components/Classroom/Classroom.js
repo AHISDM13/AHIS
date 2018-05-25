@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import Student from "../Classroom/ClassView/Student/Student";
 class Classroom extends React.Component {
   state = {};
 
@@ -12,7 +13,10 @@ class Classroom extends React.Component {
         {match.params.id === user.id ? (
           <p>display class for class creator</p>
         ) : (
-          <p>display class for the users who joined this class</p>
+          <div>
+            <Student />
+            <p>display class for the users who joined this class</p>
+          </div>
         )}
       </div>
     );
