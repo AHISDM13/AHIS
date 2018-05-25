@@ -29,9 +29,9 @@ module.exports = {
       quiz_id,
       question,
       answer,
-      dummydata_a,
-      dummydata_b,
-      dummydata_c
+      dummy_data_a,
+      dummy_data_b,
+      dummy_data_c
     } = req.body;
     const dbInstance = req.app.get("db");
     dbInstance
@@ -39,12 +39,18 @@ module.exports = {
         quiz_id,
         question,
         answer,
-        dummydata_a,
-        dummydata_b,
-        dummydata_c
+        dummy_data_a,
+        dummy_data_b,
+        dummy_data_c
       ])
-      .then(response => res.status(200).send(response))
-      .catch(() => res.status(500).send());
+      .then(response => {
+        console.log(response);
+        res.status(200).send(response);
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).send(err);
+      });
   },
 
   getQuestions: (req, res, next) => {
