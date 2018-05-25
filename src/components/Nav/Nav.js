@@ -10,6 +10,8 @@ class Nav extends Component {
 
   componenDidMount() {}
   render() {
+    console.log("hello");
+    console.log(this.props.classRooms);
     const styles = {
       nav: {
         background: "#546E7A"
@@ -52,7 +54,7 @@ class Nav extends Component {
 
 function mapStateToProps(state) {
   return {
-    classRoom: state.classRoomReducer.classroom,
+    classRooms: state.classRoomReducer.classRooms,
     user: state.userReducer.user
   };
 }
