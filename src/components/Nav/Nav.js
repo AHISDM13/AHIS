@@ -3,7 +3,7 @@ import "./Nav.css";
 import { Link } from "react-router-dom";
 import Drawer from "material-ui/Drawer";
 import { connect } from "react-redux";
-import { getClassroom } from "../../ducks/classRoomReducer";
+import { getClassrooms } from "../../ducks/classRoomReducer";
 
 class Nav extends Component {
   state = { open: false, user: {}, classrooms: [] };
@@ -19,15 +19,12 @@ class Nav extends Component {
         background: "#546E7A"
       }
     };
-<<<<<<< HEAD
     // console.log(this.props);
 
     let createdClasses = this.props.classRoom.map((e, i) => {
       return <div key={i}>{e.title}</div>;
     });
 
-=======
->>>>>>> master
     return (
       <div className="Nav">
         <span className="hamburger">
@@ -71,4 +68,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getClassroom })(Nav);
+export default connect(mapStateToProps, { getClassrooms })(Nav);
