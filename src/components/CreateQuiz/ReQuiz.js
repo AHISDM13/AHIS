@@ -12,7 +12,6 @@ class ReQuiz extends Component {
       inputAnswer: "",
       inputQuestion: ""
     };
-    this.postQuestion = this.postQuestion.bind(this);
   }
 
   handleQuestion = val => {

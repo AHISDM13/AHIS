@@ -42,6 +42,7 @@ class App extends Component {
             path={routes.PASSWORD_FORGET}
             component={() => <PasswordForgetPage />}
           />
+
           <Route exact path={routes.HOME} component={() => <Home />} />
           <Route exact path={routes.PROFILE} component={() => <Profile />} />
           <Route

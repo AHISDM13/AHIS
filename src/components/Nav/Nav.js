@@ -65,8 +65,7 @@ class Nav extends Component {
 
 function mapStateToProps(state) {
   return {
-
-    classRooms: state.classRoomReducer.classRooms,
+    classRoom: state.classRoomReducer.classRooms,
 
     user: state.userReducer.user
   };
