@@ -19,12 +19,15 @@ class Nav extends Component {
         background: "#546E7A"
       }
     };
+<<<<<<< HEAD
     // console.log(this.props);
 
     let createdClasses = this.props.classRoom.map((e, i) => {
       return <div key={i}>{e.title}</div>;
     });
 
+=======
+>>>>>>> master
     return (
       <div className="Nav">
         <span className="hamburger">
