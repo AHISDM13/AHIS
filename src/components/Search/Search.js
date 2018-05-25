@@ -29,7 +29,7 @@ class Search extends Component {
             this.handleSearch(e.target.value);
           }}
           value={this.state.inputVal}
-          onKeyPress={e => this.handleEnter(e)}
+          onKeyDown={this.handleEnter}
           placeholder="Search by topic (i.e. 'Math', 'the American Revolution')"
         />
       </div>

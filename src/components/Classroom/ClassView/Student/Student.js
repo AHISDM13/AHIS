@@ -33,15 +33,18 @@ class Student extends Component {
     //   );
     // });
     return (
-      <div className="classview-page">
-        <button className="analytics">View Your Scores</button>
-        <h2>Quizzes</h2>
-        {this.props.quiz.length && (
-          <div className="quizzes-container">{classQuiz}</div>
-        )}
-        <h2>Resources</h2>
-        <div className="resources-container">{/* {classResource} */}</div>
-        {/* <Flashcards /> */}
+      <div className="student-page">
+        <div className="navigate">Navigation</div>
+        <div className="student-content">
+          <button className="analytics">View Your Scores</button>
+          <h2>Quizzes</h2>
+          {this.props.quiz.length && (
+            <div className="quizzes-container">{classQuiz}</div>
+          )}
+          <h2>Resources</h2>
+          <div className="resources-container">{/* {classResource} */}</div>
+          {/* <Flashcards /> */}
+        </div>
       </div>
     );
   }
