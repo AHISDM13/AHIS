@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Profile.css";
-import ClassView from "../Classroom/ClassView/ClassView";
 
 import { updateUser } from "../../ducks/userReducer";
+
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -16,13 +16,11 @@ class Profile extends Component {
       birth: ""
     };
     this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleInput(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleSubmit() {}
   render() {
     return (
       <div className="profile-page">
@@ -80,11 +78,8 @@ class Profile extends Component {
               onChange={this.handleInput}
             />
           </div>
-
           <input className="submit" type="submit" value="submit" />
         </form>
-        {/* putting ClassView here, so that I can see the changes */}
-        <ClassView />
       </div>
     );
   }

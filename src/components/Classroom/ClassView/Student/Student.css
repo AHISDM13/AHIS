@@ -1,0 +1,49 @@
+.classview-page h2 {
+  font-size: 20px;
+  text-align: left;
+  padding-left: 10%;
+}
+.box {
+  border: 1px solid gray;
+  box-shadow: 1px 1px 2px gray;
+}
+
+.box:hover {
+  cursor: pointer;
+}
+.analytics {
+  padding: 10px;
+  background: #7fb174;
+  color: #fff;
+  box-shadow: 1px 1px 2px gray;
+  border-radius: 2px;
+}
+/* QuizClassView */
+.quizzes-container {
+  margin: 20px;
+  overflow: scroll;
+}
+.each-quiz {
+  width: 80%;
+  height: 50px;
+  display: flex;
+  margin: auto;
+}
+.link-div a {
+  text-decoration: none;
+}
+
+/* Resources */
+.resources-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.each-resource {
+  width: 20%;
+  height: 200px;
+}

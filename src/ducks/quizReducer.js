@@ -11,12 +11,12 @@ const GET_QUIZ = "GET_QUIZ";
 const ADD_QUESTION = "ADD_QUESTION";
 const GET_QUESTIONS = "GET_QUESTIONS";
 
-function quizReducer(state = initialState, action) {
+export default function quizReducer(state = initialState, action) {
   switch (action.type) {
     case `${CREATE_QUIZ}_FULFILLED`:
       return Object.assign({}, state, { quiz: action.payload });
 
-    case GET_QUIZ:
+    case `${GET_QUIZ}_FULFILLED`:
       return Object.assign({}, state, { quiz: action.payload.data });
 
     case ADD_QUESTION:
@@ -29,8 +29,6 @@ function quizReducer(state = initialState, action) {
       return state;
   }
 }
-
-export default createQuiz;
 
 export function createQuiz(classid, quizName) {
   return {
