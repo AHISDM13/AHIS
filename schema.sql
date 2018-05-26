@@ -76,6 +76,33 @@
 -- (65, 'What color is southern dirt?', 'red', 'dark brown', 'blue','purple'),
 -- (65, 'What is precipitation?', 'water', 'tears from clouds', 'ice cubes','hot water')
 
-INSERT INTO results(question_id, user_answer, correct, user_id, deck_id)
-VALUES (24, '4 years old', true, 
+-- INSERT INTO student(classroom_id, user_id)
+-- VALUES(35, 35),
+-- (35, 36),
+-- (35, 37),
+-- (26, 36),
+-- (26, 37),
+-- (26, 38),
+-- (28, 35),
+-- (28, 37),
+-- (28, 38)
 
+-- INSERT INTO results(question_id, user_answer, correct, user_id, deck_id)
+-- VALUES (24, '4 years old', true, 35, 62), 
+-- (24, '4 years old', true, 36, 62),
+-- (24, '4 years old', true, 37, 62),
+-- (25, '10 years old', false, 35, 62),
+-- (25, '4 years old', false, 36, 62),
+-- (25, '5 years old', true, 37, 62),
+-- (26, '4 years old', true, 35, 62),
+-- (26, '1 year old', true, 36, 62),
+-- (26, '1 year old', true, 37, 62),
+-- (27, '25 years old', true, 35, 62),
+-- (27, '25 years old', true, 36, 62),
+-- (27, '25 years old', true, 37, 62),
+-- (28, '27 years old', true, 35, 62),
+-- (28, '27 years old', true, 36, 62),
+-- (28, '27 years old', true, 37, 62),
+-- (29, '28 years old', false, 35, 62),
+-- (29, '28 years old', false, 36, 62),
+-- (29, '28 years old', false, 37, 62)
