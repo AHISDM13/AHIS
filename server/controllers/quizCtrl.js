@@ -7,6 +7,7 @@ module.exports = {
     dbInstance
       .create_quiz([classroom_id, quiz_name])
       .then(response => {
+        console.log("hello its post");
         res.status(200).send(response);
       })
       .catch(err => {

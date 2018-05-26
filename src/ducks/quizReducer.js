@@ -11,7 +11,7 @@ const GET_QUIZ = "GET_QUIZ";
 const ADD_QUESTION = "ADD_QUESTION";
 const GET_QUESTIONS = "GET_QUESTIONS";
 
-export default function quizReducer(state = initialState, action) {
+function quizReducer(state = initialState, action) {
   switch (action.type) {
     case `${CREATE_QUIZ}_FULFILLED`:
       return Object.assign({}, state, { quiz: action.payload });
@@ -30,10 +30,12 @@ export default function quizReducer(state = initialState, action) {
   }
 }
 
-export function createQuiz(classid, quizName) {
+export default quizReducer;
+
+export function createQuiz(classroom_id, quiz_name) {
   return {
     type: CREATE_QUIZ,
-    payload: axios.post(`/api/quiz`, { classid, quizName })
+    payload: axios.post(`/api/quiz`, { classroom_id, quiz_name })
   };
 }
 
