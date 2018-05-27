@@ -4,6 +4,7 @@ import "./Header.css";
 import * as routes from "../../constants/routes";
 import SignOutButton from "../SignOut";
 import Nav from "../Nav/Nav";
+import Search from "../Search/Search";
 const Header = ({ user }) => (
   <div className="Header">
     {user ? <NavigationAuth /> : <NavigationNonAuth />}
@@ -15,6 +16,7 @@ class NavigationAuth extends React.Component {
     return (
       <div className="Header_nav">
         <Nav />
+        <Search />
         <Link className="Header_nav_link" to={routes.HOME}>
           Home
         </Link>
@@ -29,6 +31,7 @@ class NavigationAuth extends React.Component {
 
 const NavigationNonAuth = () => (
   <div className="Header_nav">
+    <Search />
     <Link className="Header_nav_link" to={routes.LANDING}>
       Sign In
     </Link>

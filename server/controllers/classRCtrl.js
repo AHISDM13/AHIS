@@ -7,7 +7,7 @@ module.exports = {
     console.log(ownerid);
     req.app
       .get("db")
-      .create_class([ownerid, className, subject, true, password])
+      .create_class([ownerid, className, subject, true, password, true])
       .then(classes => {
         res.status(200).send(classes);
       })
@@ -37,5 +37,16 @@ module.exports = {
         res.status(200).send(myClasses);
       })
       .catch(e => console.log(e));
+  },
+  getClassesByKeywords: (req, res) => {
+    console.log("hit the endpoint get api/classes/:keyword");
+    const { keyword } = req.params;
+    req.app
+      .get("db")
+      .get_classes_by_keyword([keyword])
+      .then(results => {
+        res.status(200).send(results);
+      })
+      .catch(err => res.status(500).send(err));
   }
 };
