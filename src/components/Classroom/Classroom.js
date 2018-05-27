@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import TeacherView from "./ClassView/Teacher View/TeacherView";
+import Student from "./ClassView/Student/Student";
 
 class Classroom extends React.Component {
   state = {};
@@ -17,7 +18,8 @@ class Classroom extends React.Component {
         ) : (
           <p>display class for the users who joined this class</p>
         )} */}
-        <TeacherView />
+        {/* <TeacherView /> */}
+        <Student />
       </div>
     );
   }

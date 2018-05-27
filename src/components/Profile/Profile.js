@@ -44,6 +44,7 @@ class Profile extends Component {
               value={this.state.first_name}
               name="first_name"
               onChange={this.handleInput}
+              autoFocus
             />
           </div>
           <p>Last Name</p>

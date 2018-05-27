@@ -51,8 +51,6 @@ class Student extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
-
   return {
     ...state.quizReducer,
     ...state.classRoomReducer

@@ -41,6 +41,7 @@ app.get("/api/user/:email", ac.getUser);
 app.put("/api/user/:id", ac.updateUser);
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
+app.get("/api/classlist/:user_id", cc.getStudentClasses);
 app.get("/api/classes/:owner_id", cc.getOwnerClasses);
 app.post("/api/classroom", cc.submitClassRoom);
 app.put("/api/classroom/:id");
