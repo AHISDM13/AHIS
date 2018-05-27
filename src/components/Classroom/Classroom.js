@@ -5,14 +5,14 @@ class Classroom extends React.Component {
   state = {};
 
   render() {
-    console.log(this.props.match.params.id);
-    const { match, user } = this.props;
+    const { match, currentClassroom } = this.props;
+    console.log(currentClassroom);
     return (
       <div className="Classroom">
-        {match.params.id === user.id ? (
-          <p>display class for class creator</p>
+        {match.params.id === currentClassroom.owner_id ? (
+          <div>owner view</div>
         ) : (
-          <p>display class for the users who joined this class</p>
+          <div>student view</div>
         )}
       </div>
     );
@@ -20,7 +20,8 @@ class Classroom extends React.Component {
 }
 const mapStateToProps = state => {
   return {
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    currentClassroom: state.classRoomReducer.currentClassroom
   };
 };
 export default withRouter(connect(mapStateToProps)(Classroom));
