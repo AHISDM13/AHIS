@@ -1,27 +1,26 @@
 import React, { Component } from "react";
 import "./Search.css";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { getClassesByKeyword } from "../../ducks/searchReducer";
 class Search extends Component {
-  constructor() {
-    super();
-    this.state = {
-      inputVal: ""
-    };
-    this.handleEnter = this.handleEnter.bind(this);
-  }
-
+  state = {
+    inputVal: ""
+  };
   handleSearch(val) {
-    this.setState({ inputVal: val });
+    this.setState(() => ({ inputVal: val }));
   }
   handleEnter(e) {
+    const { history, getClassesByKeyword } = this.props;
     if (e.keyCode === 13) {
-      console.log(
-        "need an endpoint or method; also need to chain clearing input field"
-      );
+      getClassesByKeyword(this.state.inputVal).then(() => {
+        history.push("/searchResult");
+      });
     }
   }
   render() {
     return (
-      <div className="search-bar">
+      <span className="search-bar">
         <i className="fas fa-search" />
         <input
           type="text"
@@ -29,11 +28,18 @@ class Search extends Component {
             this.handleSearch(e.target.value);
           }}
           value={this.state.inputVal}
-          onKeyPress={e => this.handleEnter(e)}
+          onKeyDown={e => this.handleEnter(e)}
           placeholder="Search by topic (i.e. 'Math', 'the American Revolution')"
         />
-      </div>
+      </span>
     );
   }
 }
-export default Search;
+function mapStateToProps(state) {
+  return {
+    ...state.searchReducer
+  };
+}
+export default withRouter(
+  connect(mapStateToProps, { getClassesByKeyword })(Search)
+);
