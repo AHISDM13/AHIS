@@ -42,12 +42,9 @@ app.get("/api/user/:email", ac.getUser);
 app.put("/api/user/:id", ac.updateUser);
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
-<<<<<<< HEAD
 app.get("/api/classlist/:user_id", cc.getStudentClasses);
-=======
 app.get("/api/classroom/:classroom_id", sc.getClassroom);
 app.get("/api/classes/:keyword", cc.getClassesByKeywords);
->>>>>>> master
 app.get("/api/classes/:owner_id", cc.getOwnerClasses);
 app.post("/api/classroom", cc.submitClassRoom);
 app.put("/api/classroom/:id");
