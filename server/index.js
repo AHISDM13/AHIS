@@ -15,6 +15,7 @@ const cc = require("./controllers/classRCtrl");
 const qc = require("./controllers/quizCtrl");
 
 const ac = require("./controllers/userCtrl");
+const sc = require("./controllers/studentCtrl");
 const port = process.env.PORT || 3001;
 
 massive(process.env.CONNECTION_STRING)
@@ -41,6 +42,8 @@ app.get("/api/user/:email", ac.getUser);
 app.put("/api/user/:id", ac.updateUser);
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
+app.get("/api/classroom/:classroom_id", sc.getClassroom);
+app.get("/api/classes/:keyword", cc.getClassesByKeywords);
 app.get("/api/classes/:owner_id", cc.getOwnerClasses);
 app.post("/api/classroom", cc.submitClassRoom);
 app.put("/api/classroom/:id");
@@ -53,6 +56,9 @@ app.get("/api/quiz/:classid", qc.getQuiz);
 //QUESTION ENDPOINTS
 app.post("/api/question", qc.addQuestion);
 app.get("/api/question/:quiz_id", qc.getQuestions);
+
+///STUDENT ENPOINTS
+app.post("/api/student/:classroom_id/:user_id", sc.addStudentToClasses);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

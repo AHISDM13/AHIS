@@ -12,6 +12,7 @@ import Classroom from "../components/Classroom/Classroom";
 import CreateQuiz from "../components/CreateQuiz/CreateQuiz";
 import ReQuiz from "../components/CreateQuiz/ReQuiz";
 
+import SearchResult from "../components/SearchResult/SearchResult";
 export default (
   <Switch>
     <Route exact path={routes.LANDING} component={() => <Landing />} />
@@ -32,5 +33,10 @@ export default (
       component={() => <CreateClassroom />}
     />
     <Route exact path={routes.CLASSROOM} component={() => <Classroom />} />
+    <Route
+      exact
+      path={routes.SEARCHRESULT}
+      component={() => <SearchResult />}
+    />
   </Switch>
 );
