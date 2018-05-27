@@ -2,18 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addQuestion } from "../../ducks/quizReducer";
 
+import TextField from "material-ui/TextField";
+
 class ReQuiz extends Component {
   constructor() {
     super();
 
     this.state = {
       question: [],
-      answer: [],
       inputAnswer: "",
       inputQuestion: "",
       dummy_data_a: "",
       dummy_data_b: "",
-      dummy_data_c: ""
+      dummy_data_c: "",
+      flag: false
     };
   }
 
@@ -47,6 +49,12 @@ class ReQuiz extends Component {
     });
   };
 
+  multipleChoiceFlag() {
+    this.setState({
+      flag: true
+    });
+  }
+
   handleSubmitQuestion = event => {
     const {
       question,
@@ -64,9 +72,9 @@ class ReQuiz extends Component {
       Three: dummy_data_c
     };
     let copy = question.slice();
-    console.log(copy, newQ);
+    // console.log(copy, newQ);
     copy.push(newQ);
-    console.log(copy);
+    // console.log(copy);
     this.setState(() => ({
       question: copy,
       inputQuestion: "",
@@ -89,22 +97,25 @@ class ReQuiz extends Component {
   };
 
   postQuestion() {
+    const { quiz_id } = this.props.quiz;
     let newentry = this.state.question.map((e, i) => {
-      this.props.addQuestion(e.Q, e.A);
+      console.log(e);
+      this.props.addQuestion(quiz_id, e.Q, e.A, e.One, e.Two, e.Three);
     });
+    // console.log(newentry);
     return newentry;
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.props);
 
     let ques = this.state.question.map((quest, i) => {
       return (
         <div key={i}>
-          <p>
-            {" "}
-            {quest.Q} - {quest.A} - {quest.One} - {quest.Two} - {quest.Three}
-          </p>
+          <div> value={quest.Q} </div> <div>Answer: {quest.A}</div>{" "}
+          <div> False answer: {quest.One} </div>{" "}
+          <div>False answer: {quest.Two}</div>{" "}
+          <div>False answer: {quest.Three} </div>
           <button onClick={() => this.removeQuestion(i)}>Remove</button>
         </div>
       );
@@ -114,37 +125,44 @@ class ReQuiz extends Component {
         <div>
           <form onSubmit={this.handleSubmitQuestion}>
             <input type="submit" value="Submit" />
-            <h1>Questions</h1>
+            <h1>Create Question</h1>
             <input
               value={this.state.inputQuestion}
               onChange={e => this.handleQuestion(e.target.value)}
+              placeholder="Type question here"
             />
-            <h1>Answers</h1>
+            <h1>Create Answer</h1>
             <input
               value={this.state.inputAnswer}
               onChange={e => this.handleAnswer(e.target.value)}
+              placeholder="Type answer here"
             />
-            <h1>Dummy 1</h1>
-            <input
-              value={this.state.dummy_data_a}
-              onChange={e => this.dummyOne(e.target.value)}
-            />
-            <h1>Dummy 2</h1>
-            <input
-              value={this.state.dummy_data_b}
-              onChange={e => this.dummyTwo(e.target.value)}
-            />
-            <h1>Dummy 3</h1>
-            <input
-              value={this.state.dummy_data_c}
-              onChange={e => this.dummyThree(e.target.value)}
-            />
+            <div className="dummy answers">
+              <h1>Dummy 1</h1>
+              <input
+                value={this.state.dummy_data_a}
+                onChange={e => this.dummyOne(e.target.value)}
+                placeholder="Optional for multiple choice"
+              />
+              <h1>Dummy 2</h1>
+              <input
+                value={this.state.dummy_data_b}
+                onChange={e => this.dummyTwo(e.target.value)}
+                placeholder="Optional for multiple choice"
+              />
+              <h1>Dummy 3</h1>
+              <input
+                value={this.state.dummy_data_c}
+                onChange={e => this.dummyThree(e.target.value)}
+                placeholder="Optional for multiple choice"
+              />
+            </div>{" "}
           </form>
         </div>
         <div>
           <h1>Quiz Box {ques}</h1>
         </div>
-        <button onClick={() => this.postQuestion()}>Submit Quiz </button>
+        <button onClick={() => this.postQuestion()}>Create Quiz </button>
       </div>
     );
   }
@@ -152,7 +170,7 @@ class ReQuiz extends Component {
 
 function mapStateToProps(state) {
   return {
-    ...state
+    ...state.quizReducer
   };
 }
 export default connect(mapStateToProps, { addQuestion })(ReQuiz);
