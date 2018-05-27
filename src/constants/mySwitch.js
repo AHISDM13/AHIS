@@ -15,7 +15,7 @@ export default (
     <Route exact path={routes.LANDING} component={() => <Landing />} />
     <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
     <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
-
+    <Route exact path={routes.CREATEQUIZ} component={() => <CreateQuiz />} />
     <Route
       exact
       path={routes.PASSWORD_FORGET}

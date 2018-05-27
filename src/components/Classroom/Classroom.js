@@ -1,6 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import TeacherView from "./ClassView/Teacher View/TeacherView";
+
 class Classroom extends React.Component {
   state = {};
 

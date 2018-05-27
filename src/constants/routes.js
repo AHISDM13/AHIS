@@ -8,3 +8,4 @@ export const WELCOME = "/welcome";
 export const CREATECLASS = "/createclass";
 export const CLASSROOM = "/classroom/:id";
 export const SEARCHRESULT = "/searchResult";
+export const CREATEQUIZ = "/createquiz/:id";
