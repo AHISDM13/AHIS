@@ -34,7 +34,6 @@ class SearchResult extends React.Component {
   }
   render() {
     const { searchResults, user } = this.props;
-    console.log(searchResults, user);
     const { password } = this.state;
     const displaySearchResults = searchResults.map((el, i) => {
       return (

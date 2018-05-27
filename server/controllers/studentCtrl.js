@@ -20,6 +20,7 @@ const getClassroom = (req, res) => {
     .get_classroom([classroom_id])
     .then(classroom => {
       res.status(200).send(classroom);
+      console.log(classroom);
     })
     .catch(err => {
       res.status(500).send(err);
