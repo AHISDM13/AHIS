@@ -1,5 +1,6 @@
 .each-card {
   border: 1px solid gray;
+  border-radius: 2px;
   display: flex;
   justify-content: center;
   align-items: center;

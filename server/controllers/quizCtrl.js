@@ -55,13 +55,13 @@ module.exports = {
   },
 
   getQuestions: (req, res, next) => {
-    // console.log(`HIT`);
+    console.log(`HIT getQuestions`);
     const { quiz_id } = req.params;
     const dbInstance = req.app.get("db");
     dbInstance
       .get_questions([quiz_id])
       .then(response => {
-        // console.log(response);
+        console.log(response);
         res.status(200).send(response);
       })
       .catch(err => {

@@ -22,7 +22,7 @@ function quizReducer(state = initialState, action) {
     case ADD_QUESTION:
       return Object.assign({}, state, { question: action.payload });
 
-    case GET_QUESTIONS:
+    case `${GET_QUESTIONS}_FULFILLED`:
       return Object.assign({}, state, { question: action.payload.data });
 
     default:

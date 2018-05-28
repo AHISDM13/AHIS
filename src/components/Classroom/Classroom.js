@@ -16,7 +16,9 @@ class Classroom extends React.Component {
         {match.params.id === currentClassroom.owner_id ? (
           <div>owner view</div>
         ) : (
-          <div>student view</div>
+          <div>
+            <Student />
+          </div>
         )}
       </div>
     );

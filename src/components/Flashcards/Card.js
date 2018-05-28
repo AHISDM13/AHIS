@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Card.css";
+
 class Card extends Component {
   constructor(props) {
     super(props);
@@ -22,13 +23,10 @@ class Card extends Component {
     return (
       <div className="each-card">
         <div style={{ display: this.state.a }} onClick={this.flipRight}>
-          <p>
-            - passed a resolution requiring a 2/3 vote in Congress for
-            declaration of war in the future
-          </p>
+          <p>{this.props.ques}</p>
         </div>
         <div style={{ display: this.state.b }} onClick={this.flipLeft}>
-          <p>Hartford Convention</p>
+          <p>{this.props.answer}</p>
         </div>
       </div>
     );

@@ -46,7 +46,7 @@ app.put("/api/user/:id", ac.updateUser);
 app.get("/api/classrooms");
 app.get("/api/classlist/:user_id", cc.getStudentClasses);
 app.get("/api/classroom/:classroom_id", sc.getClassroom);
-app.get("/api/classes/:keyword", cc.getClassesByKeywords);
+app.get("/api/search/:keyword", cc.getClassesByKeywords);
 app.get("/api/classes/:owner_id", cc.getOwnerClasses);
 app.post("/api/classroom", cc.submitClassRoom);
 app.put("/api/classroom/:id");

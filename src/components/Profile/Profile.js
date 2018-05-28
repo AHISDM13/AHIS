@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Profile.css";
-
+import Flashcards from "../Flashcards/Flashcards";
 import { updateUser } from "../../ducks/userReducer";
 
 class Profile extends Component {
@@ -81,6 +81,7 @@ class Profile extends Component {
           </div>
           <input className="submit" type="submit" value="submit" />
         </form>
+        <Flashcards />
       </div>
     );
   }
