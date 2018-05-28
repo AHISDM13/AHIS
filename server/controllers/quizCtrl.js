@@ -55,7 +55,7 @@ module.exports = {
   },
 
   getQuestions: (req, res, next) => {
-    // console.log(`HIT`);
+    console.log(`HIT getQuestions`);
     const { quiz_id } = req.params;
     const dbInstance = req.app.get("db");
     dbInstance
