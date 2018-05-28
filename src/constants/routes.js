@@ -10,3 +10,4 @@ export const CLASSROOM = "/classroom/:id";
 export const SEARCHRESULT = "/searchResult";
 export const CREATEQUIZ = "/createquiz/:id";
 export const REQUIZ = "/requiz";
+export const EDITQUIZ = "/editquiz/:id";
