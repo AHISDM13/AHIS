@@ -28,7 +28,6 @@ class Flashcards extends Component {
     this.setState({ showHelp: false });
   }
   render() {
-    console.log(this.props.quiz);
     let quizList = this.props.quiz.map((e, i) => {
       return (
         <div
