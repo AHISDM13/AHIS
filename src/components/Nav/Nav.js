@@ -27,6 +27,7 @@ class Nav extends Component {
           );
         })
       : null;
+    console.log(this.props);
 
     return (
       <div className="Nav">
