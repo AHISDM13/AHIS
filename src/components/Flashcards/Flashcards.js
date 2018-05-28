@@ -10,9 +10,11 @@ class Flashcards extends Component {
 
     this.state = {
       deck: [],
-      ind: 0
+      ind: 0,
+      showHelp: true
     };
     this.handleCard = this.handleCard.bind(this);
+    this.firstClick = this.firstClick.bind(this);
   }
   componentDidMount() {
     this.props.getQuiz(47);
@@ -21,6 +23,9 @@ class Flashcards extends Component {
     this.setState((prevState, props) => ({
       ind: prevState.ind + 1
     }));
+  }
+  firstClick() {
+    this.setState({ showHelp: false });
   }
   render() {
     console.log(this.props.quiz);
@@ -39,11 +44,13 @@ class Flashcards extends Component {
     let questions = this.props.question.map((e, i) => {
       return (
         <Card
+          showHelp={this.state.showHelp}
           key={e.question_id}
           ind={this.state.ind}
           cardInd={i}
           ques={e.question}
           answer={e.answer}
+          firstClick={this.firstClick}
         />
       );
     });
@@ -56,15 +63,15 @@ class Flashcards extends Component {
           {this.props.question.length ? (
             <i
               onClick={this.handleCard}
-              className="fas fa-arrow-alt-circle-left fa-3x"
+              className="fas fa-arrow-alt-circle-left fa-3x arrows"
             />
           ) : (
             ""
           )}
-          {this.state.ind < this.props.question.length ? (
+          {this.state.ind < this.props.question.length - 1 ? (
             <i
               onClick={this.handleCard}
-              className="fas fa-arrow-alt-circle-right fa-3x"
+              className="fas fa-arrow-alt-circle-right fa-3x arrows"
             />
           ) : (
             ""

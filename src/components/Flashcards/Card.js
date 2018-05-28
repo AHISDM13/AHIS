@@ -14,17 +14,20 @@ class Card extends Component {
   }
 
   flipRight() {
+    this.props.firstClick();
     this.setState(() => ({ b: "flex", a: "none" }));
   }
   flipLeft() {
     this.setState(() => ({ b: "none", a: "flex" }));
   }
   render() {
+    console.log(this.props);
     return (
       this.props.ind === this.props.cardInd && (
         <div className="each-card">
           <div style={{ display: this.state.a }} onClick={this.flipRight}>
             <p>{this.props.ques}</p>
+            {this.props.showHelp ? <p className="flip">Click to flip</p> : null}
           </div>
           <div style={{ display: this.state.b }} onClick={this.flipLeft}>
             <p>{this.props.answer}</p>
