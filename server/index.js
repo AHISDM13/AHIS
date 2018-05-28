@@ -63,18 +63,22 @@ app.get("/api/question/:quiz_id", qc.getQuestions);
 ///STUDENT ENPOINTS
 app.post("/api/student/:classroom_id/:user_id", sc.addStudentToClasses);
 
-server = app.listen(port, () => {
+app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
+// server = app.listen(port, () => {
+//   console.log(`Listening on port ${port}`);
+// });
+
 //SOCKET STUFFS
 
-io = socket(server);
+// io = socket(server);
 
-io.on("connection", socket => {
-  console.log(socket.id);
+// io.on("connection", socket => {
+//   console.log(socket.id);
 
-  socket.on("SEND_MESSAGE", function(data) {
-    io.emit("RECEIVE_MESSAGE", data);
-  });
-});
+//   socket.on("SEND_MESSAGE", function(data) {
+//     io.emit("RECEIVE_MESSAGE", data);
+//   });
+// });

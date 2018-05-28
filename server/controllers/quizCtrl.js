@@ -2,10 +2,10 @@ const axios = require("axios");
 
 module.exports = {
   createQuiz: (req, res, next) => {
-    const { classroom_id, quiz_name } = req.body;
+    const { classroom_id, quiz_name, quiz_type } = req.body;
     const dbInstance = req.app.get("db");
     dbInstance
-      .create_quiz([classroom_id, quiz_name])
+      .create_quiz([classroom_id, quiz_name, quiz_type])
       .then(response => {
         console.log("hello its post");
         res.status(200).send(response);

@@ -9,8 +9,9 @@ import PasswordForgetPage from "../components/PasswordForget";
 import Profile from "../components/Profile/Profile";
 import CreateClassroom from "../components/Classroom/CreateClassroom";
 import Classroom from "../components/Classroom/Classroom";
-import CreateQuiz from "../components/CreateQuiz/CreateQuiz";
 import SearchResult from "../components/SearchResult/SearchResult";
+import CreateQuiz from "../components/CreateQuiz/CreateQuiz";
+import Requiz from "../components/CreateQuiz/ReQuiz";
 
 export default (
   <Switch>
@@ -18,6 +19,7 @@ export default (
     <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
     <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
     <Route exact path={routes.CREATEQUIZ} component={() => <CreateQuiz />} />
+    <Route exact path={routes.REQUIZ} component={() => <Requiz />} />
     <Route
       exact
       path={routes.PASSWORD_FORGET}
