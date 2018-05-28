@@ -2,10 +2,12 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import TeacherView from "./ClassView/Teacher View/TeacherView";
+import Student from "./ClassView/Student/Student";
 
 class Classroom extends React.Component {
   state = {};
 
+  componentDidMount() {}
   render() {
     const { match, currentClassroom } = this.props;
     console.log(currentClassroom);

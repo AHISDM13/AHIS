@@ -26,6 +26,18 @@ module.exports = {
       })
       .catch(err => res.status(500).send(err));
   },
+  getStudentClasses: (req, res, next) => {
+    console.log("hit the endpoint get /api/classlist/:user_id");
+    const { user_id } = req.params;
+
+    req.app
+      .get("db")
+      .get_student_classes([user_id])
+      .then(myClasses => {
+        res.status(200).send(myClasses);
+      })
+      .catch(e => console.log(e));
+  },
   getClassesByKeywords: (req, res) => {
     console.log("hit the endpoint get api/classes/:keyword");
     const { keyword } = req.params;

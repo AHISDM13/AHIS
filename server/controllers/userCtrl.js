@@ -30,10 +30,10 @@ const getUser = (req, res) => {
 
 const updateUser = (req, res) => {
   const db = req.app.get("db");
-  const { first_name, last_name, email } = req.body;
+  const { firstname, lastname, email } = req.body;
   const { id } = req.params;
   db
-    .update_user([first_name, last_name, email, id])
+    .update_user([firstname, lastname, email, id])
     .then(response => {
       console.log(response);
     })
