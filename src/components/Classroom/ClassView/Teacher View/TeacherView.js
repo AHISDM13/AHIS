@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import Flashcards from "../../../Flashcards/Flashcards";
 import { Tabs, Tab } from "material-ui/Tabs";
+import "./TeacherView.css";
+import StudentAvg from "../../../Graphs/TeacherGraphs/TeacherAverageStudentBar";
+import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBar";
+import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
 
 const styles = {
   headline: {
@@ -32,8 +36,12 @@ class TeacherView extends Component {
   launchQuiz() {}
 
   render() {
-    // let classQuiz = this.props.quizzes.map((quiz, i) => {
-    //   return <div> key={i} <p>{quiz.quiz_name}</p> <p>{e.count}</p> </div>;
+    // const classQuiz = this.props.quiz.map((quiz, i) => {
+    //   return (
+    //     <Link key={i} to={`/questions/${e.question_id}`}>
+    //       <p>{quiz.quiz_name}</p>
+    //     </Link>
+    //   );
     // });
     // let classResource = this.props.resources.map((e, i) => {
     //   return (
@@ -58,12 +66,23 @@ class TeacherView extends Component {
               <Link to={`/createquiz/${this.props.match.params.id}`}>
                 CREATE QUIZ
               </Link>
+              {/* {classQuiz} */}
             </div>
           </Tab>
           <Tab label="Graphs" value="c">
             <div>
               <h2 style={styles.headline}>Analytics</h2>
-              <p>SOME GRAPHS</p>
+              <div className="teachergraphs">
+                <div className="graphs">
+                  <StudentAvg />
+                </div>
+                <div className="graphs">
+                  <ClassAvg />
+                </div>
+                <div className="graphs">
+                  <AnswerAvg />
+                </div>
+              </div>
             </div>
           </Tab>
         </Tabs>
@@ -73,6 +92,9 @@ class TeacherView extends Component {
 }
 
 function mapStateToProps(state) {
-  return { ...state.classRoomReducer };
+  return {
+    classRooms: state.classRoomReducer.classRooms,
+    quiz: state.quizReducer.quiz
+  };
 }
 export default withRouter(connect(mapStateToProps)(TeacherView));

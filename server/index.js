@@ -11,6 +11,8 @@ const massive = require("massive");
 const passport = require("passport");
 // console.log(__dirname);
 
+var socket = require("socket.io");
+
 const cc = require("./controllers/classRCtrl");
 const qc = require("./controllers/quizCtrl");
 
@@ -54,6 +56,18 @@ app.get("/api/quiz/:classid", qc.getQuiz);
 app.post("/api/question", qc.addQuestion);
 app.get("/api/question/:quiz_id", qc.getQuestions);
 
-app.listen(port, () => {
+server = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
+});
+
+//SOCKET STUFFS
+
+io = socket(server);
+
+io.on("connection", socket => {
+  console.log(socket.id);
+
+  socket.on("SEND_MESSAGE", function(data) {
+    io.emit("RECEIVE_MESSAGE", data);
+  });
 });
