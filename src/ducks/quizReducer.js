@@ -14,7 +14,7 @@ const GET_QUESTIONS = "GET_QUESTIONS";
 function quizReducer(state = initialState, action) {
   switch (action.type) {
     case `${CREATE_QUIZ}_FULFILLED`:
-      return Object.assign({}, state, { quiz: action.payload });
+      return Object.assign({}, state, { quiz: action.payload.data[0] });
 
     case GET_QUIZ:
       return Object.assign({}, state, { quiz: action.payload.data });
@@ -47,22 +47,22 @@ export function getQuiz(classid) {
 }
 
 export function addQuestion(
-  quizid,
+  quiz_id,
   question,
   answer,
-  dummydata_a,
-  dummydata_b,
-  dummydata_c
+  dummy_data_a,
+  dummy_data_b,
+  dummy_data_c
 ) {
   return {
     type: ADD_QUESTION,
     payload: axios.post(`/api/question`, {
-      quizid,
+      quiz_id,
       question,
       answer,
-      dummydata_a,
-      dummydata_b,
-      dummydata_c
+      dummy_data_a,
+      dummy_data_b,
+      dummy_data_c
     })
   };
 }
