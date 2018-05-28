@@ -8,19 +8,27 @@ class Flashcards extends Component {
     super(props);
 
     this.state = {
-      deck: []
+      deck: [],
+      ind: 0
     };
+    this.handleCard = this.handleCard.bind(this);
   }
   componentDidMount() {
     this.props.getQuestions(78);
   }
-  getNext() {}
+  handleCard() {
+    this.setState((prevState, props) => ({
+      ind: prevState.ind + 1
+    }));
+  }
   render() {
-    console.log(this.props);
+    console.log(this.state.ind);
     let questions = this.props.question.map((e, i) => {
       return (
         <Card
           key={e.question_id}
+          ind={this.state.ind}
+          cardInd={i}
           ques={e.question}
           answer={e.answer}
           quizNo={e.quiz_id}
@@ -39,8 +47,14 @@ class Flashcards extends Component {
         </div> */}
         {questions}
         <div>
-          <i className="fas fa-arrow-alt-circle-left fa-3x" />
-          <i className="fas fa-arrow-alt-circle-right fa-3x" />
+          <i
+            onClick={this.handleCard}
+            className="fas fa-arrow-alt-circle-left fa-3x"
+          />
+          <i
+            onClick={this.handleCard}
+            className="fas fa-arrow-alt-circle-right fa-3x"
+          />
           <p>skip</p>
         </div>
       </div>

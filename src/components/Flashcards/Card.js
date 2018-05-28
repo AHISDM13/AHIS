@@ -21,14 +21,16 @@ class Card extends Component {
   }
   render() {
     return (
-      <div className="each-card">
-        <div style={{ display: this.state.a }} onClick={this.flipRight}>
-          <p>{this.props.ques}</p>
+      this.props.ind === this.props.cardInd && (
+        <div className="each-card">
+          <div style={{ display: this.state.a }} onClick={this.flipRight}>
+            <p>{this.props.ques}</p>
+          </div>
+          <div style={{ display: this.state.b }} onClick={this.flipLeft}>
+            <p>{this.props.answer}</p>
+          </div>
         </div>
-        <div style={{ display: this.state.b }} onClick={this.flipLeft}>
-          <p>{this.props.answer}</p>
-        </div>
-      </div>
+      )
     );
   }
 }
