@@ -108,7 +108,7 @@ class ReQuiz extends Component {
   }
 
   render() {
-    console.log(this.state.flag);
+    console.log(this.props);
 
     let ques = this.state.question.map((quest, i) => {
       return (

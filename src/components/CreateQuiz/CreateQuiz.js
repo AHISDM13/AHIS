@@ -3,19 +3,21 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
 import { createQuiz } from "../../ducks/quizReducer";
+import { Link } from "react-router-dom";
 
 class CreateQuiz extends React.Component {
   state = {
-    quizName: ""
+    quizName: "",
+    quizType: "Multiple Choice"
   };
-  handleQuizName = event => {
+  handleQuizName(prop, value) {
     this.setState({
-      [event.target.name]: event.target.value
+      [prop]: value
     });
-  };
+  }
 
   render() {
-    const { quizName } = this.state;
+    const { quizName, quizType } = this.state;
     const { createQuiz, match } = this.props;
     console.log(this);
     return (
@@ -34,24 +36,29 @@ class CreateQuiz extends React.Component {
                 name="quizName"
                 placeholder="Name Your Classroom"
                 value={quizName}
-                onChange={this.handleQuizName}
+                onChange={e => this.handleQuizName("quizName", e.target.value)}
                 required
               />
             </div>
-            <button
-              onClick={e =>
-                createQuiz(match.params.id, quizName).then(
-                  swal({
-                    title: "Your Classroom has been created.",
-                    text: "Let's create a quiz.",
-                    icon: "success",
-                    button: "Create Quiz"
-                  })
-                )
-              }
-            >
-              Create
-            </button>
+            <div className="QuizType">
+              <label>Quiz Type</label>
+              <select
+                id="quiz type"
+                name="quiz type"
+                value={quizType}
+                onChange={e => this.handleQuizName("quizType", e.target.value)}
+              >
+                <option>Multiple Choice</option>
+                <option>Fill In The Blank</option>
+              </select>
+            </div>
+            <Link to={`/requiz`}>
+              <button
+                onClick={e => createQuiz(match.params.id, quizName, quizType)}
+              >
+                Create
+              </button>
+            </Link>
           </form>
         </div>
       </div>
@@ -62,7 +69,8 @@ class CreateQuiz extends React.Component {
 const mapStateToProps = state => {
   return {
     user: state.userReducer.user,
-    classid: state.classRoomReducer.classRoom.classroom_id
+    classid: state.classRoomReducer.classRoom.classroom_id,
+    quiz: state.quizReducer.quiz
   };
 };
 

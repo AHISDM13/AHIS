@@ -32,10 +32,10 @@ function quizReducer(state = initialState, action) {
 
 export default quizReducer;
 
-export function createQuiz(classroom_id, quiz_name) {
+export function createQuiz(classroom_id, quiz_name, quiz_type) {
   return {
     type: CREATE_QUIZ,
-    payload: axios.post(`/api/quiz`, { classroom_id, quiz_name })
+    payload: axios.post(`/api/quiz`, { classroom_id, quiz_name, quiz_type })
   };
 }
 
