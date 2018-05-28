@@ -1,0 +1,8 @@
+.teachergraphs {
+  display: flex;
+  flex-direction: row;
+}
+
+.graphs {
+  margin-right: 20px;
+}
