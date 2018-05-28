@@ -61,7 +61,7 @@ module.exports = {
     dbInstance
       .get_questions([quiz_id])
       .then(response => {
-        // console.log(response);
+        console.log(response);
         res.status(200).send(response);
       })
       .catch(err => {

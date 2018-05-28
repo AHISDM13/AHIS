@@ -4,6 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 import Flashcards from "../../../Flashcards/Flashcards";
 import { Tabs, Tab } from "material-ui/Tabs";
 import "./TeacherView.css";
+import { getQuiz } from "../../../../ducks/quizReducer";
 import StudentAvg from "../../../Graphs/TeacherGraphs/TeacherAverageStudentBar";
 import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBar";
 import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
@@ -25,7 +26,7 @@ class TeacherView extends Component {
     };
   }
   componentDidMount() {
-    //getQuizzes
+    this.props.getQuiz(this.props.match.params.id);
   }
 
   handleTab = value => {
@@ -36,13 +37,17 @@ class TeacherView extends Component {
   launchQuiz() {}
 
   render() {
-    // const classQuiz = this.props.quiz.map((quiz, i) => {
-    //   return (
-    //     <Link key={i} to={`/questions/${e.question_id}`}>
-    //       <p>{quiz.quiz_name}</p>
-    //     </Link>
-    //   );
-    // });
+    const classQuiz =
+      this.props.quiz.length &&
+      this.props.quiz.map((list, i) => {
+        return (
+          <Link key={i} to={`/editquiz/${list.quiz_id}`}>
+            {list.quiz_name}
+          </Link>
+        );
+      });
+
+    console.log(this.props);
     // let classResource = this.props.resources.map((e, i) => {
     //   return (
     //     <div>
@@ -66,7 +71,7 @@ class TeacherView extends Component {
               <Link to={`/createquiz/${this.props.match.params.id}`}>
                 CREATE QUIZ
               </Link>
-              {/* {classQuiz} */}
+              {classQuiz}
             </div>
           </Tab>
           <Tab label="Graphs" value="c">
@@ -97,4 +102,4 @@ function mapStateToProps(state) {
     quiz: state.quizReducer.quiz
   };
 }
-export default withRouter(connect(mapStateToProps)(TeacherView));
+export default withRouter(connect(mapStateToProps, { getQuiz })(TeacherView));
