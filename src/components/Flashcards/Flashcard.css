@@ -1,0 +1,17 @@
+.flashcard-page h3 {
+  font-size: 20px;
+}
+.flashcard-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.smallcard-row {
+  display: flex;
+}
+.small-card {
+  width: 10vw;
+  height: 10vh;
+  margin: 10px;
+  border: 1px solid black;
+}
