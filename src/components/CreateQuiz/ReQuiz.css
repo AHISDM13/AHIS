@@ -1,0 +1,12 @@
+.inputbox-requiz:focus {
+  border: 3px solid #555;
+  /* padding: 10px; */
+}
+
+.inputbox-requiz {
+  width: 50%;
+}
+
+.dummy-answers {
+  width: 50%;
+}

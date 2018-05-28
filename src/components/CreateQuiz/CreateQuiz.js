@@ -39,7 +39,7 @@ class CreateQuiz extends React.Component {
               />
             </div>
             <button
-              onClick={e => {
+              onClick={e =>
                 createQuiz(match.params.id, quizName).then(
                   swal({
                     title: "Your Classroom has been created.",
@@ -47,8 +47,8 @@ class CreateQuiz extends React.Component {
                     icon: "success",
                     button: "Create Quiz"
                   })
-                );
-              }}
+                )
+              }
             >
               Create
             </button>

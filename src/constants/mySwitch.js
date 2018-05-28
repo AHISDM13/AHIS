@@ -9,6 +9,8 @@ import PasswordForgetPage from "../components/PasswordForget";
 import Profile from "../components/Profile/Profile";
 import CreateClassroom from "../components/Classroom/CreateClassroom";
 import Classroom from "../components/Classroom/Classroom";
+import CreateQuiz from "../components/CreateQuiz/CreateQuiz";
+
 import SearchResult from "../components/SearchResult/SearchResult";
 import CreateQuiz from "../components/CreateQuiz/CreateQuiz";
 export default (
@@ -22,6 +24,7 @@ export default (
       path={routes.PASSWORD_FORGET}
       component={() => <PasswordForgetPage />}
     />
+
     <Route exact path={routes.HOME} component={() => <Home />} />
     <Route exact path={routes.PROFILE} component={() => <Profile />} />
     <Route
