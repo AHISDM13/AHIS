@@ -9,4 +9,3 @@ export const CREATECLASS = "/createclass";
 export const CLASSROOM = "/classroom/:id";
 export const SEARCHRESULT = "/searchResult";
 export const CREATEQUIZ = "/createquiz/:id";
-export const REQUIZ = "/quizlet";
