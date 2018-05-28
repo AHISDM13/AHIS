@@ -37,14 +37,15 @@ class TeacherAverageAnswerBar extends Component {
     };
 
     return (
-      <div>
-        <h2>Student Quiz Scores</h2>
+      <div style={{ height: "200px", width: "300px" }}>
+        <h2>Student Average Answer</h2>
         <Bar
           data={data}
-          width={100}
-          height={50}
+          width={300}
+          height={200}
           options={{
-            maintainAspectRatio: false
+            responsive: false,
+            maintainAspectRatio: true
           }}
         />
       </div>
