@@ -1,22 +1,12 @@
 import React, { Component } from "react";
 import "./Home.css";
 import { connect } from "react-redux";
-import { getStudentClasses } from "../../ducks/classRoomReducer";
+
 class Home extends Component {
-  componentDidMount() {
-    this.props.getStudentClasses(this.props.user.id);
-  }
+  componentDidMount() {}
   render() {
     console.log(this.props);
-    let mappedClasses = this.props.classes.map((e, i) => {
-      return (
-        <div key={i}>
-          <p>{e.title}</p>
-          <p>{e.subject}</p>
-        </div>
-      );
-    });
-    return <div>{mappedClasses}</div>;
+    return <div>Home</div>;
   }
 }
 
@@ -27,4 +17,4 @@ function mapStateToProps(state) {
     classes: state.classRoomReducer.classes
   };
 }
-export default connect(mapStateToProps, { getStudentClasses })(Home);
+export default connect(mapStateToProps)(Home);
