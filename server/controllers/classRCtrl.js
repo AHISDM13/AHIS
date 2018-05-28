@@ -39,7 +39,7 @@ module.exports = {
       .catch(e => console.log(e));
   },
   getClassesByKeywords: (req, res) => {
-    console.log("hit the endpoint get api/classes/:keyword");
+    console.log("hit the endpoint get api/search/:keyword");
     const { keyword } = req.params;
     req.app
       .get("db")
