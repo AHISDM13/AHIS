@@ -1,10 +1,33 @@
 $black: #333;
 $radius: 2px;
 
-%input-shared {
+%quiz-input-shared {
   padding: 5px 10px 5px 25px;
   border: 0;
   outline: 0;
   background: transparent;
   border-bottom: 1px solid black;
+  margin: 10px;
+}
+
+%btn {
+  padding: 10px 30px;
+  background: #7fb174;
+  color: #fff;
+  box-shadow: 2px 4px 0px #74a569;
+  border: #74a569;
+  border-radius: 8px;
+  font-weight: bold;
+  outline: none;
+  &:focus {
+    background: #74a569;
+  }
+}
+
+%question-btn {
+  padding: 2px 4px;
+  background: #4ebfdf;
+  box-shadow: 2px 1px 2px #4ebfdf;
+  color: #fff;
+  border: 1px solid #4ebfdf;
 }
