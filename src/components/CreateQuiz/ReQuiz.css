@@ -1,12 +1,10 @@
-.inputbox-requiz:focus {
-  border: 3px solid #555;
-  /* padding: 10px; */
-}
+.fill-in {
+  display: flex; }
+  .fill-in h1 {
+    font-size: 20px; }
+  .fill-in div {
+    display: flex; }
+  .fill-in input {
+    border-radius: 2px; }
 
-.inputbox-requiz {
-  width: 50%;
-}
-
-.dummy-answers {
-  width: 50%;
-}
+/*# sourceMappingURL=ReQuiz.css.map */

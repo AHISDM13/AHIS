@@ -14,8 +14,7 @@ class ReQuiz extends Component {
       inputQuestion: "",
       dummy_data_a: "",
       dummy_data_b: "",
-      dummy_data_c: "",
-      flag: true
+      dummy_data_c: ""
     };
   }
 
@@ -49,13 +48,6 @@ class ReQuiz extends Component {
     });
   };
 
-  multipleChoiceFlag() {
-    this.setState({
-      flag: !this.state.flag
-    });
-    // preventDefault();
-  }
-
   handleSubmitQuestion = event => {
     const {
       question,
@@ -88,10 +80,10 @@ class ReQuiz extends Component {
   };
 
   removeQuestion = ind => {
-    console.log(ind);
+    // console.log(ind);
     let removeQues = this.state.question.slice();
     let removed = removeQues.filter((ques, index) => ind !== index);
-    console.log(removed);
+    // console.log(removed);
     this.setState({
       question: removed
     });
@@ -100,7 +92,7 @@ class ReQuiz extends Component {
   postQuestion() {
     const { quiz_id } = this.props.quiz;
     let newentry = this.state.question.map((e, i) => {
-      console.log(e);
+      // console.log(e);
       this.props.addQuestion(quiz_id, e.Q, e.A, e.One, e.Two, e.Three);
     });
     // console.log(newentry);
@@ -108,12 +100,12 @@ class ReQuiz extends Component {
   }
 
   render() {
-    console.log(this.props);
-
+    // console.log(this.props);
+    // console.log(this.props.quiz.quiz_type);
     let ques = this.state.question.map((quest, i) => {
       return (
         <div key={i}>
-          {this.state.flag === true ? (
+          {this.props.quiz.quiz_type !== "Multiple Choice" ? (
             <div>
               <div> Question: {quest.Q} </div> <div>Answer: {quest.A}</div>
               <button onClick={() => this.removeQuestion(i)}>Remove</button>
@@ -133,26 +125,30 @@ class ReQuiz extends Component {
 
     return (
       <div>
-        <button onClick={() => this.multipleChoiceFlag()}>switch</button>
         <div>
-          {this.state.flag === true ? (
+          {this.props.quiz.quiz_type !== "Multiple Choice" ? (
             <div>
-              <form onSubmit={this.handleSubmitQuestion}>
+              <form className="fill-in" onSubmit={this.handleSubmitQuestion}>
+                <div className="fill-in-text">
+                  <h1>Create Question</h1>
+                  <h1>Create Answer</h1>
+                </div>
+                <div className="fill-in-input">
+                  <input
+                    className="inputbox-requiz"
+                    value={this.state.inputQuestion}
+                    onChange={e => this.handleQuestion(e.target.value)}
+                    placeholder="Type question here"
+                  />
+
+                  <input
+                    className="inputbox-requiz"
+                    value={this.state.inputAnswer}
+                    onChange={e => this.handleAnswer(e.target.value)}
+                    placeholder="Type answer here"
+                  />
+                </div>
                 <input type="submit" value="Submit" />
-                <h1>Create Question</h1>
-                <input
-                  className="inputbox-requiz"
-                  value={this.state.inputQuestion}
-                  onChange={e => this.handleQuestion(e.target.value)}
-                  placeholder="Type question here"
-                />
-                <h1>Create Answer</h1>
-                <input
-                  className="inputbox-requiz"
-                  value={this.state.inputAnswer}
-                  onChange={e => this.handleAnswer(e.target.value)}
-                  placeholder="Type answer here"
-                />
               </form>
             </div>
           ) : (
@@ -201,47 +197,7 @@ class ReQuiz extends Component {
             </div>
           )}
         </div>
-        {/* <div>
-          <form onSubmit={this.handleSubmitQuestion}>
-            <input type="submit" value="Submit" />
-            <h1>Create Question</h1>
-            <input
-              className="inputbox-requiz"
-              value={this.state.inputQuestion}
-              onChange={e => this.handleQuestion(e.target.value)}
-              placeholder="Type question here"
-            />
-            <h1>Create Answer</h1>
-            <input
-              className="inputbox-requiz"
-              value={this.state.inputAnswer}
-              onChange={e => this.handleAnswer(e.target.value)}
-              placeholder="Type answer here"
-            />
 
-            <h1>Mulitple choice answer 1</h1>
-            <input
-              className="inputbox-requiz"
-              value={this.state.dummy_data_a}
-              onChange={e => this.dummyOne(e.target.value)}
-              placeholder="Optional for multiple choice"
-            />
-            <h1>Mulitple choice answer 2</h1>
-            <input
-              className="inputbox-requiz"
-              value={this.state.dummy_data_b}
-              onChange={e => this.dummyTwo(e.target.value)}
-              placeholder="Optional for multiple choice"
-            />
-            <h1>Mulitple choice answer 3</h1>
-            <input
-              className="inputbox-requiz"
-              value={this.state.dummy_data_c}
-              onChange={e => this.dummyThree(e.target.value)}
-              placeholder="Optional for multiple choice"
-            />
-          </form>
-        </div> */}
         <div>
           <h1>Quiz Box {ques}</h1>
         </div>
