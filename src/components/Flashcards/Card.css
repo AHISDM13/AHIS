@@ -1,41 +1,72 @@
-.content {
-  border: 1px solid gray;
-  border-radius: 2px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  transition: transform 1s;
-  transform-style: preserve-3d;
-}
+.Card {
+  margin: 1rem;
+  cursor: pointer; }
+  .Card .Card-Front,
+  .Card .Card-Back {
+    width: 500px;
+    height: 250px;
+    text-align: center;
+    margin-bottom: -125px; }
 
-.card:hover .content {
-  transform: rotateY(180deg);
-  transition: transform 0.5s;
-}
-
-.content div > p {
-  padding: 20px;
-}
-.flip {
-  font-size: 14px;
-  animation: blink 2s linear 2;
-  float: right;
-}
-
-@keyframes blink {
+.Card-Front {
+  position: relative;
+  z-index: 1;
+  color: #69969c;
+  background-color: whitesmoke;
+  box-shadow: 5px 5px 10px 5px #888888b2; }
+  .Card-Front.Card-Back-Flip {
+    animation: back-flip-1 800ms 1 forwards; }
+@keyframes back-flip-1 {
+  0% {
+    transform: rotateX(0deg);
+    z-index: 1; }
   50% {
-    opacity: 0;
-  }
-}
+    transform: rotateX(90deg) perspective(250px);
+    z-index: 1; }
+  100% {
+    transform: rotateX(90deg);
+    z-index: -1; } }
+  .Card-Front.Card-Front-Flip {
+    animation: front-flip-1 800ms 1 forwards; }
+@keyframes front-flip-1 {
+  0% {
+    transform: rotateX(0deg);
+    z-index: -1; }
+  50% {
+    transform: rotateX(-90deg) perspective(250px);
+    z-index: -1; }
+  100% {
+    transform: rotateX(0deg);
+    z-index: 1; } }
+.Card-Back {
+  position: relative;
+  z-index: -1;
+  color: #012e34;
+  background-color: whitesmoke;
+  box-shadow: 5px 5px 10px 5px #888888b2; }
+  .Card-Back.Card-Back-Flip {
+    animation: back-flip-2 800ms 1 forwards; }
+@keyframes back-flip-2 {
+  0% {
+    transform: rotateX(0deg);
+    z-index: -1; }
+  50% {
+    transform: rotateX(-90deg) perspective(250px);
+    z-index: -1; }
+  100% {
+    transform: rotateX(0deg);
+    z-index: 1; } }
+  .Card-Back.Card-Front-Flip {
+    animation: front-flip-2 800ms 1 forwards; }
+@keyframes front-flip-2 {
+  0% {
+    transform: rotateX(0deg);
+    z-index: 1; }
+  50% {
+    transform: rotateX(90deg) perspective(250px);
+    z-index: 1; }
+  100% {
+    transform: rotateX(0deg);
+    z-index: -1; } }
 
-@media (min-width: 767px) {
-  .content {
-    width: 58vw;
-    height: 50vh;
-  }
-  .content:hover {
-    cursor: pointer;
-  }
-}
+/*# sourceMappingURL=Card.css.map */
