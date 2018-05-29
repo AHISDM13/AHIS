@@ -1,0 +1,14 @@
+@import "../../util.scss";
+
+.fill-in {
+  display: flex;
+  h1 {
+    font-size: 20px;
+  }
+  div {
+    display: flex;
+  }
+  input {
+    border-radius: $radius;
+  }
+}

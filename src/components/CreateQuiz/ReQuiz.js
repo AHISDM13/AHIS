@@ -128,22 +128,27 @@ class ReQuiz extends Component {
         <div>
           {this.props.quiz.quiz_type !== "Multiple Choice" ? (
             <div>
-              <form onSubmit={this.handleSubmitQuestion}>
+              <form className="fill-in" onSubmit={this.handleSubmitQuestion}>
+                <div className="fill-in-text">
+                  <h1>Create Question</h1>
+                  <h1>Create Answer</h1>
+                </div>
+                <div className="fill-in-input">
+                  <input
+                    className="inputbox-requiz"
+                    value={this.state.inputQuestion}
+                    onChange={e => this.handleQuestion(e.target.value)}
+                    placeholder="Type question here"
+                  />
+
+                  <input
+                    className="inputbox-requiz"
+                    value={this.state.inputAnswer}
+                    onChange={e => this.handleAnswer(e.target.value)}
+                    placeholder="Type answer here"
+                  />
+                </div>
                 <input type="submit" value="Submit" />
-                <h1>Create Question</h1>
-                <input
-                  className="inputbox-requiz"
-                  value={this.state.inputQuestion}
-                  onChange={e => this.handleQuestion(e.target.value)}
-                  placeholder="Type question here"
-                />
-                <h1>Create Answer</h1>
-                <input
-                  className="inputbox-requiz"
-                  value={this.state.inputAnswer}
-                  onChange={e => this.handleAnswer(e.target.value)}
-                  placeholder="Type answer here"
-                />
               </form>
             </div>
           ) : (
