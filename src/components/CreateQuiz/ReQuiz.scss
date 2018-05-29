@@ -1,6 +1,7 @@
 @import "../../util.scss";
 
 .re-container {
+  padding-top: 30px;
   width: 80vw;
   margin: 20px auto;
 }
@@ -33,4 +34,8 @@
 }
 .create {
   @extend %btn;
+}
+
+.outer-box {
+  @extend %quiz-input-shared;
 }

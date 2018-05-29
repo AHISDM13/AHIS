@@ -104,14 +104,14 @@ class ReQuiz extends Component {
     // console.log(this.props.quiz.quiz_type);
     let ques = this.state.question.map((quest, i) => {
       return (
-        <div key={i}>
+        <div className="outer-quiz" key={i}>
           {this.props.quiz.quiz_type !== "Multiple Choice" ? (
-            <div>
+            <div className="fill-in">
               <p> Question: {quest.Q} </p> <p>Answer: {quest.A}</p>
               <button onClick={() => this.removeQuestion(i)}>Remove</button>
             </div>
           ) : (
-            <div>
+            <div className="fill-in">
               <div> Question: {quest.Q} </div> <div>Answer: {quest.A}</div>
               <div> False answer: {quest.One} </div>
               <div>False answer: {quest.Two}</div>
@@ -147,7 +147,7 @@ class ReQuiz extends Component {
                   onChange={e => this.handleAnswer(e.target.value)}
                   placeholder="Type answer here"
                 />
-                <input type="submit" value="Add to Quiz" />
+                <input type="submit" value="Add" />
               </div>
             </form>
           </div>
