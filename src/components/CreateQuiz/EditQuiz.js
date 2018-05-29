@@ -1,58 +1,58 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getQuestions } from "../../ducks/quizReducer";
+import { getQuestions, changeQuestions } from "../../ducks/quizReducer";
 import { withRouter, Link } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
 
 class EditQuiz extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      userInput: "",
-      question: "",
-      answer: "",
-      dummy_data_a: "",
-      dummy_data_b: "",
-      dummy_data_c: ""
-    };
+  constructor() {
+    super();
+    this.handleChange = this.handleChange.bind(this);
   }
   componentDidMount() {
     this.props.getQuestions(this.props.match.params.id);
   }
 
+  handleChange(id, answer, question, a, b, c) {
+    this.props.changeQuestions(id, answer, question, a, b, c).then(() => {
+      this.props.getQuestions(this.props.match.params.id);
+    });
+  }
+
   render() {
-    console.log(this.props.question);
+    // console.log(this.props.question);
+    if (!this.props.question) {
+      return <div>Your quiz is deleted. Go back to create more quizes.</div>;
+    }
+
+    if (this.props.loading) {
+      return <div> loading... </div>;
+    }
     const questions = this.props.question.map((e, i) => {
       return (
-        <QuestionCard key={e.question_id} question={e} />
-        // <div>
-        //   <div key={e.question_id}>
-        //     {e.dummy_data_a.length ? (
-        //       <div> has data muliple choice</div>
-        //     ) : (
-        //       <div> no mulitple choice</div>
-        //     )}
-        //     <p>Question: {e.question}</p>
-        //     <p>Answer: {e.answer}</p>
-        //     <p>Multiple Choice Answer 1: {e.dummy_data_a}</p>
-        //     <p>Multiple Choice Answer 2: {e.dummy_data_b}</p>
-        //     <p>Multiple Choice Answer 3: {e.dummy_data_c}</p>
-        //   </div>
-        //   <div>
-        //     <button onClick={() => this.changeFlag()}>
-        //       {" "}
-        //       edit question and answer{" "}
-        //     </button>
-        //     <button> save changes</button>
-        //     <button> delete question and answer</button>
-        //   </div>
-        //   {this.state.flag && <input defaultValue={e.question} />}
-        // </div>
+        <div>
+          <div>
+            <QuestionCard
+              key={e.question_id}
+              handleChange={this.handleChange}
+              question={e}
+            />
+          </div>
+          <div>
+            <button>Delete Question Box</button>
+          </div>
+        </div>
       );
     });
 
-    return <div>{questions}</div>;
+    return (
+      <div>
+        <div>{questions}</div>
+        <div>
+          <button>Delete Quiz</button>
+        </div>
+      </div>
+    );
   }
 }
 
@@ -62,4 +62,6 @@ function mapStateToProps(state) {
   };
 }
 
-export default withRouter(connect(mapStateToProps, { getQuestions })(EditQuiz));
+export default withRouter(
+  connect(mapStateToProps, { getQuestions, changeQuestions })(EditQuiz)
+);

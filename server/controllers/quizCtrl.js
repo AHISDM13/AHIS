@@ -68,5 +68,33 @@ module.exports = {
         // console.log(err);
         res.status(500).send(err);
       });
+  },
+
+  updateQuestion: (req, res, next) => {
+    const {
+      question_id,
+      question,
+      answer,
+      dummy_data_a,
+      dummy_data_b,
+      dummy_data_c
+    } = req.body;
+
+    const dbInstance = req.app.get("db");
+    dbInstance
+      .update_question([
+        question_id,
+        question,
+        answer,
+        dummy_data_a,
+        dummy_data_b,
+        dummy_data_c
+      ])
+      .then(response => {
+        res.status(200).send(response);
+      })
+      .catch(err => {
+        res.status(500).send(err);
+      });
   }
 };
