@@ -9,7 +9,6 @@ const initialState = {
 const GET_CLASSROOM = "GET_CLASSROOM";
 const SUBMIT_CLASSROOM = "SUBMIT_CLASSROOM";
 const GET_OWNER_CLASSES = "GET_OWNER_CLASSES";
-const GET_STUDENT_CLASSES = "GET_STUDENT_CLASSES";
 const GET_JOINED_CLASSES = "GET_JOINED_CLASSES";
 
 export default function classRoomReducer(state = initialState, action) {
@@ -20,11 +19,6 @@ export default function classRoomReducer(state = initialState, action) {
     case `${GET_OWNER_CLASSES}_FULFILLED`:
       return Object.assign({}, state, { classRooms: action.payload.data });
 
-    case `${GET_STUDENT_CLASSES}_FULFILLED`:
-      return {
-        ...state,
-        classes: action.payload.data
-      };
     case `${GET_CLASSROOM}_PENDING`:
       return {
         ...state,
@@ -74,11 +68,5 @@ export function getJoinedClasses(user_id) {
   return {
     type: GET_JOINED_CLASSES,
     payload: axios.get(`/api/joinedClasses/${user_id}`)
-  };
-}
-export function getStudentClasses(userid) {
-  return {
-    type: GET_STUDENT_CLASSES,
-    payload: axios.get(`/api/classlist/${userid}`)
   };
 }
