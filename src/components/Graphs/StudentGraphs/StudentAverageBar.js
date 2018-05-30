@@ -35,14 +35,15 @@ class StudentAverageBar extends Component {
   }
 
   render() {
-    console.log(this.state);
+    // let reduced = this.props.
+    // console.log(this.state);
 
     let data = {
       labels: this.state.title,
       datasets: [
         {
           label: "Quiz scores per class",
-          backgroundColor: "rgba(255,99,132,0.2)",
+          backgroundColor: "rgba(0,184, 217,0.6)",
           borderColor: "rgba(255,99,132,1)",
           borderWidth: 1,
           hoverBackgroundColor: "rgba(255,99,132,0.4)",
@@ -55,6 +56,11 @@ class StudentAverageBar extends Component {
     return (
       <div>
         <h2>Student Quiz Scores</h2>
+        <div>
+          <h3>Your average score in {this.props.currentClassroom.title}</h3>
+          <div className="donut" />
+          <p>{}</p>
+        </div>
         <Bar
           data={data}
           width={100}
