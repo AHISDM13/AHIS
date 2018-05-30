@@ -20,11 +20,15 @@ function quizReducer(state = initialState, action) {
 
     case `${GET_QUIZ}_FULFILLED`:
       // console.log(action);
-      return Object.assign({}, state, { quiz: action.payload.data });
+      return Object.assign({}, state, {
+        quiz: action.payload.data,
+        loading: false
+      });
 
     case ADD_QUESTION:
       return Object.assign({}, state, { question: action.payload });
     case `${GET_QUESTIONS}_PENDING`:
+    case `${GET_QUIZ}_PENDING`:
       return Object.assign({}, state, { loading: true });
 
     case `${GET_QUESTIONS}_FULFILLED`:
@@ -49,10 +53,10 @@ export function createQuiz(classroom_id, quiz_name, quiz_type) {
   };
 }
 
-export function getQuiz(classroom_id) {
+export function getQuiz(classid) {
   return {
     type: GET_QUIZ,
-    payload: axios.get(`/api/quiz/${classroom_id}`)
+    payload: axios.get(`/api/quiz/${classid}`)
   };
 }
 

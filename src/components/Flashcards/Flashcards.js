@@ -28,6 +28,10 @@ class Flashcards extends Component {
     this.setState({ showHelp: false });
   }
   render() {
+    console.log(this.props);
+    if (this.props.loading) {
+      return <div>is loading...</div>;
+    }
     let quizList = this.props.quiz.map((e, i) => {
       return (
         <div
@@ -35,7 +39,7 @@ class Flashcards extends Component {
           key={i}
           className="small-card"
         >
-          <p>{e.quiz_name}</p>
+          {e.quiz_name}
         </div>
       );
     });
@@ -55,7 +59,7 @@ class Flashcards extends Component {
     });
     return (
       <div className="flashcard-page">
-        <h3>Select a deck</h3>
+        {/* <h3>Select a deck</h3> */}
         <div className="smallcard-row">{quizList}</div>
         {this.props.question.length ? questions : ""}
         <div>

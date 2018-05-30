@@ -148,3 +148,4 @@ pm.test("returns an array of questions for quiz", function (){
 pm.test("returns 3 quizzes", function (){
     pm.expect(pm.response.json().length).to.eql(3);
 });
+

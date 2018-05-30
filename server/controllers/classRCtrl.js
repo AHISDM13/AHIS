@@ -2,9 +2,9 @@ const axios = require("axios");
 
 module.exports = {
   submitClassRoom: (req, res, next) => {
-    console.log("hit the endpoint post /api/classroom");
+    // console.log("hit the endpoint post /api/classroom");
     const { className, password, subject, ownerid } = req.body;
-    console.log(ownerid);
+    // console.log(ownerid);
     req.app
       .get("db")
       .create_class([ownerid, className, subject, true, password, true])
@@ -15,19 +15,19 @@ module.exports = {
   },
 
   getOwnerClasses: (req, res, next) => {
-    console.log("hit the endpoint get /api/classes/:user_id");
+    // console.log("hit the endpoint get /api/classes/:user_id");
     const { owner_id } = req.params;
     req.app
       .get("db")
       .get_Owner_Classes([owner_id])
       .then(classes => {
-        console.log(classes);
+        // console.log(classes);
         res.status(200).send(classes);
       })
       .catch(err => res.status(500).send(err));
   },
   getStudentClasses: (req, res, next) => {
-    console.log("hit the endpoint get /api/classlist/:user_id");
+    // console.log("hit the endpoint get /api/classlist/:user_id");
     const { user_id } = req.params;
 
     req.app
@@ -39,7 +39,7 @@ module.exports = {
       .catch(e => console.log(e));
   },
   getClassesByKeywords: (req, res) => {
-    console.log("hit the endpoint get api/search/:keyword");
+    // console.log("hit the endpoint get api/search/:keyword");
     const { keyword } = req.params;
     req.app
       .get("db")
@@ -50,7 +50,7 @@ module.exports = {
       .catch(err => res.status(500).send(err));
   },
   getStudentClasses: (req, res) => {
-    console.log("hit the endpoint get /api/joinedClasses/:user_id");
+    // console.log("hit the endpoint get /api/joinedClasses/:user_id");
     const { user_id } = req.params;
     req.app
       .get("db")
