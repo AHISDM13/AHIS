@@ -96,5 +96,15 @@ module.exports = {
       .catch(err => {
         res.status(500).send(err);
       });
+  },
+
+  deleteQuestion: (req, res, next) => {
+    const dbInstance = req.app.get("db");
+    const { id, quiz_id } = req.params;
+
+    dbInstance
+      .delete_question([id, quiz_id])
+      .then(response => res.status(200).send(response))
+      .catch(err => res.status(500).send(err));
   }
 };

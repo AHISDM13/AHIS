@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getQuestions, changeQuestions } from "../../ducks/quizReducer";
+import {
+  getQuestions,
+  changeQuestions,
+  handleDeleteQuestion
+} from "../../ducks/quizReducer";
 import { withRouter, Link } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
 
@@ -8,6 +12,7 @@ class EditQuiz extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
   componentDidMount() {
     this.props.getQuestions(this.props.match.params.id);
@@ -17,6 +22,10 @@ class EditQuiz extends Component {
     this.props.changeQuestions(id, answer, question, a, b, c).then(() => {
       this.props.getQuestions(this.props.match.params.id);
     });
+  }
+
+  handleRemove(qid, quizid) {
+    this.props.handleDeleteQuestion(qid, quizid);
   }
 
   render() {
@@ -30,20 +39,12 @@ class EditQuiz extends Component {
     }
     const questions = this.props.question.map((e, i) => {
       return (
-        <div>
-          <div>
-            <QuestionCard
-              key={e.question_id}
-              handleChange={this.handleChange}
-              question={e}
-            />
-          </div>
-          {/* <div>
-            <button onClick={props.handleDeleteQuestion}>
-              Delete Question Box
-            </button>
-          </div> */}
-        </div>
+        <QuestionCard
+          key={e.question_id}
+          handleChange={this.handleChange}
+          question={e}
+          handleRemove={this.handleRemove}
+        />
       );
     });
 
@@ -62,5 +63,9 @@ function mapStateToProps(state) {
 }
 
 export default withRouter(
-  connect(mapStateToProps, { getQuestions, changeQuestions })(EditQuiz)
+  connect(mapStateToProps, {
+    getQuestions,
+    changeQuestions,
+    handleDeleteQuestion
+  })(EditQuiz)
 );

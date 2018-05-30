@@ -109,10 +109,10 @@ export function changeQuestions(
   };
 }
 
-export function handleDeleteQuestion(id) {
-  console.log("deleting", id);
+export function handleDeleteQuestion(id, quiz_id) {
+  console.log("deleting", id, quiz_id);
   return {
     type: DELETE_QUESTION,
-    payload: axios.delete(`/api/quesiton/${id}`)
+    payload: axios.delete(`/api/question/${id}/${quiz_id}`)
   };
 }
