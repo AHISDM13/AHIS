@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Nav.css";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import Drawer from "@material-ui/core/Drawer";
 import { connect } from "react-redux";
 import { getClassroom } from "../../ducks/classRoomReducer";
@@ -15,21 +16,22 @@ class Nav extends Component {
   }
   componenDidMount() {}
   render() {
-    const { classRooms, getClassroom, joinedClasses } = this.props;
+    const { classRooms, getClassroom, joinedClasses, history } = this.props;
     const displayJoinedClasses = joinedClasses
       ? joinedClasses.map((el, i) => {
           return (
-            <Link
+            <p
               key={i}
-              to={`/classroom/${el.classroom_id}`}
               className="Nav_link_subItems"
               onClick={() => {
                 this.handleToggle(false);
-                getClassroom(el.classroom_id);
+                getClassroom(el.classroom_id).then(classroom => {
+                  history.push(`/classroom/${el.classroom_id}`);
+                });
               }}
             >
               {el.title}[{el.subject}]
-            </Link>
+            </p>
           );
         })
       : null;
@@ -103,4 +105,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getClassroom })(Nav);
+export default withRouter(connect(mapStateToProps, { getClassroom })(Nav));

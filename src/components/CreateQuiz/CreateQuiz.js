@@ -69,7 +69,7 @@ class CreateQuiz extends React.Component {
 const mapStateToProps = state => {
   return {
     user: state.userReducer.user,
-    classid: state.classRoomReducer.classRoom.classroom_id,
+    classid: state.classRoomReducer.classRooms.classroom_id,
     quiz: state.quizReducer.quiz
   };
 };

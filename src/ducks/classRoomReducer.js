@@ -3,14 +3,14 @@ import axios from "axios";
 const initialState = {
   classRooms: [],
   classes: [],
-  currentClassroom: {}
+  currentClassroom: {},
+  isLoading: false
 };
 const GET_CLASSROOM = "GET_CLASSROOM";
 const SUBMIT_CLASSROOM = "SUBMIT_CLASSROOM";
 const GET_OWNER_CLASSES = "GET_OWNER_CLASSES";
 const GET_STUDENT_CLASSES = "GET_STUDENT_CLASSES";
 const GET_JOINED_CLASSES = "GET_JOINED_CLASSES";
-
 export default function classRoomReducer(state = initialState, action) {
   switch (action.type) {
     case `${SUBMIT_CLASSROOM}_FULFILLED`:
@@ -24,9 +24,16 @@ export default function classRoomReducer(state = initialState, action) {
         ...state,
         classes: action.payload.data
       };
-    case `${GET_CLASSROOM}_FULFILLED`:
+    case `${GET_CLASSROOM}_PENDING`:
       return {
         ...state,
+        isLoading: true
+      };
+    case `${GET_CLASSROOM}_FULFILLED`:
+      console.log(action.payload.data[0]);
+      return {
+        ...state,
+        isLoading: false,
         currentClassroom: action.payload.data[0]
       };
     case `${GET_JOINED_CLASSES}_FULFILLED`:
@@ -68,7 +75,6 @@ export function getJoinedClasses(user_id) {
     payload: axios.get(`/api/joinedClasses/${user_id}`)
   };
 }
-
 export function getStudentClasses(userid) {
   return {
     type: GET_STUDENT_CLASSES,

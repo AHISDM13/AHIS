@@ -90,12 +90,19 @@ video {
   vertical-align: baseline;
   box-sizing: border-box;
   text-align: center;
-  font-family: "Open Sans", sans-serif;
 }
 
 .App {
   text-align: center;
+  height: auto;
   /* background-color: whitesmoke; */
+}
+.main {
+  position: absolute;
+  top: 65px;
+  height: auto;
+  width: 100%;
+  margin-top: 50px;
 }
 /* 
 color pallete
