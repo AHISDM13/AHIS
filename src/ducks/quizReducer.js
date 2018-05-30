@@ -105,3 +105,7 @@ export function changeQuestions(
     })
   };
 }
+
+export function deleteQuestion(question_id) {
+  question_id;
+}

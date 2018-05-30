@@ -19,6 +19,12 @@ class EditQuiz extends Component {
     });
   }
 
+  handleDeleteQuestion(id) {
+    this.props.deleteQuestions(id).then(() => {
+      this.props.getQuestions(this.props.match.params.id);
+    });
+  }
+
   render() {
     // console.log(this.props.question);
     if (!this.props.question) {
@@ -48,9 +54,6 @@ class EditQuiz extends Component {
     return (
       <div>
         <div>{questions}</div>
-        <div>
-          <button>Delete Quiz</button>
-        </div>
       </div>
     );
   }
