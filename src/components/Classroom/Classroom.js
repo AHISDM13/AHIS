@@ -6,18 +6,31 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 class Classroom extends React.Component {
   state = { quizs: [] };
+
   componentDidMount() {
     const { match } = this.props;
-    axios
-      .get(`/api/quizs/${match.params.id}`)
-      .then(quizs => this.setState(() => ({ quizs: quizs.data })));
+    axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
+      this.setState(() => ({ quizs: quizs.data }));
+    });
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { match } = this.props;
+    if (prevProps.match.params.id !== match.params.id) {
+      axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
+        this.setState(() => ({ quizs: quizs.data }));
+      });
+    }
+  }
+
   render() {
-    const { user, currentClassroom } = this.props;
+    const { user, currentClassroom, isLoading } = this.props;
     const { quizs } = this.state;
     return (
       <div className="Classroom">
-        {user.id === currentClassroom.owner_id ? (
+        {isLoading ? (
+          <div>......Loading</div>
+        ) : user.id === currentClassroom.owner_id ? (
           <TeacherView />
         ) : (
           <Student
@@ -25,7 +38,6 @@ class Classroom extends React.Component {
             currentClassroom={currentClassroom}
             quizs={quizs}
           />
-
         )}
       </div>
     );
@@ -34,7 +46,8 @@ class Classroom extends React.Component {
 const mapStateToProps = state => {
   return {
     user: state.userReducer.user,
-    currentClassroom: state.classRoomReducer.currentClassroom
+    currentClassroom: state.classRoomReducer.currentClassroom,
+    isLoading: state.classRoomReducer.isLoading
   };
 };
 export default withRouter(connect(mapStateToProps)(Classroom));
