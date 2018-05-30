@@ -10,6 +10,7 @@ const GET_CLASSROOM = "GET_CLASSROOM";
 const SUBMIT_CLASSROOM = "SUBMIT_CLASSROOM";
 const GET_OWNER_CLASSES = "GET_OWNER_CLASSES";
 const GET_JOINED_CLASSES = "GET_JOINED_CLASSES";
+
 export default function classRoomReducer(state = initialState, action) {
   switch (action.type) {
     case `${SUBMIT_CLASSROOM}_FULFILLED`:
