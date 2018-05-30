@@ -26,9 +26,8 @@ const getResult = (req, res) => {
 };
 
 const getStudentResultForAllQuizzes = (req, res) => {
-  console.log("hit /api/studentresult/:classroom_id");
   const { classroom_id } = req.params;
-
+  console.log("hit /api/studentresult/:classroom_id", classroom_id);
   req.app
     .get("db")
     .get_a_student_avg([classroom_id])

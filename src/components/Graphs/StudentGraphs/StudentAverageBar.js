@@ -2,45 +2,56 @@ import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 import axios from "axios";
 import { connect } from "react-redux";
+import { getStudentClassResults } from "../../../ducks/studentReducer";
 
 class StudentAverageBar extends Component {
   constructor() {
     super();
 
     this.state = {
-      data: {}
+      chartData: {}
     };
   }
+  componentDidMount() {
+    if (this.props.currentClassroom)
+      this.props.getStudentClassResults(
+        this.props.currentClassroom.classroom_id
+      );
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.studentClassResults !== this.props.studentClassResults) {
+      let scores = this.props.studentClassResults.map((e, i) => {
+        return e.correctnum / e.totalqnum;
+      });
+      let quizName = this.props.studentClassResults.map((e, i) => {
+        return e.quiz_id;
+      });
 
+      const data = {
+        labels: quizName,
+        datasets: [
+          {
+            label: "Quiz scores per class",
+            backgroundColor: "rgba(255,99,132,0.2)",
+            borderColor: "rgba(255,99,132,1)",
+            borderWidth: 1,
+            hoverBackgroundColor: "rgba(255,99,132,0.4)",
+            hoverBorderColor: "rgba(255,99,132,1)",
+            data: scores
+          }
+        ]
+      };
+      this.setState({ chartData: data });
+    }
+  }
   render() {
-    const data = {
-      labels: [
-        "Quiz 1",
-        "Quiz 2",
-        "Quiz 3",
-        "Quiz 4",
-        "Quiz 5",
-        "Quiz 6",
-        "Quiz 7"
-      ],
-      datasets: [
-        {
-          label: "Quiz scores per class",
-          backgroundColor: "rgba(255,99,132,0.2)",
-          borderColor: "rgba(255,99,132,1)",
-          borderWidth: 1,
-          hoverBackgroundColor: "rgba(255,99,132,0.4)",
-          hoverBorderColor: "rgba(255,99,132,1)",
-          data: [65, 59, 80, 81, 56, 55, 40]
-        }
-      ]
-    };
-
+    console.log(this.props.currentClassroom);
+    console.log(this.state);
     return (
       <div>
         <h2>Student Quiz Scores</h2>
         <Bar
-          data={data}
+          data={this.state.chartData}
           width={100}
           height={50}
           options={{
@@ -53,6 +64,11 @@ class StudentAverageBar extends Component {
 }
 
 function mapStateToProps(state) {
-  return { ...state.studentReducer };
+  return {
+    ...state.studentReducer,
+    ...state.classRoomReducer
+  };
 }
-export default connect(mapStateToProps)(StudentAverageBar);
+export default connect(mapStateToProps, { getStudentClassResults })(
+  StudentAverageBar
+);
