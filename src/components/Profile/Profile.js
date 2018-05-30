@@ -81,7 +81,7 @@ class Profile extends Component {
           </div>
           <input className="submit" type="submit" value="submit" />
         </form>
-        <Flashcards />
+        {/* <Flashcards /> */}
       </div>
     );
   }
