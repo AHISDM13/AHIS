@@ -1,5 +1,5 @@
 const addStudentToClasses = (req, res) => {
-  console.log("hit the post /api/student/classroom_id/user_id");
+  // console.log("hit the post /api/student/classroom_id/user_id");
   const { classroom_id, user_id } = req.params;
   req.app
     .get("db")
@@ -12,7 +12,7 @@ const addStudentToClasses = (req, res) => {
     });
 };
 const getClassroom = (req, res) => {
-  console.log("hit the get /api/classroom/:classroom_id");
+  // console.log("hit the get /api/classroom/:classroom_id");
   const { classroom_id } = req.params;
   /////!!!!!we have to join multiple tables to get all the datas stored in classroom
   req.app
@@ -20,21 +20,21 @@ const getClassroom = (req, res) => {
     .get_classroom([classroom_id])
     .then(classroom => {
       res.status(200).send(classroom);
-      console.log(classroom);
+      // console.log(classroom);
     })
     .catch(err => {
       res.status(500).send(err);
     });
 };
 const getQuizsByClassroomID = (req, res) => {
-  console.log("hit the get /api/quizs/:classroom_id");
+  // console.log("hit the get /api/quizs/:classroom_id");
   const { classroom_id } = req.params;
   req.app
     .get("db")
     .get_quizs_by_classroomID([classroom_id])
     ////it will only get the quiz from classroom 47 for just now
     .then(quizs => {
-      console.log(quizs);
+      // console.log(quizs);
       res.status(200).send(quizs);
     })
     .catch(err => {

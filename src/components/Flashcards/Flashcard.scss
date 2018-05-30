@@ -1,19 +1,24 @@
+$small-cardsize: 65px;
+
 .flashcard-page {
   display: flex;
   flex-direction: row;
-  background-color: #f4f5f7; }
-  .flashcard-page .smallcard-row {
+  background-color: #f4f5f7;
+
+  .smallcard-row {
     display: flex;
     flex-direction: column;
     margin-left: 5%;
     margin-top: 5%;
-    border: 1px solid rgba(105, 105, 105, 0.336); }
-  .flashcard-page .small-card {
+    border: 1px solid rgba(105, 105, 105, 0.336);
+  }
+
+  .small-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 60px;
-    width: 150px; }
-
-/*# sourceMappingURL=Flashcard.css.map */
+    width: 150px;
+  }
+}
