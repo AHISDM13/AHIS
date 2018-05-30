@@ -60,7 +60,6 @@ export default class QuestionCard extends React.Component {
             <div>
               <p>Question: {question.question}</p>
               <p>Answer: {question.answer}</p>
-              <p>ID: {question.question_id}</p>
               <p>Multiple Choice Answer 1: {question.dummy_data_a}</p>
               <p>Multiple Choice Answer 2: {question.dummy_data_b}</p>
               <p>Multiple Choice Answer 3: {question.dummy_data_c}</p>
@@ -109,7 +108,6 @@ export default class QuestionCard extends React.Component {
           <div>
             <p>Question: {question.question}</p>
             <p>Answer: {question.answer}</p>
-            <p>ID: {question.question_id}</p>
             <button onClick={this.changeFlag}>edit question and answer</button>
             <button onClick={this.saveChanges}> save changes</button>
           </div>

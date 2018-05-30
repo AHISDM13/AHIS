@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import {
   getQuestions,
   changeQuestions,
-  handleDeleteQuestion
+  handleDeleteQuestion,
+  getQuiz
 } from "../../ducks/quizReducer";
 import { withRouter, Link } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
@@ -29,9 +30,12 @@ class EditQuiz extends Component {
   }
 
   render() {
-    // console.log(this.props.question);
+    const quizName = this.props.quiz[0] && this.props.quiz[0].quiz_name;
+    console.log(this.props.question);
     if (!this.props.question) {
-      return <div>Your quiz is deleted. Go back to create more quizes.</div>;
+      return (
+        <div>Create more quiz questions by going to the My Classes tab</div>
+      );
     }
 
     if (this.props.loading) {
@@ -50,6 +54,7 @@ class EditQuiz extends Component {
 
     return (
       <div>
+        <div>QUIZ NAME {quizName}</div>
         <div>{questions}</div>
       </div>
     );
@@ -66,6 +71,7 @@ export default withRouter(
   connect(mapStateToProps, {
     getQuestions,
     changeQuestions,
-    handleDeleteQuestion
+    handleDeleteQuestion,
+    getQuiz
   })(EditQuiz)
 );

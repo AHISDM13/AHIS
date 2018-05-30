@@ -18,18 +18,12 @@ export default function classRoomReducer(state = initialState, action) {
     case `${GET_OWNER_CLASSES}_FULFILLED`:
       return Object.assign({}, state, { classRooms: action.payload.data });
 
-    case `${GET_STUDENT_CLASSES}_FULFILLED`:
-      return {
-        ...state,
-        classes: action.payload.data
-      };
     case `${GET_CLASSROOM}_PENDING`:
       return {
         ...state,
         isLoading: true
       };
     case `${GET_CLASSROOM}_FULFILLED`:
-
       return {
         ...state,
         isLoading: false,
@@ -74,17 +68,3 @@ export function getJoinedClasses(user_id) {
     payload: axios.get(`/api/joinedClasses/${user_id}`)
   };
 }
-<<<<<<< HEAD
-//     export function getStudentClasses(userid) {
-//   return {
-//     type: GET_STUDENT_CLASSES,
-//     payload: axios.get(`/api/classlist/${userid}`)
-// }
-=======
-export function getStudentClasses(userid) {
-  return {
-    type: GET_STUDENT_CLASSES,
-    payload: axios.get(`/api/classlist/${userid}`)
-  };
-}
->>>>>>> master
