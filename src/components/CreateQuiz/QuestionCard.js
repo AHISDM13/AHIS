@@ -106,6 +106,9 @@ export default class QuestionCard extends React.Component {
                 onChange={e => this.changeState("dummy_data_c", e.target.value)}
               />
               <button onClick={this.saveChanges}> save changes</button>
+              <button onClick={this.props.handleDeleteQuestion}>
+                Delete Question Box
+              </button>
             </div>
           )
         ) : !this.state.flag ? (
@@ -130,6 +133,9 @@ export default class QuestionCard extends React.Component {
               onChange={e => this.changeState("answer", e.target.value)}
             />
             <button onClick={this.saveChanges}> save changes</button>
+            <button onClick={this.props.handleDeleteQuestion}>
+              Delete Question Box
+            </button>
           </div>
         )}
       </div>

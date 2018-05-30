@@ -8,7 +8,7 @@ const initialState = {
 
 const CREATE_QUIZ = "CREATE_QUIZ";
 const GET_QUIZ = "GET_QUIZ";
-
+const DELETE_QUESTION = "DELETE_QUESTION";
 const ADD_QUESTION = "ADD_QUESTION";
 const GET_QUESTIONS = "GET_QUESTIONS";
 const CHANGE_QUESTIONS = "CHANGE_QUESTIONS";
@@ -35,6 +35,10 @@ function quizReducer(state = initialState, action) {
 
     case `${CHANGE_QUESTIONS}_PENDING`:
       return Object.assign({}, state, { loading: true });
+
+    case `${DELETE_QUESTION}_FULFILLED`:
+      return Object.assign({}, state, { question: action.payload.data });
+
     default:
       return state;
   }
@@ -105,6 +109,10 @@ export function changeQuestions(
   };
 }
 
-export function deleteQuestion(question_id) {
-  question_id;
+export function handleDeleteQuestion(id) {
+  console.log("deleting", id);
+  return {
+    type: DELETE_QUESTION,
+    payload: axios.delete(`/api/quesiton/${id}`)
+  };
 }
