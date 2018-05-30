@@ -7,7 +7,7 @@ import Nav from "../Nav/Nav";
 import Search from "../Search/Search";
 const Header = ({ user }) => (
   <div className="Header">
-    {user ? <NavigationAuth /> : <NavigationNonAuth />}
+    {user ? <NavigationAuth /> : <NavigationNonAuth />} <Search />
   </div>
 );
 
@@ -16,12 +16,12 @@ class NavigationAuth extends React.Component {
     return (
       <div className="Header_nav">
         <Nav />
-        <Search />
-        <Link className="Header_nav_link" to={routes.HOME}>
-          Home
-        </Link>
+        <span className="Header_logo">AHIS</span>
         <Link className="Header_nav_link" to={routes.PROFILE}>
           Profile
+        </Link>
+        <Link className="Header_nav_link" to={routes.HOME}>
+          Home
         </Link>
         <SignOutButton />
       </div>
@@ -31,7 +31,7 @@ class NavigationAuth extends React.Component {
 
 const NavigationNonAuth = () => (
   <div className="Header_nav">
-    <Search />
+    <span className="Header_logo">AHIS</span>
     <Link className="Header_nav_link" to={routes.LANDING}>
       Sign In
     </Link>

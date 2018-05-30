@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div>
         <Header user={authUser} />
-        {mySwitch}
+        <div className="main">{mySwitch}</div>
       </div>
     );
   }

@@ -3,8 +3,9 @@
   text-decoration: none;
   font-size: 25px;
   padding: 1vh;
-  color: #90a4ae;
+  color: #0747a6;
   width: 300px;
+  border: none;
 }
 .Nav_link_subItems {
   text-decoration: none;
@@ -14,7 +15,9 @@
   padding: 3px;
 }
 .Nav_link_subItems:hover {
-  transition: 0.3s;
+  text-decoration: none;
+
+  transition: 0.8s;
   background-color: #e6eef2;
   color: #212121;
 }
@@ -28,7 +31,8 @@
   margin-top: 2vh;
 }
 .Nav_link:hover {
+  text-decoration: none;
   color: white;
   background-color: #212121;
-  transition: 0.3s;
+  transition: 0.8s;
 }
