@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import Flashcards from "../../../Flashcards/Flashcards";
 import { Tabs, Tab } from "material-ui/Tabs";
+import "./TeacherView.css";
+import { getQuiz } from "../../../../ducks/quizReducer";
+import StudentAvg from "../../../Graphs/TeacherGraphs/TeacherAverageStudentBar";
+import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBar";
+import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
 
 const styles = {
   headline: {
@@ -21,7 +26,7 @@ class TeacherView extends Component {
     };
   }
   componentDidMount() {
-    //getQuizzes
+    this.props.getQuiz(this.props.match.params.id);
   }
 
   handleTab = value => {
@@ -32,9 +37,17 @@ class TeacherView extends Component {
   launchQuiz() {}
 
   render() {
-    // let classQuiz = this.props.quizzes.map((quiz, i) => {
-    //   return <div> key={i} <p>{quiz.quiz_name}</p> <p>{e.count}</p> </div>;
-    // });
+    const classQuiz =
+      this.props.quiz.length &&
+      this.props.quiz.map((list, i) => {
+        return (
+          <Link key={i} to={`/editquiz/${list.quiz_id}`}>
+            {list.quiz_name}
+          </Link>
+        );
+      });
+
+    console.log(this.props);
     // let classResource = this.props.resources.map((e, i) => {
     //   return (
     //     <div>
@@ -58,12 +71,23 @@ class TeacherView extends Component {
               <Link to={`/createquiz/${this.props.match.params.id}`}>
                 CREATE QUIZ
               </Link>
+              {classQuiz}
             </div>
           </Tab>
           <Tab label="Graphs" value="c">
             <div>
               <h2 style={styles.headline}>Analytics</h2>
-              <p>SOME GRAPHS</p>
+              <div className="teachergraphs">
+                <div className="graphs">
+                  <StudentAvg />
+                </div>
+                <div className="graphs">
+                  <ClassAvg />
+                </div>
+                <div className="graphs">
+                  <AnswerAvg />
+                </div>
+              </div>
             </div>
           </Tab>
         </Tabs>
@@ -73,6 +97,9 @@ class TeacherView extends Component {
 }
 
 function mapStateToProps(state) {
-  return { ...state.classRoomReducer };
+  return {
+    classRooms: state.classRoomReducer.classRooms,
+    quiz: state.quizReducer.quiz
+  };
 }
-export default withRouter(connect(mapStateToProps)(TeacherView));
+export default withRouter(connect(mapStateToProps, { getQuiz })(TeacherView));

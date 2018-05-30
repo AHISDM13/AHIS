@@ -12,16 +12,24 @@ import Classroom from "../components/Classroom/Classroom";
 import SearchResult from "../components/SearchResult/SearchResult";
 import Test from "../components/Student/Test/Test";
 import Review from "../components/Student/Review/Review";
+import CreateQuiz from "../components/CreateQuiz/CreateQuiz";
+import Requiz from "../components/CreateQuiz/ReQuiz";
+import EditQuiz from "../components/CreateQuiz/EditQuiz";
+
 export default (
   <Switch>
     <Route exact path={routes.LANDING} component={() => <Landing />} />
     <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
     <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
+    <Route exact path={routes.CREATEQUIZ} component={() => <CreateQuiz />} />
+    <Route exact path={routes.REQUIZ} component={() => <Requiz />} />
+    <Route exact path={routes.EDITQUIZ} component={() => <EditQuiz />} />
     <Route
       exact
       path={routes.PASSWORD_FORGET}
       component={() => <PasswordForgetPage />}
     />
+
     <Route exact path={routes.HOME} component={() => <Home />} />
     <Route exact path={routes.PROFILE} component={() => <Profile />} />
     <Route

@@ -11,6 +11,8 @@ const massive = require("massive");
 const passport = require("passport");
 // console.log(__dirname);
 
+var socket = require("socket.io");
+
 const cc = require("./controllers/classRCtrl");
 const qc = require("./controllers/quizCtrl");
 
@@ -43,6 +45,7 @@ app.get("/api/user/:email", ac.getUser);
 app.put("/api/user/:id", ac.updateUser);
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
+app.get("/api/classlist/:user_id", cc.getStudentClasses);
 app.get("/api/classroom/:classroom_id", sc.getClassroom);
 app.get("/api/search/:keyword", cc.getClassesByKeywords);
 app.get("/api/classes/:owner_id", cc.getOwnerClasses);
@@ -59,6 +62,7 @@ app.get("/api/quizs/:classroom_id", sc.getQuizsByClassroomID);
 //QUESTION ENDPOINTS
 app.post("/api/question", qc.addQuestion);
 app.get("/api/question/:quiz_id", qc.getQuestions);
+app.put("/api/question", qc.updateQuestion);
 
 ///STUDENT ENPOINTS
 app.post("/api/student/:classroom_id/:user_id", sc.addStudentToClasses);
@@ -69,3 +73,19 @@ app.get("/api/result/:quiz_id", rc.getResult);
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+// server = app.listen(port, () => {
+//   console.log(`Listening on port ${port}`);
+// });
+
+//SOCKET STUFFS
+
+// io = socket(server);
+
+// io.on("connection", socket => {
+//   console.log(socket.id);
+
+//   socket.on("SEND_MESSAGE", function(data) {
+//     io.emit("RECEIVE_MESSAGE", data);
+//   });
+// });

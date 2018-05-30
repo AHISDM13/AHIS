@@ -25,6 +25,7 @@ class Classroom extends React.Component {
             currentClassroom={currentClassroom}
             quizs={quizs}
           />
+
         )}
       </div>
     );

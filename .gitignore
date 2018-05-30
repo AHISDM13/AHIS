@@ -17,6 +17,9 @@
 .env.test.local
 .env.production.local
 firebase.js
+.sass-cache/
+*.css.map
+*.scss.map
 
 npm-debug.log*
 yarn-debug.log*

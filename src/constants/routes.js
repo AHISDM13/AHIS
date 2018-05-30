@@ -11,3 +11,5 @@ export const SEARCHRESULT = "/searchResult";
 export const CREATEQUIZ = "/createquiz/:id";
 export const TEST = "/test/:id";
 export const REVIEW = "/test/:id/result";
+export const REQUIZ = "/requiz";
+export const EDITQUIZ = "/editquiz/:id";

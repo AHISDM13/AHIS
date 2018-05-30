@@ -1,21 +1,23 @@
-import React, { Component } from "React";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import Flashcards from "../../../Flashcards/Flashcards";
+import { getQuiz } from "../../../../ducks/quizReducer";
+import "./Student.css";
 
 class Student extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.launchQuiz = this.launchQuiz.bind(this);
   }
 
   componentDidMount() {
-    //getQuizzes
-    //getResources
+    this.props.getQuiz(this.props.classRooms.id);
   }
   launchQuiz() {}
   render() {
-    let classQuiz = this.props.quizzes.map((quiz, i) => {
+    console.log(this.props);
+    let classQuiz = this.props.quiz.map((quiz, i) => {
       return (
         <div onClick={this.launchQuiz} className="each-quiz box" key={i}>
           <p>{quiz.quiz_name}</p>
@@ -31,13 +33,18 @@ class Student extends Component {
     //   );
     // });
     return (
-      <div className="classview-page">
-        <h2>Quizzes</h2>
-
-        <div className="quizzes-container">{classQuiz}</div>
-        <h2>Resources</h2>
-        <div className="resources-container">{/* {classResource} */}</div>
-        <Flashcards />
+      <div className="student-page">
+        <div className="navigate">Navigation</div>
+        <div className="student-content">
+          <button className="analytics">View Your Scores</button>
+          <h2>Quizzes</h2>
+          {this.props.quiz.length && (
+            <div className="quizzes-container">{classQuiz}</div>
+          )}
+          <h2>Resources</h2>
+          <div className="resources-container">{/* {classResource} */}</div>
+          {/* <Flashcards /> */}
+        </div>
       </div>
     );
   }
@@ -49,4 +56,4 @@ function mapStateToProps(state) {
     ...state.classRoomReducer
   };
 }
-export default Student;
+export default connect(mapStateToProps, { getQuiz })(Student);

@@ -1,34 +1,87 @@
 import React, { Component } from "react";
 import Card from "./Card";
+import { connect } from "react-redux";
+import { getQuiz, getQuestions } from "../../ducks/quizReducer";
+import "./Flashcard.css";
 
 class Flashcards extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      deck: []
+      deck: [],
+      ind: 0,
+      showHelp: true
     };
+    this.handleCard = this.handleCard.bind(this);
+    this.firstClick = this.firstClick.bind(this);
   }
-  flipCard() {}
+  componentDidMount() {
+    this.props.getQuiz(47);
+  }
+  handleCard() {
+    this.setState((prevState, props) => ({
+      ind: prevState.ind + 1
+    }));
+  }
+  firstClick() {
+    this.setState({ showHelp: false });
+  }
   render() {
-    return (
-      <div>
-        <h2>Card Row</h2>
-        <div className="small-cards">
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
+    let quizList = this.props.quiz.map((e, i) => {
+      return (
+        <div
+          onClick={() => this.props.getQuestions(e.quiz_id)}
+          key={i}
+          className="small-card"
+        >
+          <p>{e.quiz_name}</p>
         </div>
-        <Card />
+      );
+    });
+
+    let questions = this.props.question.map((e, i) => {
+      return (
+        <Card
+          showHelp={this.state.showHelp}
+          key={e.question_id}
+          ind={this.state.ind}
+          cardInd={i}
+          ques={e.question}
+          answer={e.answer}
+          firstClick={this.firstClick}
+        />
+      );
+    });
+    return (
+      <div className="flashcard-page">
+        <h3>Select a deck</h3>
+        <div className="smallcard-row">{quizList}</div>
+        {this.props.question.length ? questions : ""}
         <div>
-          <i className="fas fa-arrow-alt-circle-left fa-3x" />
-          <i className="fas fa-arrow-alt-circle-right fa-3x" />
-          <p>skip</p>
+          {this.props.question.length ? (
+            <i
+              onClick={this.handleCard}
+              className="fas fa-arrow-alt-circle-left fa-3x arrows"
+            />
+          ) : (
+            ""
+          )}
+          {this.state.ind < this.props.question.length - 1 ? (
+            <i
+              onClick={this.handleCard}
+              className="fas fa-arrow-alt-circle-right fa-3x arrows"
+            />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     );
   }
 }
-export default Flashcards;
+
+function mapStateToProps(state) {
+  return { ...state.quizReducer };
+}
+export default connect(mapStateToProps, { getQuiz, getQuestions })(Flashcards);
