@@ -48,5 +48,16 @@ module.exports = {
         res.status(200).send(results);
       })
       .catch(err => res.status(500).send(err));
+  },
+  getStudentClasses: (req, res) => {
+    console.log("hit the endpoint get /api/joinedClasses/:user_id");
+    const { user_id } = req.params;
+    req.app
+      .get("db")
+      .get_student_classes(user_id)
+      .then(classes => {
+        res.status(200).send(classes);
+      })
+      .catch(err => res.status(500).send(err));
   }
 };
