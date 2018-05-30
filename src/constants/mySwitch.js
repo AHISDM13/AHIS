@@ -10,12 +10,13 @@ import Profile from "../components/Profile/Profile";
 import CreateClassroom from "../components/Classroom/CreateClassroom";
 import Classroom from "../components/Classroom/Classroom";
 import SearchResult from "../components/SearchResult/SearchResult";
+import Test from "../components/Student/Test/Test";
+import Review from "../components/Student/Review/Review";
 export default (
   <Switch>
     <Route exact path={routes.LANDING} component={() => <Landing />} />
     <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
     <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
-    <Route exact path={routes.CREATEQUIZ} component={() => <CreateQuiz />} />
     <Route
       exact
       path={routes.PASSWORD_FORGET}
@@ -34,5 +35,8 @@ export default (
       path={routes.SEARCHRESULT}
       component={() => <SearchResult />}
     />
+    <Route exact path={routes.REVIEW} component={() => <Review />} />
+
+    <Route exact path={routes.TEST} component={() => <Test />} />
   </Switch>
 );

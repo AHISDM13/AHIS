@@ -26,7 +26,23 @@ const getClassroom = (req, res) => {
       res.status(500).send(err);
     });
 };
+const getQuizsByClassroomID = (req, res) => {
+  console.log("hit the get /api/quizs/:classroom_id");
+  const { classroom_id } = req.params;
+  req.app
+    .get("db")
+    .get_quizs_by_classroomID([classroom_id])
+    ////it will only get the quiz from classroom 47 for just now
+    .then(quizs => {
+      console.log(quizs);
+      res.status(200).send(quizs);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+};
 module.exports = {
   addStudentToClasses,
-  getClassroom
+  getClassroom,
+  getQuizsByClassroomID
 };

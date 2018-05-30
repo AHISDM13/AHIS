@@ -1,20 +1,30 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import TeacherView from "./ClassView/Teacher View/TeacherView";
-
+import Student from "../Student/Student";
+import axios from "axios";
+import { withRouter } from "react-router-dom";
 class Classroom extends React.Component {
-  state = {};
-
+  state = { quizs: [] };
+  componentDidMount() {
+    const { match } = this.props;
+    axios
+      .get(`/api/quizs/${match.params.id}`)
+      .then(quizs => this.setState(() => ({ quizs: quizs.data })));
+  }
   render() {
-    const { match, currentClassroom } = this.props;
-    console.log(currentClassroom);
+    const { user, currentClassroom } = this.props;
+    const { quizs } = this.state;
     return (
       <div className="Classroom">
-        {match.params.id === currentClassroom.owner_id ? (
-          <div>owner view</div>
+        {user.id === currentClassroom.owner_id ? (
+          <TeacherView />
         ) : (
-          <div>student view</div>
+          <Student
+            user={user}
+            currentClassroom={currentClassroom}
+            quizs={quizs}
+          />
         )}
       </div>
     );

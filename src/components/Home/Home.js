@@ -11,7 +11,8 @@ class Home extends Component {
 function mapStateToProps(state) {
   return {
     user: state.userReducer.user,
-    classRooms: state.classRoomReducer.classRooms
+    myClassRooms: state.classRoomReducer.classRooms,
+    joinedClasses: state.classRoomReducer.joinedClasses
   };
 }
 export default connect(mapStateToProps)(Home);

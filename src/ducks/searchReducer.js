@@ -21,6 +21,6 @@ export default function searchReducer(state = initialState, action) {
 export function getClassesByKeyword(keyword) {
   return {
     type: GET_CLASSES_BY_KEYWORD,
-    payload: axios.get(`/api/classes/${keyword}`)
+    payload: axios.get(`/api/search/${keyword}`)
   };
 }

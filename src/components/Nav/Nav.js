@@ -1,63 +1,94 @@
 import React, { Component } from "react";
 import "./Nav.css";
 import { Link } from "react-router-dom";
-import Drawer from "material-ui/Drawer";
+import Drawer from "@material-ui/core/Drawer";
 import { connect } from "react-redux";
-
+import { getClassroom } from "../../ducks/classRoomReducer";
 class Nav extends Component {
-  state = { open: false, user: {}, classrooms: [] };
-  handleToggle = () => this.setState({ open: !this.state.open });
-  handleClose = () => this.setState({ open: false });
-
+  state = { open: false, myclassesShow: false, joinedClassesShow: false };
+  handleToggle = val => this.setState(() => ({ open: val }));
+  handleMyclasses() {
+    this.setState(() => ({ myclassesShow: !this.state.myclassesShow }));
+  }
+  handleJoinedClasses() {
+    this.setState(() => ({ joinedClassesShow: !this.state.joinedClassesShow }));
+  }
   componenDidMount() {}
   render() {
-    console.log(this.props.classRooms);
-    const styles = {
-      nav: {
-        background: "#546E7A"
-      }
-    };
-    const { classRooms } = this.props;
+    const { classRooms, getClassroom, joinedClasses } = this.props;
+    const displayJoinedClasses = joinedClasses
+      ? joinedClasses.map((el, i) => {
+          return (
+            <Link
+              key={i}
+              to={`/classroom/${el.classroom_id}`}
+              className="Nav_link_subItems"
+              onClick={() => {
+                this.handleToggle(false);
+                getClassroom(el.classroom_id);
+              }}
+            >
+              {el.title}[{el.subject}]
+            </Link>
+          );
+        })
+      : null;
     const createdClasses = classRooms
       ? classRooms.map((e, i) => {
           return (
-            <Link key={i} to={`/classroom/${e.classroom_id}`}>
+            <Link
+              key={i}
+              to={`/classroom/${e.classroom_id}`}
+              className="Nav_link_subItems"
+              onClick={() => {
+                this.handleToggle(false);
+                getClassroom(e.classroom_id);
+              }}
+            >
               {e.title}
             </Link>
           );
         })
       : null;
-
     return (
       <div className="Nav">
         <span className="hamburger">
-          <a onClick={this.handleToggle}>&#9776;</a>
+          <a onClick={() => this.handleToggle(true)}>&#9776;</a>
         </span>
         <Drawer
-          width={300}
           open={this.state.open}
-          onRequestChange={open => this.setState({ open })}
-          containerStyle={styles.nav}
+          onClose={() => this.handleToggle(false)}
           className="Nav_drawer"
         >
           <Link
             to="/home"
             className="Nav_link_1 Nav_link"
-            onClick={this.handleClose}
+            onClick={() => this.handleToggle(false)}
           >
             Home
           </Link>
-          <Link to="/profile" className="Nav_link" onClick={this.handleClose}>
+          <Link
+            to="/profile"
+            className="Nav_link"
+            onClick={() => this.handleToggle(false)}
+          >
             Profile
           </Link>
           <Link
             to="/createclass"
             className="Nav_link"
-            onClick={this.handleClose}
+            onClick={() => this.handleToggle(false)}
           >
             Create Class
           </Link>
-          <div>{createdClasses}</div>
+          <p className="Nav_link" onClick={() => this.handleMyclasses()}>
+            My classes
+          </p>
+          {this.state.myclassesShow ? createdClasses : null}
+          <p className="Nav_link" onClick={() => this.handleJoinedClasses()}>
+            Joined classes
+          </p>
+          {this.state.joinedClassesShow ? displayJoinedClasses : null}
         </Drawer>
       </div>
     );
@@ -67,8 +98,9 @@ class Nav extends Component {
 function mapStateToProps(state) {
   return {
     classRooms: state.classRoomReducer.classRooms,
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    joinedClasses: state.classRoomReducer.joinedClasses
   };
 }
 
-export default connect(mapStateToProps)(Nav);
+export default connect(mapStateToProps, { getClassroom })(Nav);
