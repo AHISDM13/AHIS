@@ -34,7 +34,6 @@ const getQuizsByClassroomID = (req, res) => {
     .get_quizs_by_classroomID([classroom_id])
     ////it will only get the quiz from classroom 47 for just now
     .then(quizs => {
-      // console.log(quizs);
       res.status(200).send(quizs);
     })
     .catch(err => {

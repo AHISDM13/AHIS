@@ -1,13 +1,19 @@
 .Header {
-  padding: 25px;
-  background-color: rgb(104, 156, 151, 0.4);
-  height: 10vh;
+  padding: 13px;
+  background-color: #0747a6;
+  position: fixed;
+  top: 0;
+  height: 65px;
+  width: 100%;
+  color: white;
 }
-
-.Header h1 {
-  padding-left: 45px;
-  font-size: 40px;
-  color: #072a24bb;
+.Header_logo {
+  font-size: 30px;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  padding: 13px;
+  left: 50px;
 }
 .Header_nav {
   display: flex;
@@ -16,4 +22,7 @@
 }
 .Header_nav_link {
   text-decoration: none;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
 }
