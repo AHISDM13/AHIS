@@ -25,7 +25,23 @@ const getResult = (req, res) => {
     });
 };
 
+const getStudentResultForAllQuizzes = (req, res) => {
+  console.log("hit /api/studentresult/:classroom_id");
+  const { classroom_id } = req.params;
+
+  req.app
+    .get("db")
+    .get_a_student_avg([classroom_id])
+    .then(results => {
+      res.status(200).send(results);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+};
+
 module.exports = {
   addResult,
-  getResult
+  getResult,
+  getStudentResultForAllQuizzes
 };

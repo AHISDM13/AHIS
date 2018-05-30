@@ -52,4 +52,7 @@ class StudentAverageBar extends Component {
   }
 }
 
-export default StudentAverageBar;
+function mapStateToProps(state) {
+  return { ...state.studentReducer };
+}
+export default connect(mapStateToProps)(StudentAverageBar);
