@@ -19,11 +19,6 @@ export default function classRoomReducer(state = initialState, action) {
     case `${GET_OWNER_CLASSES}_FULFILLED`:
       return Object.assign({}, state, { classRooms: action.payload.data });
 
-    case `${GET_STUDENT_CLASSES}_FULFILLED`:
-      return {
-        ...state,
-        classes: action.payload.data
-      };
     case `${GET_CLASSROOM}_PENDING`:
       return {
         ...state,

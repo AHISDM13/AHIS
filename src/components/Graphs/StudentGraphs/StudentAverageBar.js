@@ -9,53 +9,69 @@ class StudentAverageBar extends Component {
     super();
 
     this.state = {
-      chartData: {}
+      average: [],
+      title: []
     };
   }
   componentDidMount() {
-    if (this.props.currentClassroom)
-      this.props.getStudentClassResults(
-        this.props.currentClassroom.classroom_id
+    let newAvg = [];
+    let newTitle = [];
+    this.props
+      .getStudentClassResults(this.props.currentClassroom.classroom_id)
+      .then(() =>
+        this.props.studentClassResults
+          .filter(el => el.totalqnum >= 1)
+          .map(e => {
+            newAvg.push(e.correctnum / e.totalqnum);
+            newTitle.push(e.quiz_name);
+          })
+      )
+      .then(() =>
+        this.setState({
+          average: newAvg,
+          title: newTitle
+        })
       );
   }
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.studentClassResults !== this.props.studentClassResults) {
-      let scores = this.props.studentClassResults.map((e, i) => {
-        return e.correctnum / e.totalqnum;
-      });
-      let quizName = this.props.studentClassResults.map((e, i) => {
-        return e.quiz_id;
-      });
 
-      const data = {
-        labels: quizName,
-        datasets: [
-          {
-            label: "Quiz scores per class",
-            backgroundColor: "rgba(255,99,132,0.2)",
-            borderColor: "rgba(255,99,132,1)",
-            borderWidth: 1,
-            hoverBackgroundColor: "rgba(255,99,132,0.4)",
-            hoverBorderColor: "rgba(255,99,132,1)",
-            data: scores
-          }
-        ]
-      };
-      this.setState({ chartData: data });
-    }
-  }
   render() {
-    console.log(this.props.currentClassroom);
     console.log(this.state);
+
+    let data = {
+      labels: this.state.title,
+      datasets: [
+        {
+          label: "Quiz scores per class",
+          backgroundColor: "rgba(255,99,132,0.2)",
+          borderColor: "rgba(255,99,132,1)",
+          borderWidth: 1,
+          hoverBackgroundColor: "rgba(255,99,132,0.4)",
+          hoverBorderColor: "rgba(255,99,132,1)",
+          data: this.state.average
+        }
+      ]
+    };
+
     return (
       <div>
         <h2>Student Quiz Scores</h2>
         <Bar
-          data={this.state.chartData}
+          data={data}
           width={100}
           height={50}
           options={{
-            maintainAspectRatio: false
+            maintainAspectRatio: true,
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    callback: function(label, index, labels) {
+                      return `${Number(label) * 100}%`;
+                    }
+                  }
+                }
+              ]
+            }
           }}
         />
       </div>
