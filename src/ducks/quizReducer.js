@@ -35,7 +35,6 @@ function quizReducer(state = initialState, action) {
 
     case `${CHANGE_QUESTIONS}_PENDING`:
       return Object.assign({}, state, { loading: true });
-
     default:
       return state;
   }

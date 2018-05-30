@@ -4,6 +4,19 @@
   font-size: 25px;
   padding: 1vh;
   color: #90a4ae;
+  width: 300px;
+}
+.Nav_link_subItems {
+  text-decoration: none;
+  font-size: 19px;
+  display: block;
+  color: gray;
+  padding: 3px;
+}
+.Nav_link_subItems:hover {
+  transition: 0.3s;
+  background-color: #e6eef2;
+  color: #212121;
 }
 .hamburger {
   font-size: 25px;

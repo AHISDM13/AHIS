@@ -18,6 +18,7 @@ const qc = require("./controllers/quizCtrl");
 
 const ac = require("./controllers/userCtrl");
 const sc = require("./controllers/studentCtrl");
+const rc = require("./controllers/resultCtrl");
 const port = process.env.PORT || 3001;
 
 massive(process.env.CONNECTION_STRING)
@@ -48,6 +49,7 @@ app.get("/api/classlist/:user_id", cc.getStudentClasses);
 app.get("/api/classroom/:classroom_id", sc.getClassroom);
 app.get("/api/search/:keyword", cc.getClassesByKeywords);
 app.get("/api/classes/:owner_id", cc.getOwnerClasses);
+app.get("/api/joinedClasses/:user_id", cc.getStudentClasses);
 app.post("/api/classroom", cc.submitClassRoom);
 app.put("/api/classroom/:id");
 app.delete("/api/classroom/:id");
@@ -55,6 +57,7 @@ app.delete("/api/classroom/:id");
 //QUIZ ENDPOINTS
 app.post("/api/quiz", qc.createQuiz);
 app.get("/api/quiz/:classid", qc.getQuiz);
+app.get("/api/quizs/:classroom_id", sc.getQuizsByClassroomID);
 
 //QUESTION ENDPOINTS
 app.post("/api/question", qc.addQuestion);
@@ -63,6 +66,9 @@ app.put("/api/question", qc.updateQuestion);
 
 ///STUDENT ENPOINTS
 app.post("/api/student/:classroom_id/:user_id", sc.addStudentToClasses);
+//RESULT ENDPOINTS
+app.post("/api/result", rc.addResult);
+app.get("/api/result/:quiz_id", rc.getResult);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

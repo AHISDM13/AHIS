@@ -1,0 +1,1 @@
+insert into results (question_id , user_answer , user_id , quiz_id , correct) values ($1, $2,$3,$4,$5)

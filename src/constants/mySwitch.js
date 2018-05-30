@@ -10,6 +10,8 @@ import Profile from "../components/Profile/Profile";
 import CreateClassroom from "../components/Classroom/CreateClassroom";
 import Classroom from "../components/Classroom/Classroom";
 import SearchResult from "../components/SearchResult/SearchResult";
+import Test from "../components/Student/Test/Test";
+import Review from "../components/Student/Review/Review";
 import CreateQuiz from "../components/CreateQuiz/CreateQuiz";
 import Requiz from "../components/CreateQuiz/ReQuiz";
 import EditQuiz from "../components/CreateQuiz/EditQuiz";
@@ -41,5 +43,8 @@ export default (
       path={routes.SEARCHRESULT}
       component={() => <SearchResult />}
     />
+    <Route exact path={routes.REVIEW} component={() => <Review />} />
+
+    <Route exact path={routes.TEST} component={() => <Test />} />
   </Switch>
 );
