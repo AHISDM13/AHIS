@@ -7,7 +7,7 @@ module.exports = {
     dbInstance
       .create_quiz([classroom_id, quiz_name, quiz_type])
       .then(response => {
-        console.log("hello its post");
+        // console.log("hello its post");
         res.status(200).send(response);
       })
       .catch(err => {
@@ -21,7 +21,10 @@ module.exports = {
     const dbInstance = req.app.get("db");
     dbInstance
       .get_class_quizzes([classid])
-      .then(response => res.status(200).send(response))
+      .then(response => {
+        console.log(response);
+        res.status(200).send(response);
+      })
       .catch(() => res.status(500).send());
   },
 
@@ -45,23 +48,23 @@ module.exports = {
         dummy_data_c
       ])
       .then(response => {
-        console.log(response);
+        // console.log(response);
         res.status(200).send(response);
       })
       .catch(err => {
-        console.log(err);
+        // console.log(err);
         res.status(500).send(err);
       });
   },
 
   getQuestions: (req, res, next) => {
-    console.log(`HIT getQuestions`);
+    // console.log(`HIT getQuestions`);
     const { quiz_id } = req.params;
     const dbInstance = req.app.get("db");
     dbInstance
       .get_questions([quiz_id])
       .then(response => {
-        console.log(response);
+        // console.log(response);
         res.status(200).send(response);
       })
       .catch(err => {

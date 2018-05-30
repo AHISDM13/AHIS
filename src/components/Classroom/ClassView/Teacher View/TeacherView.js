@@ -29,6 +29,12 @@ class TeacherView extends Component {
     this.props.getQuiz(this.props.match.params.id);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.props.getQuiz(this.props.match.params.id);
+    }
+  }
+
   handleTab = value => {
     this.setState({
       value: value
@@ -37,15 +43,16 @@ class TeacherView extends Component {
   launchQuiz() {}
 
   render() {
-    const classQuiz =
-      this.props.quiz.length &&
-      this.props.quiz.map((list, i) => {
-        return (
-          <Link key={i} to={`/editquiz/${list.quiz_id}`}>
-            {list.quiz_name}
-          </Link>
-        );
-      });
+    if (this.props.loading) {
+      return <div>is loading...</div>;
+    }
+    let classQuiz = this.props.quiz.map((list, i) => {
+      return (
+        <Link key={i} to={`/editquiz/${list.quiz_id}`}>
+          {list.quiz_name}
+        </Link>
+      );
+    });
 
     console.log(this.props);
     // let classResource = this.props.resources.map((e, i) => {

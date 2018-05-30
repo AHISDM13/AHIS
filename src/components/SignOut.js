@@ -7,9 +7,14 @@ class SignOutButton extends React.Component {
     auth.doSignOut();
     this.props.history.push("/");
   };
+
   render() {
     return (
-      <button type="button" onClick={this.handleSignOut}>
+      <button
+        type="button"
+        style={{ background: "none", border: "none" }}
+        onClick={this.handleSignOut}
+      >
         Sign Out
       </button>
     );
