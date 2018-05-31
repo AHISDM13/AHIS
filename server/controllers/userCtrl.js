@@ -1,5 +1,5 @@
 const addNewUser = (req, res) => {
-  console.log("hit the post /api/user");
+  // console.log("hit the post /api/user");
   const { displayName, email } = req.body;
   //console.log(req.body);
   req.app
@@ -14,7 +14,7 @@ const addNewUser = (req, res) => {
     });
 };
 const getUser = (req, res) => {
-  console.log("hit the get /api/user");
+  // console.log("hit the get /api/user");
   const { email } = req.params;
   req.app
     .get("db")

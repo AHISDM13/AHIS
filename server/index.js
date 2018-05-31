@@ -72,6 +72,8 @@ app.post("/api/student/:classroom_id/:user_id", sc.addStudentToClasses);
 app.post("/api/result", rc.addResult);
 app.get("/api/result/:quiz_id", rc.getResult);
 app.get(`/api/studentresult/:classroom_id`, rc.getStudentResultForAllQuizzes);
+app.get(`/api/classresult/:classroom_id`, rc.getClassQuizResults);
+app.get(`/api/studentquizresult/:classroom_id`, rc.getStudentQuizResults);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
