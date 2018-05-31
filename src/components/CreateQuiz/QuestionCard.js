@@ -1,9 +1,11 @@
 import React from "react";
+// import quizReducer from "../../ducks/quizReducer";
 // import {handleDeleteQuestion} from "../../ducks/quizReducer";
+import { connect } from "react-redux";
 
-export default class QuestionCard extends React.Component {
-  constructor() {
-    super();
+class QuestionCard extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       flag: false,
       question: "",
@@ -51,11 +53,18 @@ export default class QuestionCard extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props.quiz, this.props.question);
     const { question, handleRemove } = this.props;
+    let foundInd = this.props.quiz.findIndex((e,i) => {
+      // console.log(typeof e.quiz_id, typeof question.quiz_id);
+      return e.quiz_id === question[i].quiz_id;
+    });
+    // console.log(foundInd);
+
     return (
       <div>
-        {question.dummy_data_a ? (
+        {this.props.quiz.length &&
+        this.props.quiz[foundInd].quiz_type === "Multiple Choice" ? (
           !this.state.flag ? (
             <div>
               <p>Question: {question.question}</p>
@@ -138,3 +147,11 @@ export default class QuestionCard extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    ...state.quizReducer
+  };
+}
+
+export default connect(mapStateToProps)(QuestionCard);

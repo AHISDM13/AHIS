@@ -47,7 +47,7 @@ class TeacherView extends Component {
         );
       });
 
-    console.log(this.props);
+    // console.log(this.props);
     // let classResource = this.props.resources.map((e, i) => {
     //   return (
     //     <div>

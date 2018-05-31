@@ -14,6 +14,7 @@ class EditQuiz extends Component {
     super();
     this.handleChange = this.handleChange.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    
   }
   componentDidMount() {
     this.props.getQuestions(this.props.match.params.id);
@@ -31,7 +32,7 @@ class EditQuiz extends Component {
 
   render() {
     const quizName = this.props.quiz[0] && this.props.quiz[0].quiz_name;
-    console.log(this.props.question);
+    console.log(this.props);
     if (!this.props.question) {
       return (
         <div>Create more quiz questions by going to the My Classes tab</div>
@@ -48,6 +49,7 @@ class EditQuiz extends Component {
           handleChange={this.handleChange}
           question={e}
           handleRemove={this.handleRemove}
+      
         />
       );
     });

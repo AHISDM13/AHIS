@@ -6,7 +6,7 @@ const addNewUser = (req, res) => {
     .get("db")
     .add_new_user([displayName, email])
     .then(user => {
-      console.log(user);
+      // console.log(user);
       res.status(200).send(user);
     })
     .catch(err => {
@@ -20,7 +20,7 @@ const getUser = (req, res) => {
     .get("db")
     .get_user([email])
     .then(user => {
-      console.log(user);
+      // console.log(user);
       res.status(200).send(user[0]);
     })
     .catch(err => {
