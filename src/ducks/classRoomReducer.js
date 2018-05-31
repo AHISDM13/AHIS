@@ -25,7 +25,6 @@ export default function classRoomReducer(state = initialState, action) {
         isLoading: true
       };
     case `${GET_CLASSROOM}_FULFILLED`:
-      console.log(action.payload.data[0]);
       return {
         ...state,
         isLoading: false,

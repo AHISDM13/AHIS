@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 class Home extends Component {
   componentDidMount() {}
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return <div>Home</div>;
   }
 }

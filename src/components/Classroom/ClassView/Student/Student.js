@@ -16,7 +16,7 @@ class Student extends Component {
   }
   launchQuiz() {}
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     let classQuiz = this.props.quiz.map((quiz, i) => {
       return (
         <div onClick={this.launchQuiz} className="each-quiz box" key={i}>
