@@ -24,7 +24,7 @@ $degree: 90deg;
   z-index: 1;
   color: #69969c;
   background-color: whitesmoke;
-  box-shadow: 5px 5px 10px 5px #888888b2;
+  box-shadow: 2px 2px 2px 2px #9b999969;
 
   &.Card-Back-Flip {
     animation: back-flip-1 $flip-duration 1 forwards;
@@ -68,7 +68,7 @@ $degree: 90deg;
   z-index: -1;
   color: #012e34;
   background-color: whitesmoke;
-  box-shadow: 5px 5px 10px 5px #888888b2;
+  box-shadow: 2px 2px 2px 2px #9b999969;
 
   //   transform: rotateY(-$degree);
   &.Card-Back-Flip {
