@@ -19,11 +19,11 @@
     background: #74a569; }
 
 .fill-in input[type="submit"] {
-  padding: 2px 4px;
-  background: #4ebfdf;
-  box-shadow: 2px 1px 2px #4ebfdf;
+  padding: 2px 8px;
+  background: #00b8d9;
+  box-shadow: 2px 1px 2px #00b8d9;
   color: #fff;
-  border: 1px solid #4ebfdf; }
+  border: 1px solid #00b8d9; }
 
 .re-container {
   padding-top: 30px;

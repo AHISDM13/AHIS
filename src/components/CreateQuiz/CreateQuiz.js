@@ -34,7 +34,7 @@ class CreateQuiz extends React.Component {
                 type="text"
                 id="Class Name"
                 name="quizName"
-                placeholder="Name Your Classroom"
+                placeholder="Name Your Quiz"
                 value={quizName}
                 onChange={e => this.handleQuizName("quizName", e.target.value)}
                 required
