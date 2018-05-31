@@ -11,8 +11,9 @@ import Tab from "@material-ui/core/Tab";
 import "./TeacherView.css";
 import { getQuiz } from "../../../../ducks/quizReducer";
 import StudentAvg from "../../../Graphs/TeacherGraphs/TeacherAverageStudentBar";
-import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBar";
-import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
+// import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBar";
+// import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
+import StudentQuizResults from "../../../Graphs/TeacherGraphs/StudentQuizResults";
 
 const styles = {
   root: {
@@ -56,7 +57,7 @@ class TeacherView extends Component {
       );
     });
 
-    console.log(this.props);
+    // console.log(this.props);
     // let classResource = this.props.resources.map((e, i) => {
     //   return (
     //     <div>
@@ -65,10 +66,15 @@ class TeacherView extends Component {
     //     date={e.date} </div>
     //   )
     // })
-    console.log(typeof this.state.value);
+    // console.log(typeof this.state.value);
     return (
       <div>
-        <Tabs value={this.state.value} onChange={this.handleTab} centered>
+        <Tabs
+          value={this.state.value}
+          onChange={this.handleTab}
+          xs={12}
+          centered
+        >
           <Tab label="Resources" value="0" />
           <Tab label="Quizzes" value="1" />
           <Tab label="Graphs" value="2" />
@@ -96,11 +102,14 @@ class TeacherView extends Component {
                 <StudentAvg />
               </div>
               <div className="graphs">
+                <StudentQuizResults />
+              </div>
+              {/* <div className="graphs">
                 <ClassAvg />
               </div>
               <div className="graphs">
                 <AnswerAvg />
-              </div>
+              </div> */}
             </div>
           </div>
         )}

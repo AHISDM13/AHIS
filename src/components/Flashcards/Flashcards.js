@@ -61,24 +61,26 @@ class Flashcards extends Component {
       <div className="flashcard-page">
         {/* <h3>Select a deck</h3> */}
         <div className="smallcard-row">{quizList}</div>
-        {this.props.question.length ? questions : ""}
-        <div>
-          {this.props.question.length ? (
-            <i
-              onClick={this.handleCard}
-              className="fas fa-arrow-alt-circle-left fa-3x arrows"
-            />
-          ) : (
-            ""
-          )}
-          {this.state.ind < this.props.question.length - 1 ? (
-            <i
-              onClick={this.handleCard}
-              className="fas fa-arrow-alt-circle-right fa-3x arrows"
-            />
-          ) : (
-            ""
-          )}
+        <div className="flash_holder">
+          {this.props.question.length ? questions : ""}
+          <div className="icons">
+            {this.props.question.length ? (
+              <i
+                onClick={this.handleCard}
+                className="fas fa-arrow-alt-circle-left fa-3x arrows"
+              />
+            ) : (
+              ""
+            )}
+            {this.state.ind < this.props.question.length - 1 ? (
+              <i
+                onClick={this.handleCard}
+                className="fas fa-arrow-alt-circle-right fa-3x arrows"
+              />
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     );
