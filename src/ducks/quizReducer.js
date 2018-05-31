@@ -2,13 +2,14 @@ import axios from "axios";
 
 const initialState = {
   quiz: [],
+  quizs: [],
   question: [],
   loading: false
 };
 
 const CREATE_QUIZ = "CREATE_QUIZ";
 const GET_QUIZ = "GET_QUIZ";
-
+const STORE_QUIZS = "STORE_QUIZS";
 const ADD_QUESTION = "ADD_QUESTION";
 const GET_QUESTIONS = "GET_QUESTIONS";
 const CHANGE_QUESTIONS = "CHANGE_QUESTIONS";
@@ -39,6 +40,8 @@ function quizReducer(state = initialState, action) {
 
     case `${CHANGE_QUESTIONS}_PENDING`:
       return Object.assign({}, state, { loading: true });
+    case STORE_QUIZS:
+      return Object.assign({}, state, { quizs: action.payload });
     default:
       return state;
   }
@@ -106,5 +109,12 @@ export function changeQuestions(
       dummy_data_b,
       dummy_data_c
     })
+  };
+}
+
+export function storeQuizs(quiz) {
+  return {
+    type: STORE_QUIZS,
+    payload: quiz
   };
 }

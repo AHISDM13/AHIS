@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 import axios from "axios";
 import { connect } from "react-redux";
-import { getStudentClassResults } from "../../../ducks/studentReducer";
+import { getClassQuizResults } from "../../../ducks/studentReducer";
 
 class TeacherAverageClassBar extends Component {
   constructor() {
@@ -17,29 +17,34 @@ class TeacherAverageClassBar extends Component {
     let newAvg = [];
     let newTitle = [];
     this.props
-      .getStudentClassResults(this.props.currentClassroom.classroom_id)
-      .then(() =>
-        this.props.studentClassResults
-          .filter(el => el.totalqnum >= 1)
-          .map(e => {
-            newAvg.push(e.correctnum / e.totalqnum);
-            newTitle.push(e.quiz_name);
-          })
+      .getClassQuizResults(this.props.currentClassroom.classroom_id)
+      .then(
+        () =>
+          this.props.classQuizResults
+            .filter(el => el.totalqnum >= 1)
+            .map((e, i) => {
+              newAvg.push(e.correctnum / e.totalqnum);
+              newTitle.push(e.quiz_name);
+            })
+        // console.log("PROPS", this.props)
       )
       .then(() =>
         this.setState({
           average: newAvg,
-          title: newTitle
+          quizname: newTitle
         })
       );
+    // console.log(this.state);
   }
 
   render() {
     // let reduced = this.props.
-    // console.log(this.state);
+    // const quizname = this.props.classQuizResults[0].quiz_name;
+    // console.log("PROPS", quizname);
+    // console.log("STATE", this.state);
 
     let data = {
-      labels: this.state.title,
+      labels: this.state.quizname,
       datasets: [
         {
           label: "Quiz scores per class",
@@ -91,6 +96,6 @@ function mapStateToProps(state) {
     ...state.classRoomReducer
   };
 }
-export default connect(mapStateToProps, { getStudentClassResults })(
+export default connect(mapStateToProps, { getClassQuizResults })(
   TeacherAverageClassBar
 );
