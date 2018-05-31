@@ -69,12 +69,7 @@ class TeacherView extends Component {
     // console.log(typeof this.state.value);
     return (
       <div>
-        <Tabs
-          value={this.state.value}
-          onChange={this.handleTab}
-          xs={12}
-          centered
-        >
+        <Tabs value={this.state.value} onChange={this.handleTab} centered>
           <Tab label="Resources" value="0" />
           <Tab label="Quizzes" value="1" />
           <Tab label="Graphs" value="2" />

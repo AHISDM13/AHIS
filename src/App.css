@@ -102,7 +102,11 @@ video {
   top: 65px;
   height: auto;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 10px;
+}
+
+button:focus {
+  outline: none;
 }
 /* 
 color pallete
