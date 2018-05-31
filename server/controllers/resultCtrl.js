@@ -26,11 +26,13 @@ const getResult = (req, res) => {
 };
 
 const getStudentResultForAllQuizzes = (req, res) => {
-  const { classroom_id } = req.params;
-  console.log("hit /api/studentresult/:classroom_id", classroom_id);
+  const { user_id, classroom_id } = req.params;
+  // const { classroom_id } = req.body;
+  // console.log(req.body);
+  console.log("hit /api/studentresult/:user_id", user_id, classroom_id);
   req.app
     .get("db")
-    .get_a_student_avg([classroom_id])
+    .get_a_student_avg([user_id, classroom_id])
     .then(results => {
       res.status(200).send(results);
     })

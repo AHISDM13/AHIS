@@ -70,7 +70,10 @@ app.post("/api/student/:classroom_id/:user_id", sc.addStudentToClasses);
 //RESULT ENDPOINTS
 app.post("/api/result", rc.addResult);
 app.get("/api/result/:quiz_id", rc.getResult);
-app.get(`/api/studentresult/:classroom_id`, rc.getStudentResultForAllQuizzes);
+app.get(
+  `/api/studentresult/:user_id/:classroom_id`,
+  rc.getStudentResultForAllQuizzes
+);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
