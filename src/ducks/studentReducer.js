@@ -51,10 +51,11 @@ export function getResult(quiz_id) {
   };
 }
 
-export function getStudentClassResults(classroom_id) {
+export function getStudentClassResults(user_id, classroom_id) {
+  console.log(classroom_id);
   return {
     type: GET_STUDENT_CLASS_RESULTS,
-    payload: axios.get(`/api/studentresult/${classroom_id}`)
+    payload: axios.get(`/api/studentresult/${user_id}/${classroom_id}`)
   };
 }
 
