@@ -18,13 +18,13 @@ class NavigationAuth extends React.Component {
       <div>
         <Nav />
         <div className="Header_nav">
-          <span className="Header_logo">AHIS</span>
-          <Link className="Header_nav_link" to={routes.PROFILE}>
+          <span className="Header_logo">Nito</span>
+          {/* <Link className="Header_nav_link" to={routes.PROFILE}>
             Profile
           </Link>
           <Link className="Header_nav_link" to={routes.HOME}>
             Home
-          </Link>
+          </Link> */}
           <SignOutButton />
         </div>
       </div>
@@ -34,9 +34,9 @@ class NavigationAuth extends React.Component {
 
 const NavigationNonAuth = () => (
   <div className="Header_nav">
-    <span className="Header_logo">AHIS</span>
+    <span className="Header_logo unauth">Nito</span>
     <Link className="Header_nav_link" to={routes.LANDING}>
-      Sign In
+      <i className="fas fa-sign-in-alt fa-2x" />
     </Link>
   </div>
 );
