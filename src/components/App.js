@@ -20,7 +20,7 @@ class App extends Component {
     const { authUser } = this.state;
     return (
       <div>
-        <Header user={authUser} />
+        {/* <Header user={authUser} /> */}
         <div className="main">{mySwitch}</div>
       </div>
     );

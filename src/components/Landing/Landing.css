@@ -1,0 +1,41 @@
+.Landing {
+  background-image: url("exam\ photo..jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing_title {
+  color: #172b4d;
+  text-shadow: 2px 2px 8px #9e9e9ead;
+}
+
+.landing-page {
+  /* margin-top: 5vh; */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.landing-page-title {
+  margin-top: 5vh;
+  font-weight: bold;
+  color: #172b4d;
+  text-shadow: 2px 2px 8px #9e9e9ead;
+}
+
+.landing_text_box {
+  width: 20vw;
+  margin-top: 3vh;
+  border: 1px solid #9e9e9ead;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
