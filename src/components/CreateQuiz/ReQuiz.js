@@ -100,7 +100,7 @@ class ReQuiz extends Component {
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     // console.log(this.props.quiz.quiz_type);
     let ques = this.state.question.map((quest, i) => {
       return (

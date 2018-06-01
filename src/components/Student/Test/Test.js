@@ -42,7 +42,7 @@ class Test extends React.Component {
   };
   render() {
     const { currentQuiz } = this.props;
-    console.log(this.state, currentQuiz);
+    // console.log(this.state, currentQuiz);
     const displayQuestionsInCurrentQuiz = currentQuiz.map((el, i) => {
       return (
         <div className="Test" key={i}>

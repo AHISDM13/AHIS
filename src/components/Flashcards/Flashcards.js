@@ -28,6 +28,10 @@ class Flashcards extends Component {
     this.setState({ showHelp: false });
   }
   render() {
+    console.log(this.props);
+    if (this.props.loading) {
+      return <div>is loading...</div>;
+    }
     let quizList = this.props.quiz.map((e, i) => {
       return (
         <div
@@ -35,7 +39,7 @@ class Flashcards extends Component {
           key={i}
           className="small-card"
         >
-          <p>{e.quiz_name}</p>
+          {e.quiz_name}
         </div>
       );
     });
@@ -55,26 +59,28 @@ class Flashcards extends Component {
     });
     return (
       <div className="flashcard-page">
-        <h3>Select a deck</h3>
+        {/* <h3>Select a deck</h3> */}
         <div className="smallcard-row">{quizList}</div>
-        {this.props.question.length ? questions : ""}
-        <div>
-          {this.props.question.length ? (
-            <i
-              onClick={this.handleCard}
-              className="fas fa-arrow-alt-circle-left fa-3x arrows"
-            />
-          ) : (
-            ""
-          )}
-          {this.state.ind < this.props.question.length - 1 ? (
-            <i
-              onClick={this.handleCard}
-              className="fas fa-arrow-alt-circle-right fa-3x arrows"
-            />
-          ) : (
-            ""
-          )}
+        <div className="flash_holder">
+          {this.props.question.length ? questions : ""}
+          <div className="icons">
+            {this.props.question.length ? (
+              <i
+                onClick={this.handleCard}
+                className="fas fa-arrow-alt-circle-left fa-3x arrows"
+              />
+            ) : (
+              ""
+            )}
+            {this.state.ind < this.props.question.length - 1 ? (
+              <i
+                onClick={this.handleCard}
+                className="fas fa-arrow-alt-circle-right fa-3x arrows"
+              />
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </div>
     );

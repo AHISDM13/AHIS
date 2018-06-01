@@ -1,6 +1,9 @@
 .Card {
   margin: 1rem;
-  cursor: pointer; }
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
   .Card .Card-Front,
   .Card .Card-Back {
     width: 500px;
@@ -13,7 +16,7 @@
   z-index: 1;
   color: #69969c;
   background-color: whitesmoke;
-  box-shadow: 5px 5px 10px 5px #888888b2; }
+  box-shadow: 2px 2px 2px 2px #9b999969; }
   .Card-Front.Card-Back-Flip {
     animation: back-flip-1 800ms 1 forwards; }
 @keyframes back-flip-1 {
@@ -43,7 +46,7 @@
   z-index: -1;
   color: #012e34;
   background-color: whitesmoke;
-  box-shadow: 5px 5px 10px 5px #888888b2; }
+  box-shadow: 2px 2px 2px 2px #9b999969; }
   .Card-Back.Card-Back-Flip {
     animation: back-flip-2 800ms 1 forwards; }
 @keyframes back-flip-2 {

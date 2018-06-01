@@ -2,13 +2,15 @@ import axios from "axios";
 
 const initialState = {
   quiz: [],
+  quizs: [],
   question: [],
   loading: false
 };
 
 const CREATE_QUIZ = "CREATE_QUIZ";
 const GET_QUIZ = "GET_QUIZ";
-
+const DELETE_QUESTION = "DELETE_QUESTION";
+const STORE_QUIZS = "STORE_QUIZS";
 const ADD_QUESTION = "ADD_QUESTION";
 const GET_QUESTIONS = "GET_QUESTIONS";
 const CHANGE_QUESTIONS = "CHANGE_QUESTIONS";
@@ -20,11 +22,15 @@ function quizReducer(state = initialState, action) {
 
     case `${GET_QUIZ}_FULFILLED`:
       // console.log(action);
-      return Object.assign({}, state, { quiz: action.payload.data });
+      return Object.assign({}, state, {
+        quiz: action.payload.data,
+        loading: false
+      });
 
     case ADD_QUESTION:
       return Object.assign({}, state, { question: action.payload });
     case `${GET_QUESTIONS}_PENDING`:
+    case `${GET_QUIZ}_PENDING`:
       return Object.assign({}, state, { loading: true });
 
     case `${GET_QUESTIONS}_FULFILLED`:
@@ -35,6 +41,12 @@ function quizReducer(state = initialState, action) {
 
     case `${CHANGE_QUESTIONS}_PENDING`:
       return Object.assign({}, state, { loading: true });
+
+    case `${DELETE_QUESTION}_FULFILLED`:
+      return Object.assign({}, state, { question: action.payload.data });
+
+    case STORE_QUIZS:
+      return Object.assign({}, state, { quizs: action.payload });
     default:
       return state;
   }
@@ -49,10 +61,10 @@ export function createQuiz(classroom_id, quiz_name, quiz_type) {
   };
 }
 
-export function getQuiz(classroom_id) {
+export function getQuiz(classid) {
   return {
     type: GET_QUIZ,
-    payload: axios.get(`/api/quiz/${classroom_id}`)
+    payload: axios.get(`/api/quiz/${classid}`)
   };
 }
 
@@ -102,5 +114,19 @@ export function changeQuestions(
       dummy_data_b,
       dummy_data_c
     })
+  };
+}
+
+export function handleDeleteQuestion(id, quiz_id) {
+  // console.log("deleting", id, quiz_id);
+  return {
+    type: DELETE_QUESTION,
+    payload: axios.delete(`/api/question/${id}/${quiz_id}`)
+  };
+}
+export function storeQuizs(quiz) {
+  return {
+    type: STORE_QUIZS,
+    payload: quiz
   };
 }

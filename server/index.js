@@ -63,6 +63,7 @@ app.get("/api/quizs/:classroom_id", sc.getQuizsByClassroomID);
 app.post("/api/question", qc.addQuestion);
 app.get("/api/question/:quiz_id", qc.getQuestions);
 app.put("/api/question", qc.updateQuestion);
+app.delete("/api/question/:id/:quiz_id", qc.deleteQuestion);
 
 ///STUDENT ENPOINTS
 app.post("/api/student/:classroom_id/:user_id", sc.addStudentToClasses);
@@ -74,6 +75,8 @@ app.get(
   `/api/studentresult/:user_id/:classroom_id`,
   rc.getStudentResultForAllQuizzes
 );
+app.get(`/api/classresult/:classroom_id`, rc.getClassQuizResults);
+app.get(`/api/studentquizresult/:classroom_id`, rc.getStudentQuizResults);
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

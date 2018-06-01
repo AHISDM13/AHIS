@@ -41,8 +41,38 @@ const getStudentResultForAllQuizzes = (req, res) => {
     });
 };
 
+const getClassQuizResults = (req, res) => {
+  const { classroom_id } = req.params;
+  // console.log("hit /api/classresult/:classroom_id", classroom_id);
+  req.app
+    .get("db")
+    .get_teacher_avg([classroom_id])
+    .then(results => {
+      res.status(200).send(results);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+};
+
+const getStudentQuizResults = (req, res) => {
+  const { classroom_id } = req.params;
+
+  req.app
+    .get("db")
+    .get_student_quiz_result([classroom_id])
+    .then(results => {
+      res.status(200).send(results);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+};
+
 module.exports = {
   addResult,
   getResult,
-  getStudentResultForAllQuizzes
+  getStudentResultForAllQuizzes,
+  getClassQuizResults,
+  getStudentQuizResults
 };
