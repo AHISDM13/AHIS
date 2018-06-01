@@ -33,7 +33,7 @@ class StudentAveragePie extends Component {
           width={100}
           height={200}
           options={{
-            maintainAspectRatio: false
+            maintainAspectRatio: true
           }}
         />
       </div>

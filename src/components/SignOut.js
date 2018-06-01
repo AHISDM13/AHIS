@@ -15,7 +15,7 @@ class SignOutButton extends React.Component {
         style={{ background: "none", border: "none" }}
         onClick={this.handleSignOut}
       >
-        Sign Out
+        <i className="fas fa-sign-out-alt fa-2x" />
       </button>
     );
   }
