@@ -39,7 +39,7 @@ class EditQuiz extends Component {
     }
 
     if (this.props.loading) {
-      return <div> loading... </div>;
+      return <div className="load-screen" />;
     }
     const questions = this.props.question.map((e, i) => {
       return (
