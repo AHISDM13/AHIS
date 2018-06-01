@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { submitClassRoom } from "../../ducks/classRoomReducer";
+import { submitClassRoom, getOwnerClasses } from "../../ducks/classRoomReducer";
 import swal from "sweetalert";
 import { withRouter } from "react-router-dom";
 import "./CreateClassroom.css";
@@ -18,6 +18,7 @@ class CreateClassroom extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const { classTitle, password, subject } = this.state;
     const { user, submitClassRoom } = this.props;
     return (
@@ -77,10 +78,13 @@ class CreateClassroom extends React.Component {
                       button: "Go to Class"
                     })
                   )
-                  .then(() => {
+                  .then(classr => {
                     this.props.history.push(
                       `/classroom/${this.props.classRooms.classroom_id}`
                     );
+                  })
+                  .then(() => {
+                    this.props.getOwnerClasses(this.props.user.id);
                   });
               }}
             >
@@ -101,5 +105,7 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, { submitClassRoom })(CreateClassroom)
+  connect(mapStateToProps, { submitClassRoom, getOwnerClasses })(
+    CreateClassroom
+  )
 );
