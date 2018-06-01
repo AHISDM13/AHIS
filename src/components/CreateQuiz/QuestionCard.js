@@ -1,9 +1,9 @@
 import React from "react";
-// import quizReducer from "../../ducks/quizReducer";
-// import {handleDeleteQuestion} from "../../ducks/quizReducer";
-import { connect } from "react-redux";
+import quizReducer from "../../ducks/quizReducer";
+import { handleDeleteQuestion } from "../../ducks/quizReducer";
+// import { connect } from "react-redux";
 
-class QuestionCard extends React.Component {
+export default class QuestionCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,16 +55,17 @@ class QuestionCard extends React.Component {
   render() {
     // console.log(this.props.quiz, this.props.question);
     const { question, handleRemove } = this.props;
-    let foundInd = this.props.quiz.findIndex((e,i) => {
-      // console.log(typeof e.quiz_id, typeof question.quiz_id);
-      return e.quiz_id === question[i].quiz_id;
-    });
+    // let foundInd = this.props.quiz.findIndex((e, i) => {
+    // console.log(typeof e.quiz_id, typeof question.quiz_id);
+    //   return e.quiz_id === question[i].quiz_id;
+    // });
     // console.log(foundInd);
 
     return (
       <div>
-        {this.props.quiz.length &&
-        this.props.quiz[foundInd].quiz_type === "Multiple Choice" ? (
+        {/* {this.props.quiz.length &&
+        this.props.quiz[foundInd].quiz_type === "Multiple Choice"  */}
+        {question.dummy_data_a ? (
           !this.state.flag ? (
             <div>
               <p>Question: {question.question}</p>
@@ -148,10 +149,10 @@ class QuestionCard extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    ...state.quizReducer
-  };
-}
+// function mapStateToProps(state) {
+//   return {
+//     ...state.quizReducer
+//   };
+// }
 
-export default connect(mapStateToProps)(QuestionCard);
+// export default connect(mapStateToProps)(QuestionCard);

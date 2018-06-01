@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import {
   getQuestions,
   changeQuestions,
-  handleDeleteQuestion,
-  getQuiz
+  handleDeleteQuestion
+  // getQuiz
 } from "../../ducks/quizReducer";
 import { withRouter, Link } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
@@ -14,7 +14,6 @@ class EditQuiz extends Component {
     super();
     this.handleChange = this.handleChange.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
-    
   }
   componentDidMount() {
     this.props.getQuestions(this.props.match.params.id);
@@ -49,7 +48,6 @@ class EditQuiz extends Component {
           handleChange={this.handleChange}
           question={e}
           handleRemove={this.handleRemove}
-      
         />
       );
     });
@@ -73,7 +71,7 @@ export default withRouter(
   connect(mapStateToProps, {
     getQuestions,
     changeQuestions,
-    handleDeleteQuestion,
-    getQuiz
+    handleDeleteQuestion
+    // getQuiz
   })(EditQuiz)
 );
