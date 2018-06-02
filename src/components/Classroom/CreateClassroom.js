@@ -80,7 +80,7 @@ class CreateClassroom extends React.Component {
                   )
                   .then(classr => {
                     this.props.history.push(
-                      `/classroom/${this.props.classRooms.classroom_id}`
+                      `/classroom/${this.props.classRooms[0].classroom_id}`
                     );
                   })
                   .then(() => {
