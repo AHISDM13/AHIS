@@ -7,7 +7,8 @@ import Nav from "../Nav/Nav";
 import Search from "../Search/Search";
 const Header = ({ user }) => (
   <div className="Header">
-    {user ? <NavigationAuth /> : <NavigationNonAuth />}
+    {user !== null ? <NavigationAuth /> : <NavigationNonAuth />}
+    {console.log(user)}
     {/* <Search /> */}
   </div>
 );
@@ -17,19 +18,17 @@ class NavigationAuth extends React.Component {
     return (
       <div>
         <Nav />
+        <div className="Header_nav">
+          <span className="Header_logo">Nito</span>
+          {/* <Link className="Header_nav_link" to={routes.PROFILE}>
+            Profile
+          </Link>
+          <Link className="Header_nav_link" to={routes.HOME}>
+            Home
+          </Link> */}
 
-        <span className="Header_logo">AHIS</span>
-        <Link
-          className="Header_nav_link"
-          to={routes.PROFILE}
-          data-cy-profile-link
-        >
-          Profile
-        </Link>
-        <Link className="Header_nav_link" to={routes.HOME} data-cy-home-link>
-          Home
-        </Link>
-        <SignOutButton />
+          <SignOutButton />
+        </div>
       </div>
     );
   }
@@ -38,9 +37,9 @@ class NavigationAuth extends React.Component {
 const NavigationNonAuth = () => (
   <div className="Header_nav">
     <span className="Header_logo unauth">Nito</span>
-    <Link className="Header_nav_link" to={routes.LANDING}>
+    {/* <Link className="Header_nav_link" to={routes.LANDING}>
       <i className="fas fa-sign-in-alt fa-2x" />
-    </Link>
+    </Link> */}
   </div>
 );
 

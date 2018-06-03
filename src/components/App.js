@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     const { authUser } = this.state;
     return (
-      <div>
+      <div className="App">
         <Header user={authUser} />
         <div className="main">{mySwitch}</div>
       </div>

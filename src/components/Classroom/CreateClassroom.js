@@ -30,8 +30,9 @@ class CreateClassroom extends React.Component {
             onSubmit={e => e.preventDefault()}
           >
             <div className="pure-control-group">
-              <label>Class Room Name</label>
+              <label>Classroom Name</label>
               <input
+                data-cy-inputbox-name
                 type="text"
                 id="Class Name"
                 placeholder="Name Your Classroom"
@@ -45,6 +46,7 @@ class CreateClassroom extends React.Component {
             <div className="pure-control-group">
               <label>Password</label>
               <input
+                data-cy-inputbox-cpassword
                 type="text"
                 id="Class Pass"
                 placeholder="Classroom Password"
@@ -55,6 +57,7 @@ class CreateClassroom extends React.Component {
             <div className="pure-control-group">
               <label>Subject</label>
               <select
+                data-cy-selection
                 id="subject"
                 name="subject"
                 value={subject}
@@ -68,6 +71,7 @@ class CreateClassroom extends React.Component {
             </div>
 
             <button
+              disabled
               onClick={e => {
                 submitClassRoom(user.id, classTitle, password, subject)
                   .then(
@@ -80,7 +84,7 @@ class CreateClassroom extends React.Component {
                   )
                   .then(classr => {
                     this.props.history.push(
-                      `/classroom/${this.props.classRooms.classroom_id}`
+                      `/classroom/${this.props.classRooms[0].classroom_id}`
                     );
                   })
                   .then(() => {

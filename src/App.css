@@ -94,16 +94,15 @@ video {
 
 .App {
   text-align: center;
-  height: auto;
+  height: 100vh;
+  margin: 0 auto;
   /* background-color: whitesmoke; */
 }
 .main {
   position: relative;
-  /* display: flex; */
-  /* 
-  top: 65px; */
-  height: auto;
-  width: 100vw;
+  top: 65px;
+  /* height: auto; */
+  width: 100%;
 }
 
 button:focus {
