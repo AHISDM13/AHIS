@@ -107,16 +107,20 @@ class ReQuiz extends Component {
         <div className="outer-quiz" key={i}>
           {this.props.quiz.quiz_type !== "Multiple Choice" ? (
             <div className="fill-in">
-              <p> Question: {quest.Q} </p> <p>Answer: {quest.A}</p>
-              <button onClick={() => this.removeQuestion(i)}>Remove</button>
+              <p> {quest.Q} ? </p> <p> {quest.A}</p>
+              <button className="remove" onClick={() => this.removeQuestion(i)}>
+                -
+              </button>
             </div>
           ) : (
             <div className="fill-in">
-              <div> Question: {quest.Q} </div> <div>Answer: {quest.A}</div>
-              <div> False answer: {quest.One} </div>
-              <div>False answer: {quest.Two}</div>
-              <div>False answer: {quest.Three} </div>
-              <button onClick={() => this.removeQuestion(i)}>Remove</button>
+              <div> Q: {quest.Q} </div> <div>A: {quest.A}</div>
+              <div> F: {quest.One} </div>
+              <div>F: {quest.Two}</div>
+              <div>F: {quest.Three} </div>
+              <button className="remove" onClick={() => this.removeQuestion(i)}>
+                -
+              </button>
             </div>
           )}
         </div>
@@ -128,8 +132,8 @@ class ReQuiz extends Component {
         {this.props.quiz.quiz_type !== "Multiple Choice" ? (
           <div>
             <div className="fill-in-text">
-              <h1>Create Question</h1>
-              <h1>Create Answer</h1>
+              <h1 className="heading_requiz">Question</h1>
+              <h1 className="heading_requiz">Answer</h1>
             </div>
             <form className="fill-in" onSubmit={this.handleSubmitQuestion}>
               <div className="fill-in-input">
@@ -147,22 +151,21 @@ class ReQuiz extends Component {
                   onChange={e => this.handleAnswer(e.target.value)}
                   placeholder="Type answer here"
                 />
-                <input type="submit" value="Add" />
+                <input type="submit" value="+" />
               </div>
             </form>
           </div>
         ) : (
           <div>
             <form className="fill-in" onSubmit={this.handleSubmitQuestion}>
-              <input type="submit" value="Submit" />
-              <h1>Create Question</h1>
+              <h1 className="heading_requiz">Question</h1>
               <input
                 className="inputbox-requiz"
                 value={this.state.inputQuestion}
                 onChange={e => this.handleQuestion(e.target.value)}
                 placeholder="Type question here"
               />
-              <h1>Create Answer</h1>
+              <h1 className="heading_requiz">Answer</h1>
               <input
                 className="inputbox-requiz"
                 value={this.state.inputAnswer}
@@ -170,36 +173,37 @@ class ReQuiz extends Component {
                 placeholder="Type answer here"
               />
 
-              <h1>Multiple choice answer 1</h1>
+              <h1 className="heading_requiz">Wrong Answer 1</h1>
               <input
                 className="inputbox-requiz"
                 value={this.state.dummy_data_a}
                 onChange={e => this.dummyOne(e.target.value)}
                 placeholder="Optional for multiple choice"
               />
-              <h1>Mulitple choice answer 2</h1>
+              <h1 className="heading_requiz">Wrong Answer 2</h1>
               <input
                 className="inputbox-requiz"
                 value={this.state.dummy_data_b}
                 onChange={e => this.dummyTwo(e.target.value)}
                 placeholder="Optional for multiple choice"
               />
-              <h1>Mulitple choice answer 3</h1>
+              <h1 className="heading_requiz">Wrong Answer 3</h1>
               <input
                 className="inputbox-requiz"
                 value={this.state.dummy_data_c}
                 onChange={e => this.dummyThree(e.target.value)}
                 placeholder="Optional for multiple choice"
               />
+              <input type="submit" value="+" />
             </form>
           </div>
         )}
 
         <div>
-          <h1>Quiz Box {ques}</h1>
+          <h1 className="heading_requiz"> {ques}</h1>
         </div>
         <button className="create" onClick={() => this.postQuestion()}>
-          Create Quiz{" "}
+          Create Quiz
         </button>
       </div>
     );

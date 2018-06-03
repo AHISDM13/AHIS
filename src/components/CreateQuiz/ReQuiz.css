@@ -8,34 +8,40 @@
 
 .create {
   padding: 10px 30px;
-  background: #7fb174;
+  background: #ffab00;
   color: #fff;
-  box-shadow: 2px 4px 0px #74a569;
-  border: #74a569;
+  box-shadow: 0px 0px 10px 0px #b8c3db44;
+  border: #ffab00;
   border-radius: 8px;
-  font-weight: bold;
   outline: none; }
   .create:focus {
-    background: #74a569; }
+    background: #ffab00; }
 
 .fill-in input[type="submit"] {
-  padding: 2px 8px;
-  background: #00b8d9;
-  box-shadow: 2px 1px 2px #00b8d9;
+  background: #36b37e;
+  font-size: 30px;
+  box-shadow: 0px 0px 10px 0px #b8c3db44;
   color: #fff;
-  border: 1px solid #00b8d9; }
+  border: 1px solid #36b37e;
+  border-radius: 50px; }
+
+.remove {
+  background: #ff5630;
+  font-size: 45px;
+  box-shadow: 0px 0px 10px 0px #b8c3db44;
+  color: #fff;
+  border: 1px solid #ff5630;
+  border-radius: 50px; }
 
 .re-container {
   padding-top: 30px;
-  width: 80vw;
-  margin: 20px auto; }
+  width: 70vw;
+  margin: auto;
+  margin-left: 20vw; }
 
 .fill-in-text {
   display: flex;
   justify-content: space-around; }
-  .fill-in-text h1 {
-    text-align: center;
-    font-size: 20px; }
 
 .fill-in {
   display: flex;
@@ -44,8 +50,17 @@
   .fill-in div {
     width: 100%;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    font-size: 20px; }
   .fill-in .inputbox-requiz {
     width: 100%; }
+
+.heading_requiz {
+  text-align: center;
+  font-size: 30px;
+  color: #172b4d; }
+
+p {
+  font-size: 20px; }
 
 /*# sourceMappingURL=ReQuiz.css.map */
