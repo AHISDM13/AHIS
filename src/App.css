@@ -96,11 +96,12 @@ video {
   text-align: center;
   height: 100vh;
   margin: 0 auto;
+  box-sizing: border-box;
   /* background-color: whitesmoke; */
 }
 .main {
   position: relative;
-  top: 65px;
+  /* top: 65px; */
   /* height: auto; */
   width: 100%;
 }

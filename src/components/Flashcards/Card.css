@@ -10,13 +10,25 @@
     height: 250px;
     text-align: center;
     margin-bottom: -125px; }
+  @media (max-width: 375px) {
+    .Card .Card-Front,
+    .Card .Card-Back {
+      width: 80vw;
+      height: 250px;
+      text-align: center;
+      margin-bottom: -125px; } }
 
 .Card-Front {
   position: relative;
   z-index: 1;
-  color: #69969c;
-  background-color: snow;
-  box-shadow: 2px 2px 2px 2px #9b999969; }
+  font-size: 30px;
+  color: #172b4d;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px #9b999969;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
   .Card-Front.Card-Back-Flip {
     animation: back-flip-1 800ms 1 forwards; }
 @keyframes back-flip-1 {
@@ -44,9 +56,12 @@
 .Card-Back {
   position: relative;
   z-index: -1;
-  color: #012e34;
-  background-color: #fff9f9;
-  box-shadow: 2px 2px 2px 2px #9b999969; }
+  color: #172b4d;
+  font-size: 30px;
+  background-color: white;
+  box-shadow: 2px 2px 2px 2px #9b999969;
+  justify-content: center;
+  align-items: center; }
   .Card-Back.Card-Back-Flip {
     animation: back-flip-2 800ms 1 forwards; }
 @keyframes back-flip-2 {
@@ -71,5 +86,19 @@
   100% {
     transform: rotateX(0deg);
     z-index: -1; } }
+.flip {
+  font-size: 14px;
+  animation: 2s flipped infinite; }
+@keyframes flipped {
+  0% {
+    opacity: 1; }
+  25% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  75% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
 
 /*# sourceMappingURL=Card.css.map */

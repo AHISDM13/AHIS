@@ -97,7 +97,7 @@ class TeacherView extends Component {
           </div>
         )}
         {this.state.value === 2 && (
-          <div>
+          <div className="graphview">
             <h2 style={styles.headline}>Analytics</h2>
             <div className="teachergraphs">
               <div className="graphs">
