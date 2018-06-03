@@ -14,6 +14,7 @@ class SignOutButton extends React.Component {
         type="button"
         style={{ background: "none", border: "none" }}
         onClick={this.handleSignOut}
+        data-cy-sign-out
       >
         Sign Out
       </button>

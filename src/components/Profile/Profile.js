@@ -45,6 +45,7 @@ class Profile extends Component {
               name="first_name"
               onChange={this.handleInput}
               autoFocus
+              data-cy-update-first
             />
           </div>
           <p>Last Name</p>
@@ -56,6 +57,7 @@ class Profile extends Component {
               value={this.state.last_name}
               name="last_name"
               onChange={this.handleInput}
+              data-cy-update-last
             />
           </div>
           {/* <p>Picture</p>
@@ -77,9 +79,15 @@ class Profile extends Component {
               value={this.state.email}
               name="email"
               onChange={this.handleInput}
+              data-cy-update-email
             />
           </div>
-          <input className="submit" type="submit" value="submit" />
+          <input
+            className="submit"
+            type="submit"
+            value="submit"
+            data-cy-submit-profile
+          />
         </form>
       </div>
     );
