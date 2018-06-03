@@ -44,7 +44,7 @@ class Card extends Component {
             onClick={this.flipRight}
           >
             <p>{this.props.ques}</p>
-            {this.props.showHelp ? <p className="flip">Click to flip</p> : null}
+            {this.props.showHelp ? <p className="flip">Click</p> : null}
           </div>
           <div
             className={"Card-Back " + flippedStyle}

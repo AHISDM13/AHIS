@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import swal from "sweetalert";
 import { createQuiz } from "../../ducks/quizReducer";
 import { Link } from "react-router-dom";
+import "./CreateQuiz.css";
 
 class CreateQuiz extends React.Component {
   state = {
@@ -23,7 +24,7 @@ class CreateQuiz extends React.Component {
     return (
       <div className="quiz">
         <div className="createquiz">
-          <h1 className="title">Create Quiz</h1>
+          <h1 className="title">Create A Quiz</h1>
           <form
             className="pure-form pure-form-aligned"
             onSubmit={e => e.preventDefault()}
@@ -40,8 +41,8 @@ class CreateQuiz extends React.Component {
                 required
               />
             </div>
-            <div className="QuizType">
-              <label>Quiz Type</label>
+            <div className="pure-control-group">
+              <label>Quiz Type </label>
               <select
                 id="quiz type"
                 name="quiz type"
@@ -54,6 +55,7 @@ class CreateQuiz extends React.Component {
             </div>
             <Link to={`/requiz`}>
               <button
+                className="create"
                 onClick={e => createQuiz(match.params.id, quizName, quizType)}
               >
                 Create

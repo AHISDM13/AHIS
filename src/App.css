@@ -101,8 +101,6 @@ video {
   overflow-y: scroll;
 }
 .main {
-  /* overflow: scroll; */
-  /* width: 80%; */
   flex-grow: 1;
 }
 
