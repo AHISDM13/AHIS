@@ -55,7 +55,9 @@ class Nav extends Component {
     return (
       <div className="Nav">
         <span className="hamburger">
-          <a onClick={() => this.handleToggle(true)}>&#9776;</a>
+          <a data-cy-navbutton onClick={() => this.handleToggle(true)}>
+            &#9776;
+          </a>
         </span>
         <Drawer
           open={this.state.open}
@@ -77,6 +79,7 @@ class Nav extends Component {
             Profile
           </Link>
           <Link
+            data-cy-create
             to="/createclass"
             className="Nav_link"
             onClick={() => this.handleToggle(false)}

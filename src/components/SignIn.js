@@ -76,6 +76,7 @@ class SignInForm extends Component {
       <form onSubmit={this.onSubmit}>
         <input
           value={email}
+          data-cy-inputbox-login
           onChange={event =>
             this.setState(byPropKey("email", event.target.value))
           }
@@ -84,13 +85,14 @@ class SignInForm extends Component {
         />
         <input
           value={password}
+          data-cy-inputbox-password
           onChange={event =>
             this.setState(byPropKey("password", event.target.value))
           }
           type="password"
           placeholder="Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <button disabled={isInvalid} type="submit" data-cy-button-login>
           Sign In
         </button>
 
