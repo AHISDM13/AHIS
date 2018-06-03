@@ -89,6 +89,7 @@ class SignInForm extends Component {
       <form className="Login_form" onSubmit={this.onSubmit}>
         <div>NIto</div>
         <input
+          data-cy-inputbox-login
           value={email}
           onChange={event =>
             this.setState(byPropKey("email", event.target.value))
@@ -98,6 +99,7 @@ class SignInForm extends Component {
           className="sign_in_input"
         />
         <input
+          data-cy-inputbox-password
           value={password}
           onChange={event =>
             this.setState(byPropKey("password", event.target.value))
@@ -106,7 +108,7 @@ class SignInForm extends Component {
           placeholder="Password"
           className="sign_in_input"
         />
-        <button color="primary" type="submit">
+        <button data-cy-button-login color="primary" type="submit">
           Sign In
         </button>
 

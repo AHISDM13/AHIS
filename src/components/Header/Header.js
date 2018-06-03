@@ -19,12 +19,12 @@ class NavigationAuth extends React.Component {
         <Nav />
         <div className="Header_nav">
           <span className="Header_logo">Nito</span>
-          {/* <Link className="Header_nav_link" to={routes.PROFILE}>
+          <Link className="Header_nav_link" to={routes.PROFILE}>
             Profile
           </Link>
           <Link className="Header_nav_link" to={routes.HOME}>
             Home
-          </Link> */}
+          </Link>
           <SignOutButton />
         </div>
       </div>

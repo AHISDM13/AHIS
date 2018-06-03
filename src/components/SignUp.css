@@ -7,8 +7,9 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  background-image: url("./Landing/exam\ photo..jpg");
+  background-image: url("./Landing/clock.jpg");
   background-repeat: no-repeat;
+  background-position: bottom;
   background-size: contain;
   background-size: cover;
 }

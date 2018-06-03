@@ -98,7 +98,7 @@ video {
   /* background-color: whitesmoke; */
 }
 .main {
-  /* position: absolute; */
+  position: relative;
   /* display: flex; */
   /* 
   top: 65px; */
