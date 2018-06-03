@@ -12,7 +12,7 @@ class Review extends React.Component {
         border: "1px solid blue"
       }
     };
-    console.log(currentTestResult);
+    // console.log(currentTestResult);
     const displayTestResult = currentTestResult.map((el, i) => {
       return (
         <div

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getQuestions, changeQuestions } from "../../ducks/quizReducer";
+import {
+  getQuestions,
+  changeQuestions,
+  handleDeleteQuestion
+  // getQuiz
+} from "../../ducks/quizReducer";
 import { withRouter, Link } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
 
@@ -8,6 +13,7 @@ class EditQuiz extends Component {
   constructor() {
     super();
     this.handleChange = this.handleChange.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
   }
   componentDidMount() {
     this.props.getQuestions(this.props.match.params.id);
@@ -19,10 +25,17 @@ class EditQuiz extends Component {
     });
   }
 
+  handleRemove(qid, quizid) {
+    this.props.handleDeleteQuestion(qid, quizid);
+  }
+
   render() {
-    // console.log(this.props.question);
+    const quizName = this.props.quiz[0] && this.props.quiz[0].quiz_name;
+    console.log(this.props);
     if (!this.props.question) {
-      return <div>Your quiz is deleted. Go back to create more quizes.</div>;
+      return (
+        <div>Create more quiz questions by going to the My Classes tab</div>
+      );
     }
 
     if (this.props.loading) {
@@ -30,27 +43,19 @@ class EditQuiz extends Component {
     }
     const questions = this.props.question.map((e, i) => {
       return (
-        <div>
-          <div>
-            <QuestionCard
-              key={e.question_id}
-              handleChange={this.handleChange}
-              question={e}
-            />
-          </div>
-          <div>
-            <button>Delete Question Box</button>
-          </div>
-        </div>
+        <QuestionCard
+          key={e.question_id}
+          handleChange={this.handleChange}
+          question={e}
+          handleRemove={this.handleRemove}
+        />
       );
     });
 
     return (
       <div>
+        <div>QUIZ NAME {quizName}</div>
         <div>{questions}</div>
-        <div>
-          <button>Delete Quiz</button>
-        </div>
       </div>
     );
   }
@@ -63,5 +68,10 @@ function mapStateToProps(state) {
 }
 
 export default withRouter(
-  connect(mapStateToProps, { getQuestions, changeQuestions })(EditQuiz)
+  connect(mapStateToProps, {
+    getQuestions,
+    changeQuestions,
+    handleDeleteQuestion
+    // getQuiz
+  })(EditQuiz)
 );

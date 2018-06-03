@@ -16,7 +16,7 @@ class SignOutButton extends React.Component {
         onClick={this.handleSignOut}
         data-cy-sign-out
       >
-        Sign Out
+        <i className="fas fa-sign-out-alt fa-2x" />
       </button>
     );
   }

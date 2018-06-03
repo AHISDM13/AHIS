@@ -8,6 +8,7 @@ import { getClassroom } from "../../ducks/classRoomReducer";
 class Home extends Component {
   componentDidMount() {}
   render() {
+
     console.log(this.props);
     const { myClassRooms, joinedClasses, getClassroom } = this.props;
     const myJoinedClasses = joinedClasses
@@ -55,6 +56,7 @@ class Home extends Component {
         </div>
       </div>
     );
+
   }
 }
 
