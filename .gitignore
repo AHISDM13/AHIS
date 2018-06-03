@@ -21,6 +21,10 @@ firebase.js
 *.css.map
 *.scss.map
 
+# Cypress suite
+cypress.json
+/cypress
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

@@ -17,16 +17,19 @@ class NavigationAuth extends React.Component {
     return (
       <div>
         <Nav />
-        <div className="Header_nav">
-          <span className="Header_logo">Nito</span>
-          <Link className="Header_nav_link" to={routes.PROFILE}>
-            Profile
-          </Link>
-          <Link className="Header_nav_link" to={routes.HOME}>
-            Home
-          </Link>
-          <SignOutButton />
-        </div>
+
+        <span className="Header_logo">AHIS</span>
+        <Link
+          className="Header_nav_link"
+          to={routes.PROFILE}
+          data-cy-profile-link
+        >
+          Profile
+        </Link>
+        <Link className="Header_nav_link" to={routes.HOME} data-cy-home-link>
+          Home
+        </Link>
+        <SignOutButton />
       </div>
     );
   }
