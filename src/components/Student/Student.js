@@ -8,7 +8,9 @@ class Student extends React.Component {
     return (
       <div className="Student">
         display student view
-        <Quiz user={user} currentClassroom={currentClassroom} quizs={quizs} />
+        <div className="Student_Quiz">
+          <Quiz user={user} currentClassroom={currentClassroom} quizs={quizs} />
+        </div>
       </div>
     );
   }

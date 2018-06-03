@@ -1,5 +1,5 @@
 .Header {
-  float: left;
+  /* float: left; */
   position: relative;
   padding-top: 16px;
   background-color: #0747a6;
@@ -19,7 +19,6 @@
   top: 0;
   padding: 13px;
   top: 40%;
-
   letter-spacing: 1px;
 }
 .Header_top {
@@ -29,10 +28,12 @@
   margin-bottom: 40px;
 }
 
-.unauth {
+/* .unauth {
   left: 20px;
+} */
+.Header_nav {
+  margin: 0 auto;
 }
-
 @media (max-width: 767px) {
   .Header {
     height: 75px;
@@ -42,7 +43,5 @@
     float: none;
     padding-top: 0;
     padding-left: 13px;
-  }
-  .Header_nav {
   }
 }
