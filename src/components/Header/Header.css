@@ -1,6 +1,7 @@
 .Header {
   float: left;
-  padding-top: 80px;
+  position: relative;
+  padding-top: 16px;
   background-color: #0747a6;
   top: 0;
   left: 0;
@@ -13,23 +14,21 @@
 .Header_logo {
   font-size: 30px;
   font-weight: bold;
-  position: fixed;
+  position: relative;
   display: inline;
   top: 0;
   padding: 13px;
-  left: 40px;
-  padding-bottom: 30px;
+  top: 40%;
+
   letter-spacing: 1px;
 }
-.Header_nav {
-  /* margin: auto; */
+.Header_top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 }
-.Header_nav_link {
-  text-decoration: none;
-  color: white;
-  font-size: 20px;
-  padding: 10px;
-}
+
 .unauth {
   left: 20px;
 }
@@ -41,6 +40,8 @@
     display: flex;
     flex-direction: row;
     float: none;
+    padding-top: 0;
+    padding-left: 13px;
   }
   .Header_nav {
   }
