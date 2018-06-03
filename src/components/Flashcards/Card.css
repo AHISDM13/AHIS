@@ -15,7 +15,7 @@
   position: relative;
   z-index: 1;
   color: #69969c;
-  background-color: whitesmoke;
+  background-color: snow;
   box-shadow: 2px 2px 2px 2px #9b999969; }
   .Card-Front.Card-Back-Flip {
     animation: back-flip-1 800ms 1 forwards; }
@@ -45,7 +45,7 @@
   position: relative;
   z-index: -1;
   color: #012e34;
-  background-color: whitesmoke;
+  background-color: #fff9f9;
   box-shadow: 2px 2px 2px 2px #9b999969; }
   .Card-Back.Card-Back-Flip {
     animation: back-flip-2 800ms 1 forwards; }

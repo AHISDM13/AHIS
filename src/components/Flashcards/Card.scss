@@ -23,7 +23,7 @@ $degree: 90deg;
   position: relative;
   z-index: 1;
   color: #69969c;
-  background-color: whitesmoke;
+  background-color: rgb(255, 250, 250);
   box-shadow: 2px 2px 2px 2px #9b999969;
 
   &.Card-Back-Flip {
@@ -67,7 +67,7 @@ $degree: 90deg;
   position: relative;
   z-index: -1;
   color: #012e34;
-  background-color: whitesmoke;
+  background-color: rgb(255, 249, 249);
   box-shadow: 2px 2px 2px 2px #9b999969;
 
   //   transform: rotateY(-$degree);
