@@ -1,0 +1,23 @@
+.Sign_In_Form {
+  /* background-color: rgba(241, 241, 241, 0.507); */
+  /* padding: 10px; */
+  /* margin-top: 10px; */
+  align-self: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-image: url("./Landing/clock.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  background-size: cover;
+}
+
+.input {
+  margin: 10px;
+  width: 30%;
+  padding: 5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}

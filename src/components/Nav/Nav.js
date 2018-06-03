@@ -79,7 +79,7 @@ class Nav extends Component {
             Profile
           </Link>
           <Link
-            data-cy-create
+            data-cy-createclass-button
             to="/createclass"
             className="Nav_link"
             onClick={() => this.handleToggle(false)}
@@ -90,7 +90,11 @@ class Nav extends Component {
             My classes
           </p>
           {this.state.myclassesShow ? createdClasses : null}
-          <p className="Nav_link" onClick={() => this.handleJoinedClasses()}>
+          <p
+            data-cy-joinedclass-button
+            className="Nav_link"
+            onClick={() => this.handleJoinedClasses()}
+          >
             Joined classes
           </p>
           {this.state.joinedClassesShow ? displayJoinedClasses : null}

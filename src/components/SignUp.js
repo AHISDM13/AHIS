@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import * as routes from "../constants/routes";
 import { auth } from "../firebase";
 import { addUser } from "../ducks/userReducer";
+import "./SignUp.css";
 const SignUpPage = ({ history, addUser }) => (
   <div>
-    <h1>SignUp</h1>
     <SignUpForm history={history} addUser={addUser} />
   </div>
 );
@@ -56,8 +56,10 @@ class SignUpForm extends Component {
       email === "" ||
       username === "";
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className="Sign_In_Form">
+        <h1>Sign Up</h1>
         <input
+          className="input"
           value={username}
           onChange={event =>
             this.setState(byPropKey("username", event.target.value))
@@ -66,6 +68,7 @@ class SignUpForm extends Component {
           placeholder="Full Name"
         />
         <input
+          className="input"
           value={email}
           onChange={event =>
             this.setState(byPropKey("email", event.target.value))
@@ -74,6 +77,7 @@ class SignUpForm extends Component {
           placeholder="Email Address"
         />
         <input
+          className="input"
           value={passwordOne}
           onChange={event =>
             this.setState(byPropKey("passwordOne", event.target.value))
@@ -82,6 +86,7 @@ class SignUpForm extends Component {
           placeholder="Password"
         />
         <input
+          className="input"
           value={passwordTwo}
           onChange={event =>
             this.setState(byPropKey("passwordTwo", event.target.value))
