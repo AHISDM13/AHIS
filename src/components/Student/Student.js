@@ -7,7 +7,7 @@ class Student extends React.Component {
     const { user, currentClassroom, quizs } = this.props;
     return (
       <div className="Student">
-        display student view
+        Quizzes
         <div className="Student_Quiz">
           <Quiz user={user} currentClassroom={currentClassroom} quizs={quizs} />
         </div>
