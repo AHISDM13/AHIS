@@ -30,7 +30,6 @@ class NavigationAuth extends React.Component {
           Home
         </Link>
         <SignOutButton />
-
       </div>
     );
   }

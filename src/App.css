@@ -98,11 +98,12 @@ video {
   /* background-color: whitesmoke; */
 }
 .main {
-  position: absolute;
-  top: 65px;
+  position: relative;
+  /* display: flex; */
+  /* 
+  top: 65px; */
   height: auto;
-  width: 100%;
-  margin-top: 10px;
+  width: 100vw;
 }
 
 button:focus {

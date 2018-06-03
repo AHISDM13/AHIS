@@ -1,0 +1,49 @@
+.Landing {
+  background-image: url("clock.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  background-position: 50% 80%;
+  height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  background-image: url("clock.jpg");
+  background-repeat: no-repeat;
+}
+
+.landing_title {
+  color: #172b4d;
+  text-shadow: 2px 2px 8px #9e9e9ead;
+}
+
+.landing-page {
+  margin-top: 5vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.landing-page-title {
+  margin-top: 5vh;
+  font-weight: bold;
+  color: #172b4d;
+  text-shadow: 2px 2px 8px #9e9e9ead;
+}
+
+.landing_text_box {
+  width: 20vw;
+  margin-top: 3vh;
+  border: 1px solid #9e9e9ead;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
