@@ -14,15 +14,26 @@ class Flashcards extends Component {
       showHelp: true
     };
     this.handleCard = this.handleCard.bind(this);
+    this.handleDecrease = this.handleDecrease.bind(this);
     this.firstClick = this.firstClick.bind(this);
   }
   componentDidMount() {
     this.props.getQuiz(47);
   }
   handleCard() {
-    this.setState((prevState, props) => ({
-      ind: prevState.ind + 1
-    }));
+    if (this.state.ind < this.props.question.length - 1) {
+      this.setState((prevState, props) => ({
+        ind: prevState.ind + 1
+      }));
+    }
+  }
+  handleDecrease() {
+    if (this.state.ind > 0) {
+      console.log(this.state.ind);
+      this.setState((prevState, props) => ({
+        ind: prevState.ind - 1
+      }));
+    }
   }
   firstClick() {
     this.setState({ showHelp: false });
@@ -64,9 +75,9 @@ class Flashcards extends Component {
         <div className="flash_holder">
           {this.props.question.length ? questions : ""}
           <div className="icons">
-            {this.props.question.length ? (
+            {this.props.question.length && this.state.ind > 0 ? (
               <i
-                onClick={this.handleCard}
+                onClick={this.handleDecrease}
                 className="fas fa-arrow-alt-circle-left fa-3x arrows"
               />
             ) : (

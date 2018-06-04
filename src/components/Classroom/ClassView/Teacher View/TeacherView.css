@@ -1,3 +1,32 @@
+.quizlist {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+  margin-top: 1vh; }
+  .quizlist .eachquiz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #172b4d;
+    height: 5vh;
+    width: 50vw;
+    box-shadow: 0px 0px 10px 0px #b8c3db44;
+    border: 1px solid rgba(0, 0, 0, 0.1); }
+    .quizlist .eachquiz:hover {
+      background-color: rgba(147, 168, 185, 0.521); }
+  .quizlist .graphview {
+    width: 80vw;
+    height: 80vh; }
 
+a:link {
+  text-decoration: none;
+  color: #172b4d; }
+
+h2 {
+  padding: 20px;
+  color: #172b4d; }
 
 /*# sourceMappingURL=TeacherView.css.map */

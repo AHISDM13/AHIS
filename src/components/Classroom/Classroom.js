@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createRef } from "react";
 import { connect } from "react-redux";
 import TeacherView from "./ClassView/Teacher View/TeacherView";
 import Student from "../Student/Student";
@@ -37,6 +37,7 @@ class Classroom extends React.Component {
 
   render() {
     const { user, currentClassroom, isLoading } = this.props;
+    console.log(currentClassroom);
     const { quizs } = this.state;
     return (
       <div className="Classroom">

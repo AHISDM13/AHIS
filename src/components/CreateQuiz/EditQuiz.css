@@ -1,0 +1,14 @@
+.load-screen {
+  border: 45px solid #f3f3f3;
+  border-top: 45px solid #36b37e;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  animation: load 2s linear infinite; }
+@keyframes load {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+/*# sourceMappingURL=EditQuiz.css.map */

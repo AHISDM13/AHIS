@@ -2,16 +2,13 @@
 
 .re-container {
   padding-top: 30px;
-  width: 80vw;
-  margin: 20px auto;
+  width: 70vw;
+  margin: auto;
+  margin-left: 20vw;
 }
 .fill-in-text {
   display: flex;
   justify-content: space-around;
-  h1 {
-    text-align: center;
-    font-size: 20px;
-  }
 }
 
 .fill-in {
@@ -23,6 +20,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    font-size: 20px;
   }
   .inputbox-requiz {
     @extend %quiz-input-shared;
@@ -36,6 +34,20 @@
   @extend %btn;
 }
 
+.remove {
+  @extend %rmvbtn;
+}
+
 .outer-box {
   @extend %quiz-input-shared;
+}
+
+.heading_requiz {
+  text-align: center;
+  font-size: 30px;
+  color: #172b4d;
+}
+
+p {
+  font-size: 20px;
 }

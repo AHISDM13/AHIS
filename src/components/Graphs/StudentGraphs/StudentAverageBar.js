@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getStudentClassResults } from "../../../ducks/studentReducer";
@@ -17,7 +18,10 @@ class StudentAverageBar extends Component {
     let newAvg = [];
     let newTitle = [];
     this.props
-      .getStudentClassResults(this.props.currentClassroom.classroom_id)
+      .getStudentClassResults(
+        this.props.user.id,
+        this.props.currentClassroom.classroom_id
+      )
       .then(() =>
         this.props.studentClassResults
           .filter(el => el.totalqnum >= 1)
@@ -35,8 +39,15 @@ class StudentAverageBar extends Component {
   }
 
   render() {
-    // let reduced = this.props.
-    // console.log(this.state);
+    console.log(this.props.currentClassroom.classroom_id);
+    let filtered = this.props.studentClassResults.filter(
+      el => el.totalqnum >= 1
+    );
+    let reduced = filtered.reduce((acc, e, i) => {
+      console.log(e.correctnum / e.totalqnum);
+      return acc + e.correctnum / e.totalqnum;
+    }, 0);
+    console.log(this.state);
 
     let data = {
       labels: this.state.title,
@@ -52,14 +63,31 @@ class StudentAverageBar extends Component {
         }
       ]
     };
+    let avg = Math.round(reduced / filtered.length * 100) + "%";
+    let pieData = {
+      labels: ["", `Your grade: ${avg}`],
+      datasets: [
+        {
+          label: "test",
+          backgroundColor: ["#FFF", "#36A2EB"],
+          borderColor: ["black", "black"],
+          hoverBackgroundColor: ["#FF6384", "#36A2EB"],
+          data: [filtered.length, reduced]
+        }
+      ]
+    };
 
+    console.log(reduced / filtered.length * 360);
     return (
       <div>
-        <h2>Student Quiz Scores</h2>
+        <h2 style={{ fontSize: "20px" }}>Student Quiz Scores</h2>
         <div>
-          <h3>Your average score in {this.props.currentClassroom.title}</h3>
-          <div className="donut" />
-          <p>{}</p>
+          <h3>
+            Your average score in {this.props.currentClassroom.title}
+            <span>
+              <p>{avg}</p>
+            </span>
+          </h3>
         </div>
         <Bar
           data={data}
@@ -80,6 +108,14 @@ class StudentAverageBar extends Component {
             }
           }}
         />
+        <Doughnut
+          data={pieData}
+          width={100}
+          height={200}
+          options={{
+            maintainAspectRatio: true
+          }}
+        />
       </div>
     );
   }
@@ -88,7 +124,8 @@ class StudentAverageBar extends Component {
 function mapStateToProps(state) {
   return {
     ...state.studentReducer,
-    ...state.classRoomReducer
+    ...state.classRoomReducer,
+    ...state.userReducer
   };
 }
 export default connect(mapStateToProps, { getStudentClassResults })(

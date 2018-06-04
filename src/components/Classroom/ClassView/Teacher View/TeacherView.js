@@ -6,12 +6,13 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import Button from "@material-ui/core/Button";
 // import SwipeableViews from "react-swipeable-views";
 // import Typography from "@material-ui/core/Typography";
 import "./TeacherView.css";
 import { getQuiz } from "../../../../ducks/quizReducer";
-import StudentAvg from "../../../Graphs/TeacherGraphs/TeacherAverageStudentBar";
-// import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBar";
+// import StudentAvg from "../../../Graphs/TeacherGraphs/TeacherAverageStudentBar";
+import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBar";
 // import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
 import StudentQuizResults from "../../../Graphs/TeacherGraphs/StudentQuizResults";
 
@@ -52,7 +53,7 @@ class TeacherView extends Component {
     let classQuiz = this.props.quiz.map((list, i) => {
       return (
         <Link key={i} to={`/editquiz/${list.quiz_id}`}>
-          {list.quiz_name}
+          <div className="eachquiz">{list.quiz_name}</div>
         </Link>
       );
     });
@@ -84,17 +85,23 @@ class TeacherView extends Component {
           <div>
             <h2 style={styles.headline}>Quizzes</h2>
             <Link to={`/createquiz/${this.props.match.params.id}`}>
-              CREATE QUIZ
+              <Button
+                variant="raised"
+                href="#raised-buttons"
+                className={classes.button}
+              >
+                Create New
+              </Button>
             </Link>
-            {classQuiz}
+            <div className="quizlist">{classQuiz}</div>
           </div>
         )}
         {this.state.value === 2 && (
-          <div>
+          <div className="graphview">
             <h2 style={styles.headline}>Analytics</h2>
             <div className="teachergraphs">
               <div className="graphs">
-                <StudentAvg />
+                <ClassAvg />
               </div>
               <div className="graphs">
                 <StudentQuizResults />

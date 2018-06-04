@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import { submitClassRoom } from "../../ducks/classRoomReducer";
+import { submitClassRoom, getOwnerClasses } from "../../ducks/classRoomReducer";
 import swal from "sweetalert";
+import { withRouter } from "react-router-dom";
 import "./CreateClassroom.css";
 class CreateClassroom extends React.Component {
   state = {
@@ -17,6 +18,7 @@ class CreateClassroom extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const { classTitle, password, subject } = this.state;
     const { user, submitClassRoom } = this.props;
     return (
@@ -28,8 +30,9 @@ class CreateClassroom extends React.Component {
             onSubmit={e => e.preventDefault()}
           >
             <div className="pure-control-group">
-              <label>Class Room Name</label>
+              <label>Classroom Name</label>
               <input
+                data-cy-inputbox-name
                 type="text"
                 id="Class Name"
                 placeholder="Name Your Classroom"
@@ -43,6 +46,7 @@ class CreateClassroom extends React.Component {
             <div className="pure-control-group">
               <label>Password</label>
               <input
+                data-cy-inputbox-cpassword
                 type="text"
                 id="Class Pass"
                 placeholder="Classroom Password"
@@ -53,6 +57,7 @@ class CreateClassroom extends React.Component {
             <div className="pure-control-group">
               <label>Subject</label>
               <select
+                data-cy-selection
                 id="subject"
                 name="subject"
                 value={subject}
@@ -64,16 +69,27 @@ class CreateClassroom extends React.Component {
                 <option>Language</option>
               </select>
             </div>
+
             <button
+              disabled
               onClick={e => {
-                submitClassRoom(user.id, classTitle, password, subject).then(
-                  swal({
-                    title: "Your Classroom has been created.",
-                    text: "Let's create a quiz.",
-                    icon: "success",
-                    button: "Create Quiz"
+                submitClassRoom(user.id, classTitle, password, subject)
+                  .then(
+                    swal({
+                      title: "Your Classroom has been created.",
+                      text: "Let's go to your classroom.",
+                      icon: "success",
+                      button: "Go to Class"
+                    })
+                  )
+                  .then(classr => {
+                    this.props.history.push(
+                      `/classroom/${this.props.classRooms[0].classroom_id}`
+                    );
                   })
-                );
+                  .then(() => {
+                    this.props.getOwnerClasses(this.props.user.id);
+                  });
               }}
             >
               Create
@@ -87,8 +103,13 @@ class CreateClassroom extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    classRooms: state.classRoomReducer.classRooms
   };
 };
 
-export default connect(mapStateToProps, { submitClassRoom })(CreateClassroom);
+export default withRouter(
+  connect(mapStateToProps, { submitClassRoom, getOwnerClasses })(
+    CreateClassroom
+  )
+);
