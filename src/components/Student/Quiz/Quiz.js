@@ -6,9 +6,11 @@ import { connect } from "react-redux";
 import { getQuestions } from "../../../ducks/quizReducer";
 import { getResult } from "../../../ducks/studentReducer";
 class Quiz extends React.Component {
-  takeQuiz(quiz_id) {
+  takeQuiz(quiz_id, quiz_type) {
     const { history, getQuestions } = this.props;
-    getQuestions(quiz_id).then(() => history.push(`/test/${quiz_id}`));
+    getQuestions(quiz_id).then(() =>
+      history.push(`/test/${quiz_id}/${quiz_type}`)
+    );
   }
   review(quiz_id) {
     const { history, getResult } = this.props;
@@ -27,7 +29,7 @@ class Quiz extends React.Component {
               you haven't taken this Quiz
               <div>
                 <FlatButton
-                  onClick={() => this.takeQuiz(el.quiz_id)}
+                  onClick={() => this.takeQuiz(el.quiz_id, el.quiz_type)}
                   label="take a quiz"
                 />
               </div>

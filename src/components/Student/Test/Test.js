@@ -1,10 +1,11 @@
 import React from "react";
 import "./Test.css";
 import { connect } from "react-redux";
-import { FlatButton } from "material-ui";
+import Button from "@material-ui/core/Button";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { getResult } from "../../../ducks/studentReducer";
+import transitions from "@material-ui/core/styles/transitions";
 class Test extends React.Component {
   state = {};
   submit = () => {
@@ -41,30 +42,136 @@ class Test extends React.Component {
     }));
   };
   render() {
-    const { currentQuiz } = this.props;
-    // console.log(this.state, currentQuiz);
-    const displayQuestionsInCurrentQuiz = currentQuiz.map((el, i) => {
-      return (
-        <div className="Test" key={i}>
-          {i + 1}.
-          <div className="Test_Q">Q - {el.question}</div>
-          <div className="Text_A">
-            A -
-            <input
-              type="text"
-              onChange={e => this.handleChange(e.target.value, el.question_id)}
-            />
-          </div>
-        </div>
-      );
-    });
+    const { currentQuiz, match } = this.props;
+    const styles = {
+      correct: {
+        color: "#0052CC",
+        fontWeight: "bold"
+      }
+    };
+    console.log(this.state, currentQuiz);
+    const howManyQleft = currentQuiz.length - Object.keys(this.state).length;
+    const displayQuestionsInCurrentQuiz =
+      match.params.quiz_type === "Multiple Choice"
+        ? currentQuiz.map((el, i) => {
+            return (
+              <div className="Test" key={i}>
+                <p className="Test_Q">
+                  <span className="Test_index">Q{i + 1}.</span> {el.question}
+                </p>
+                <div className="Text_A">
+                  <p
+                    style={
+                      this.state[el.question_id] === el.answer
+                        ? styles.correct
+                        : null
+                    }
+                    onClick={() => this.handleChange(el.answer, el.question_id)}
+                  >
+                    {el.answer}
+                  </p>
+                  <p
+                    style={
+                      this.state[el.question_id] === el.dummy_data_a
+                        ? styles.correct
+                        : null
+                    }
+                    onClick={() =>
+                      this.handleChange(el.dummy_data_a, el.question_id)
+                    }
+                  >
+                    {el.dummy_data_a}
+                  </p>
+                  <p
+                    style={
+                      this.state[el.question_id] === el.dummy_data_b
+                        ? styles.correct
+                        : null
+                    }
+                    onClick={() =>
+                      this.handleChange(el.dummy_data_b, el.question_id)
+                    }
+                  >
+                    {el.dummy_data_b}
+                  </p>
+                  <p
+                    style={
+                      this.state[el.question_id] === el.dummy_data_c
+                        ? styles.correct
+                        : null
+                    }
+                    onClick={() =>
+                      this.handleChange(el.dummy_data_c, el.question_id)
+                    }
+                  >
+                    {el.dummy_data_c}
+                  </p>
+                </div>
+              </div>
+            );
+          })
+        : currentQuiz.map((el, i) => {
+            return (
+              <div className="Test" key={i}>
+                <p className="Test_Q">
+                  <span className="Test_index">Q{i + 1}.</span> {el.question}
+                </p>
+                <div className="Text_A">
+                  <input
+                    type="text"
+                    placeholder="type in your answer"
+                    onChange={e =>
+                      this.handleChange(e.target.value, el.question_id)
+                    }
+                  />
+                </div>
+              </div>
+            );
+          });
 
     return (
       <div>
-        {displayQuestionsInCurrentQuiz}
-        <div>
-          <FlatButton label="submit" onClick={() => this.submit()} />
-        </div>
+        {currentQuiz.length < 1 || null ? (
+          "oops no questions to solve"
+        ) : (
+          <div className="Test_outer">
+            <div className="Test_header">
+              <p className="howManyQleft">
+                {howManyQleft > 1
+                  ? `You have ${howManyQleft} questions left`
+                  : howManyQleft === 1
+                    ? "you have only one question left"
+                    : "Congrats! you compelete the test. click submit to finish"}{" "}
+              </p>
+              <div className="processBar_outer">
+                <div
+                  className="processBar"
+                  style={{
+                    width: `${Object.keys(this.state).length /
+                      currentQuiz.length *
+                      100}%`,
+                    transition: "width 1s",
+                    background: `${
+                      Object.keys(this.state).length === currentQuiz.length
+                        ? "#ffab00"
+                        : "#FFE380"
+                    }`
+                  }}
+                />
+              </div>
+            </div>
+            <div className="Test_body">
+              {displayQuestionsInCurrentQuiz}
+              <Button
+                variant="raised"
+                onClick={() => this.submit()}
+                color="primary"
+              >
+                submit
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

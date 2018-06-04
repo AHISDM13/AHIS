@@ -14,7 +14,6 @@ class Nav extends Component {
   handleJoinedClasses() {
     this.setState(() => ({ joinedClassesShow: !this.state.joinedClassesShow }));
   }
-  componenDidMount() {}
   render() {
     const { classRooms, getClassroom, joinedClasses, history } = this.props;
     const displayJoinedClasses = joinedClasses

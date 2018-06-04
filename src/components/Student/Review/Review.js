@@ -7,9 +7,6 @@ class Review extends React.Component {
     const styles = {
       wrong: {
         border: "1px solid red"
-      },
-      correct: {
-        border: "1px solid blue"
       }
     };
     // console.log(currentTestResult);
@@ -18,15 +15,17 @@ class Review extends React.Component {
         <div
           className="Review"
           key={i}
-          style={el.correct ? styles.correct : styles.wrong}
+          style={el.correct ? null : styles.wrong}
         >
-          <p> q :{el.question} </p>
+          <p className="Test_Q">
+            <span className="Test_index"> Q{i + 1}.</span> {el.question}{" "}
+          </p>
           <p> correct answer : {el.answer} </p>
           <p> your answer : {el.user_answer}</p>
         </div>
       );
     });
-    return displayTestResult;
+    return <div className="Review_outer">{displayTestResult}</div>;
   }
 }
 const mapStateToProps = state => {
