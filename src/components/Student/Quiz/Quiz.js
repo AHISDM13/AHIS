@@ -7,9 +7,11 @@ import { getQuestions } from "../../../ducks/quizReducer";
 import { getResult } from "../../../ducks/studentReducer";
 import know from "./knowledge.png";
 class Quiz extends React.Component {
-  takeQuiz(quiz_id) {
+  takeQuiz(quiz_id, quiz_type) {
     const { history, getQuestions } = this.props;
-    getQuestions(quiz_id).then(() => history.push(`/test/${quiz_id}`));
+    getQuestions(quiz_id).then(() =>
+      history.push(`/test/${quiz_id}/${quiz_type}`)
+    );
   }
   review(quiz_id) {
     const { history, getResult } = this.props;
