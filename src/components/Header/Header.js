@@ -7,23 +7,28 @@ import Nav from "../Nav/Nav";
 import Search from "../Search/Search";
 const Header = ({ user }) => (
   <div className="Header">
-    {user ? <NavigationAuth /> : <NavigationNonAuth />} <Search />
+    {user !== null ? <NavigationAuth /> : <NavigationNonAuth />}
+    {console.log(user)}
+    {/* <Search /> */}
   </div>
 );
 
 class NavigationAuth extends React.Component {
   render() {
     return (
-      <div className="Header_nav">
+      <div>
         <Nav />
-        <span className="Header_logo">AHIS</span>
-        <Link className="Header_nav_link" to={routes.PROFILE}>
-          Profile
-        </Link>
-        <Link className="Header_nav_link" to={routes.HOME}>
-          Home
-        </Link>
-        <SignOutButton />
+        <div className="Header_nav">
+          <span className="Header_logo">Nito</span>
+          {/* <Link className="Header_nav_link" to={routes.PROFILE}>
+            Profile
+          </Link>
+          <Link className="Header_nav_link" to={routes.HOME}>
+            Home
+          </Link> */}
+
+          <SignOutButton />
+        </div>
       </div>
     );
   }
@@ -31,10 +36,10 @@ class NavigationAuth extends React.Component {
 
 const NavigationNonAuth = () => (
   <div className="Header_nav">
-    <span className="Header_logo">AHIS</span>
-    <Link className="Header_nav_link" to={routes.LANDING}>
-      Sign In
-    </Link>
+    <span className="Header_logo unauth">Nito</span>
+    {/* <Link className="Header_nav_link" to={routes.LANDING}>
+      <i className="fas fa-sign-in-alt fa-2x" />
+    </Link> */}
   </div>
 );
 

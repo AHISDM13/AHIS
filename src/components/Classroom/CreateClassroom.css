@@ -27,3 +27,7 @@
   font-size: 40px;
   padding: 20px;
 }
+.pure-control-group input,
+.pure-control-group input {
+  background: #fafbfc;
+}
