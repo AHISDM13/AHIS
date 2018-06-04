@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import TeacherView from "./ClassView/Teacher View/TeacherView";
 import Student from "../Student/Student";
 import axios from "axios";
-import { storeQuizs } from "../../ducks/quizReducer";
 import { withRouter } from "react-router-dom";
 class Classroom extends React.Component {
   state = { quizs: [] };
@@ -11,25 +10,14 @@ class Classroom extends React.Component {
   componentDidMount() {
     const { match } = this.props;
     axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
-      this.setState(
-        () => ({ quizs: quizs.data }),
-        () => {
-          this.props.storeQuizs(quizs.data);
-        }
-      );
+      this.setState(() => ({ quizs: quizs.data }));
     });
   }
-
   componentDidUpdate(prevProps, prevState) {
     const { match } = this.props;
     if (prevProps.match.params.id !== match.params.id) {
       axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
-        this.setState(
-          () => ({ quizs: quizs.data }),
-          () => {
-            this.props.storeQuizs(quizs.data);
-          }
-        );
+        this.setState(() => ({ quizs: quizs.data }));
       });
     }
   }
@@ -43,7 +31,11 @@ class Classroom extends React.Component {
         {isLoading ? (
           <div>......Loading</div>
         ) : user.id === currentClassroom.owner_id ? (
-          <TeacherView />
+          <TeacherView
+            user={user}
+            currentClassroom={currentClassroom}
+            quizs={quizs}
+          />
         ) : (
           <Student
             user={user}
@@ -62,4 +54,4 @@ const mapStateToProps = state => {
     isLoading: state.classRoomReducer.isLoading
   };
 };
-export default withRouter(connect(mapStateToProps, { storeQuizs })(Classroom));
+export default withRouter(connect(mapStateToProps)(Classroom));
