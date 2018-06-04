@@ -87,7 +87,7 @@ class SignInForm extends Component {
     // const { classes } = props;
     return (
       <form className="Login_form" onSubmit={this.onSubmit}>
-        <div>NIto</div>
+        <div>Nito</div>
         <input
           data-cy-inputbox-login
           value={email}
@@ -133,9 +133,10 @@ function mapStateToProps(state) {
   };
 }
 export default withRouter(
-  connect(mapStateToProps, { getUser, getOwnerClasses, getJoinedClasses })(
-    SignInPage
-  )
+  connect(
+    mapStateToProps,
+    { getUser, getOwnerClasses, getJoinedClasses }
+  )(SignInPage)
 );
 
 export { SignInForm };
