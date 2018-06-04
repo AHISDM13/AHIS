@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addQuestion } from "../../ducks/quizReducer";
 import "./ReQuiz.css";
 import TextField from "material-ui/TextField";
+import { withRouter } from "react-router-dom";
 
 class ReQuiz extends Component {
   constructor() {
@@ -93,10 +94,14 @@ class ReQuiz extends Component {
     const { quiz_id } = this.props.quiz;
     let newentry = this.state.question.map((e, i) => {
       // console.log(e);
-      this.props.addQuestion(quiz_id, e.Q, e.A, e.One, e.Two, e.Three);
+      return this.props.addQuestion(quiz_id, e.Q, e.A, e.One, e.Two, e.Three);
     });
-    // console.log(newentry);
-    return newentry;
+    console.log(newentry);
+    Promise.all(newentry).then(response => {
+      console.log(response);
+      this.props.history.push(`/classroom/${this.props.quiz.classroom_id}`);
+    });
+    // return newentry;
   }
 
   render() {
@@ -202,7 +207,12 @@ class ReQuiz extends Component {
         <div>
           <h1 className="heading_requiz"> {ques}</h1>
         </div>
-        <button className="create" onClick={() => this.postQuestion()}>
+        <button
+          className="create"
+          onClick={() => {
+            this.postQuestion();
+          }}
+        >
           Create Quiz
         </button>
       </div>
@@ -215,4 +225,9 @@ function mapStateToProps(state) {
     ...state.quizReducer
   };
 }
-export default connect(mapStateToProps, { addQuestion })(ReQuiz);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { addQuestion }
+  )(ReQuiz)
+);

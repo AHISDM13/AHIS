@@ -1,4 +1,27 @@
+.Test_outer {
+  margin: 80px;
+}
 .Review {
   padding: 25px;
+  margin: 50px auto;
+  width: 50%;
+}
+
+.howManyQleft {
   margin: 10px;
+}
+.Test_header {
+  height: 100px;
+  width: 100%;
+}
+.processBar_outer {
+  width: 50%;
+  height: 34px;
+  margin: 25px auto;
+  border: #ffab00 2px solid;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.processBar {
+  height: 30px;
+  background-color: #ffe380;
 }
