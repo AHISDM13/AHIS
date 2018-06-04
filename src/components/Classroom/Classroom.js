@@ -5,6 +5,7 @@ import Student from "../Student/Student";
 import axios from "axios";
 import { storeQuizs } from "../../ducks/quizReducer";
 import { withRouter } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 class Classroom extends React.Component {
   state = { quizs: [] };
 
@@ -41,7 +42,7 @@ class Classroom extends React.Component {
     return (
       <div className="Classroom">
         {isLoading ? (
-          <div>......Loading</div>
+          <CircularProgress size={50} />
         ) : user.id === currentClassroom.owner_id ? (
           <TeacherView />
         ) : (
