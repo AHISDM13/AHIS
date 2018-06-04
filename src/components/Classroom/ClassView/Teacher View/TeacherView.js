@@ -10,7 +10,6 @@ import Button from "@material-ui/core/Button";
 // import SwipeableViews from "react-swipeable-views";
 // import Typography from "@material-ui/core/Typography";
 import "./TeacherView.css";
-import { getQuiz } from "../../../../ducks/quizReducer";
 // import StudentAvg from "../../../Graphs/TeacherGraphs/TeacherAverageStudentBar";
 import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBar";
 // import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
@@ -29,15 +28,12 @@ class TeacherView extends Component {
       value: 0
     };
   }
-  componentDidMount() {
-    this.props.getQuiz(this.props.match.params.id);
-  }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.props.getQuiz(this.props.match.params.id);
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.match.params.id !== this.props.match.params.id) {
+  //     this.props.getQuizsList(this.props.match.params.id);
+  //   }
+  // }
 
   handleTab = (event, value) => {
     this.setState({ value: +value });
@@ -50,7 +46,7 @@ class TeacherView extends Component {
     if (this.props.loading) {
       return <div>is loading...</div>;
     }
-    let classQuiz = this.props.quiz.map((list, i) => {
+    let classQuiz = this.props.quizs.map((list, i) => {
       return (
         <Link key={i} to={`/editquiz/${list.quiz_id}`}>
           <div className="eachquiz">{list.quiz_name}</div>
@@ -58,7 +54,7 @@ class TeacherView extends Component {
       );
     });
 
-    // console.log(this.props);
+    console.log(this.props);
     // let classResource = this.props.resources.map((e, i) => {
     //   return (
     //     <div>
@@ -68,35 +64,35 @@ class TeacherView extends Component {
     //   )
     // })
     // console.log(typeof this.state.value);
+    const { quizs } = this.props;
+    const { value } = this.state;
     return (
       <div>
         <Tabs value={this.state.value} onChange={this.handleTab} centered>
           <Tab label="Resources" value="0" />
           <Tab label="Quizzes" value="1" />
+
           <Tab label="Graphs" value="2" />
         </Tabs>
 
-        {this.state.value === 0 && (
-          <div>
-            <Flashcards />
-          </div>
-        )}
-        {this.state.value === 1 && (
+        {value === 1 ? (
           <div>
             <h2 style={styles.headline}>Quizzes</h2>
-            <Link to={`/createquiz/${this.props.match.params.id}`}>
-              <Button
-                variant="raised"
-                href="#raised-buttons"
-                className={classes.button}
-              >
-                Create New
-              </Button>
-            </Link>
+            <Button
+              variant="raised"
+              // href="#raised-buttons"
+              className={classes.button}
+              onClick={() =>
+                this.props.history.push(
+                  `/createquiz/${this.props.match.params.id}`
+                )
+              }
+            >
+              Create New
+            </Button>
             <div className="quizlist">{classQuiz}</div>
           </div>
-        )}
-        {this.state.value === 2 && (
+        ) : value === 2 ? (
           <div className="graphview">
             <h2 style={styles.headline}>Analytics</h2>
             <div className="teachergraphs">
@@ -114,6 +110,8 @@ class TeacherView extends Component {
               </div> */}
             </div>
           </div>
+        ) : (
+          <Flashcards quizs={quizs} />
         )}
       </div>
     );
@@ -122,8 +120,7 @@ class TeacherView extends Component {
 
 function mapStateToProps(state) {
   return {
-    classRooms: state.classRoomReducer.classRooms,
-    quiz: state.quizReducer.quiz
+    classRooms: state.classRoomReducer.classRooms
   };
 }
 
@@ -132,5 +129,5 @@ TeacherView.propTypes = {
   theme: PropTypes.object.isRequired
 };
 export default withStyles(styles, { withTheme: true })(
-  withRouter(connect(mapStateToProps, { getQuiz })(TeacherView))
+  withRouter(connect(mapStateToProps)(TeacherView))
 );
