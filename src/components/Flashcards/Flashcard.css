@@ -28,7 +28,8 @@
   .flashcard-page .flash_holder {
     margin-right: 20%; }
   .flashcard-page .icons {
-    margin-top: 200px; }
+    margin-top: 200px;
+    color: #36b37e; }
   @media (max-width: 375px) {
     .flashcard-page .smallcard-row {
       display: flex;

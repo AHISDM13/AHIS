@@ -1,33 +1,39 @@
-.classroom {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
 .createclass {
+  margin: 40px auto;
+}
+
+.createclass_container {
   /* border: 1px solid rgb(165, 165, 165); */
-  box-shadow: 3px 3px 3px 3px#7f947fb7;
-  width: 80vw;
-  height: 60vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  box-shadow: 3px 3px 9px #172b4d;
+  width: 72%;
+  height: 60%;
+  padding: 20px;
+  margin: auto;
 }
 
-.row {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-.title {
-  display: flex;
-  justify-content: center;
+.classroom_header {
   font-size: 40px;
   padding: 20px;
 }
 .pure-control-group input,
 .pure-control-group input {
   background: #fafbfc;
+}
+.createclass img {
+  width: 100px;
+}
+
+.createclass_button {
+  margin-top: 20px !important;
+  background-color: #ffab00 !important;
+  color: #fff !important;
+}
+
+@media (max-width: 767px) {
+  .classroom_header {
+    font-size: 30px;
+  }
+  .createclass img {
+    width: 75px;
+  }
 }
