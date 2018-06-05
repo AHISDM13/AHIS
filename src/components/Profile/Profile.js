@@ -24,7 +24,10 @@ class Profile extends Component {
   render() {
     return (
       <div className="profile-page">
-        <h2>Update your account details</h2>
+        <div className="profiletitle">
+          <h2>Update Your Account</h2>
+          <div className="underline" />
+        </div>
         <form
           onSubmit={() => {
             this.props.updateUser(
@@ -35,30 +38,40 @@ class Profile extends Component {
             );
           }}
         >
-          <p>First Name</p>
           <div className="container">
-            <i className="far fa-user-circle" />
-            <input
-              className="form-input"
-              type="text"
-              value={this.state.first_name}
-              name="first_name"
-              onChange={this.handleInput}
-              autoFocus
-              data-cy-update-first
-            />
+            <div className="section">First Name</div>
+
+            <div>
+              <i className="far fa-user-circle" />
+
+              <input
+                className="form-input"
+                placeholder="Update First Name"
+                type="text"
+                value={this.state.first_name}
+                name="first_name"
+                onChange={this.handleInput}
+                autoFocus
+                data-cy-update-first
+              />
+            </div>
           </div>
-          <p>Last Name</p>
           <div className="container">
-            <i className="far fa-user-circle" />
-            <input
-              className="form-input"
-              type="text"
-              value={this.state.last_name}
-              name="last_name"
-              onChange={this.handleInput}
-              data-cy-update-last
-            />
+            <div className="section">Last Name</div>
+
+            <div>
+              <i className="far fa-user-circle" />
+
+              <input
+                className="form-input"
+                placeholder="Update Last Name"
+                type="text"
+                value={this.state.last_name}
+                name="last_name"
+                onChange={this.handleInput}
+                data-cy-update-last
+              />
+            </div>
           </div>
           {/* <p>Picture</p>
           <div className="container">
@@ -70,17 +83,21 @@ class Profile extends Component {
               onChange={this.handleInput}
             />
           </div> */}
-          <p>Update Email</p>
           <div className="container">
-            <i className="fas fa-at" />
-            <input
-              className="form-input"
-              type="text"
-              value={this.state.email}
-              name="email"
-              onChange={this.handleInput}
-              data-cy-update-email
-            />
+            <div className="section">Update Email</div>
+            <div>
+              <i className="fas fa-at" />
+
+              <input
+                className="form-input"
+                placeholder="Update E-Mail"
+                type="text"
+                value={this.state.email}
+                name="email"
+                onChange={this.handleInput}
+                data-cy-update-email
+              />
+            </div>
           </div>
           <input
             className="submit"
@@ -100,4 +117,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { updateUser })(Profile);
+export default connect(
+  mapStateToProps,
+  { updateUser }
+)(Profile);

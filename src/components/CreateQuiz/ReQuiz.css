@@ -16,6 +16,9 @@
   outline: none; }
   .create:focus {
     background: #ffab00; }
+  .create:disabled {
+    background: grey;
+    color: lightgray; }
 
 .fill-in input[type="submit"] {
   background: #36b37e;
