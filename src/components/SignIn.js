@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 import { getUser } from "../ducks/userReducer";
 import { getOwnerClasses, getJoinedClasses } from "../ducks/classRoomReducer";
 import { get } from "https";
+import "./logo.png";
 
 // const styles = theme => ({
 //   button: {
@@ -87,7 +88,7 @@ class SignInForm extends Component {
     // const { classes } = props;
     return (
       <form className="Login_form" onSubmit={this.onSubmit}>
-        <div>NIto</div>
+        <img src="logo.png" alt="logo" />
         <input
           data-cy-inputbox-login
           value={email}
@@ -133,9 +134,10 @@ function mapStateToProps(state) {
   };
 }
 export default withRouter(
-  connect(mapStateToProps, { getUser, getOwnerClasses, getJoinedClasses })(
-    SignInPage
-  )
+  connect(
+    mapStateToProps,
+    { getUser, getOwnerClasses, getJoinedClasses }
+  )(SignInPage)
 );
 
 export { SignInForm };

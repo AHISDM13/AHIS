@@ -29,6 +29,7 @@ class Profile extends Component {
           <div className="underline" />
         </div>
         <form
+          className="profileform"
           onSubmit={() => {
             this.props.updateUser(
               this.state.first_name,
