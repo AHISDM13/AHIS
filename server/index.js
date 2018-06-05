@@ -25,6 +25,9 @@ massive(process.env.CONNECTION_STRING)
   .then(db => app.set("db", db))
   .catch(err => console.log(err));
 
+//USE FOR PRODUCTION
+// app.use(express.static(`${__dirname}/../build`));
+
 app.use(json());
 app.use(cors());
 
@@ -78,9 +81,21 @@ app.get(
 app.get(`/api/classresult/:classroom_id`, rc.getClassQuizResults);
 app.get(`/api/studentquizresult/:classroom_id`, rc.getStudentQuizResults);
 
+// USE FOR PRODUCTION
+// const path = require("path");
+// app.get("*", (req, res, next) => {
+//   res.sendFile(path.join(__dirname, "/../build/index.html"));
+// });
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+// USE FOR PRODUCTION
+// const path = require("path");
+// app.get("*", (req, res, next) => {
+//   res.sendFile(path.join(__dirname, "/../build/index.html"));
+// });
 
 // server = app.listen(port, () => {
 //   console.log(`Listening on port ${port}`);

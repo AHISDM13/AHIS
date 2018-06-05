@@ -8,7 +8,8 @@
   display: flex;
   justify-content: center;
   align-content: center;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .sign_in_input {

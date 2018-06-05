@@ -34,19 +34,38 @@
 }
 
 .landing-page-title {
-  margin-top: 5vh;
+  /* margin-top: 5vh; */
   font-weight: bold;
   color: #172b4d;
   text-shadow: 2px 2px 8px #9e9e9ead;
 }
 
 .landing_text_box {
-  width: 20vw;
+  width: 25vw;
   margin-top: 3vh;
   border: 1px solid #9e9e9ead;
-  padding: 10px;
+  padding: 2px;
   border-radius: 5px;
   background-color: white;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+@media (max-width: 400px) {
+  .landing-page {
+    display: flex;
+    flex-direction: column;
+  }
+  .landing-page-title {
+    font-size: 20px;
+  }
+  .landing_text_box {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+  }
+  .landing_title {
+    font-size: 20px;
+    padding: 5px;
+  }
 }
