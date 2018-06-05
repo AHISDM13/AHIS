@@ -13,15 +13,16 @@ class Home extends Component {
     const myJoinedClasses = joinedClasses
       ? joinedClasses.map((e, i) => {
           return (
-            <Link
+            <div
               key={i}
-              to={`/classroom/${e.classroom_id}`}
               onClick={() => {
-                getClassroom(e.classroom_id);
+                getClassroom(e.classroom_id).then(() =>
+                  this.props.history.push(`/classroom/${e.classroom_id}`)
+                );
               }}
             >
               <div className="home_class">{e.title}</div>
-            </Link>
+            </div>
           );
         })
       : null;
@@ -29,15 +30,16 @@ class Home extends Component {
     const myCreatedClass = myClassRooms
       ? myClassRooms.map((e, i) => {
           return (
-            <Link
+            <div
               key={i}
-              to={`/classroom/${e.classroom_id}`}
               onClick={() => {
-                getClassroom(e.classroom_id);
+                getClassroom(e.classroom_id).then(() =>
+                  this.props.history.push(`/classroom/${e.classroom_id}`)
+                );
               }}
             >
               <div className="home_class">{e.title}</div>
-            </Link>
+            </div>
           );
         })
       : null;

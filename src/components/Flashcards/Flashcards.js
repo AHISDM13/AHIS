@@ -3,6 +3,7 @@ import Card from "./Card";
 import { connect } from "react-redux";
 import { getQuiz, getQuestions } from "../../ducks/quizReducer";
 import "./Flashcard.css";
+import { withRouter } from "react-router-dom";
 
 class Flashcards extends Component {
   constructor(props) {
@@ -18,8 +19,9 @@ class Flashcards extends Component {
     this.firstClick = this.firstClick.bind(this);
   }
   componentDidMount() {
-    this.props.getQuiz(47);
+    this.props.getQuiz(this.props.match.params.id);
   }
+
   handleCard() {
     if (this.state.ind < this.props.question.length - 1) {
       this.setState((prevState, props) => ({
@@ -68,6 +70,7 @@ class Flashcards extends Component {
         />
       );
     });
+    console.log(this.props);
     return (
       <div className="flashcard-page">
         {/* <h3>Select a deck</h3> */}
@@ -101,4 +104,6 @@ class Flashcards extends Component {
 function mapStateToProps(state) {
   return { ...state.quizReducer };
 }
-export default connect(mapStateToProps, { getQuiz, getQuestions })(Flashcards);
+export default withRouter(
+  connect(mapStateToProps, { getQuiz, getQuestions })(Flashcards)
+);
