@@ -12,22 +12,32 @@ $radius: 2px;
 
 %btn {
   padding: 10px 30px;
-  background: #7fb174;
+  background: #ffab00;
   color: #fff;
-  box-shadow: 2px 4px 0px #74a569;
-  border: #74a569;
+  box-shadow: 0px 0px 10px 0px #b8c3db44;
+  border: #ffab00;
   border-radius: 8px;
-  font-weight: bold;
+  // font-weight: bold;
   outline: none;
   &:focus {
-    background: #74a569;
+    background: #ffab00;
   }
 }
 
 %question-btn {
-  padding: 2px 8px;
-  background: #00b8d9;
-  box-shadow: 2px 1px 2px #00b8d9;
+  background: #36b37e;
+  font-size: 30px;
+  box-shadow: 0px 0px 10px 0px #b8c3db44;
   color: #fff;
-  border: 1px solid #00b8d9;
+  border: 1px solid #36b37e;
+  border-radius: 50px;
+}
+
+%rmvbtn {
+  background: #ff5630;
+  font-size: 45px;
+  box-shadow: 0px 0px 10px 0px #b8c3db44;
+  color: #fff;
+  border: 1px solid #ff5630;
+  border-radius: 50px;
 }

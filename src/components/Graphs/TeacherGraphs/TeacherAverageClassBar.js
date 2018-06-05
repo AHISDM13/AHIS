@@ -3,6 +3,7 @@ import { Bar } from "react-chartjs-2";
 import axios from "axios";
 import { connect } from "react-redux";
 import { getClassQuizResults } from "../../../ducks/studentReducer";
+import "./TeacherAverageClassBar.css";
 
 class TeacherAverageClassBar extends Component {
   constructor() {
@@ -90,6 +91,7 @@ function mapStateToProps(state) {
     ...state.classRoomReducer
   };
 }
-export default connect(mapStateToProps, { getClassQuizResults })(
-  TeacherAverageClassBar
-);
+export default connect(
+  mapStateToProps,
+  { getClassQuizResults }
+)(TeacherAverageClassBar);

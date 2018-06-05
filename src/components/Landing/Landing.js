@@ -3,7 +3,7 @@ import SignInPage from "../SignIn";
 import "./Landing.css";
 const Landing = () => {
   return (
-    <div>
+    <div className="Landing_page">
       <div className="Landing">
         <SignInPage />
       </div>

@@ -6,6 +6,7 @@
   height: 80vh;
   justify-content: space-between;
   align-items: center;
+
   /* background-color: #f4f5f7;*/
   .smallcard-row {
     display: flex;
@@ -41,23 +42,39 @@
 
   .icons {
     margin-top: 200px;
+    color: #36b37e;
   }
 
   @media (max-width: 375px) {
-    .flashcard-page {
-      width: 100vw;
-      display: flex;
-      flex-direction: column;
-      overflow: scroll;
-    }
-
     .smallcard-row {
       display: flex;
       flex-direction: row;
+      align-content: center;
       height: 60px;
+      width: 90vw;
+      overflow: scroll;
+      margin-left: 0;
+      margin-top: 0;
+    }
+
+    .small-card {
+      width: 300px;
+      margin-right: 20px;
     }
     .flash_holder {
       margin-right: none;
     }
+  }
+}
+
+@media (max-width: 375px) {
+  .flashcard-page {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    overflow: scroll;
   }
 }
