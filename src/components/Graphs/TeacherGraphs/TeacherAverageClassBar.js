@@ -18,13 +18,14 @@ class TeacherAverageClassBar extends Component {
     let newTitle = [];
     this.props
       .getClassQuizResults(this.props.currentClassroom.classroom_id)
-      .then(() =>
-        this.props.classQuizResults
-          .filter(el => el.totalqnum >= 1)
-          .map((e, i) => {
-            newAvg.push(e.correctnum / e.totalqnum);
-            newTitle.push(e.quiz_name);
-          })
+      .then(
+        () =>
+          this.props.classQuizResults
+            .filter(el => el.totalqnum >= 1)
+            .map((e, i) => {
+              newAvg.push(e.correctnum / e.totalqnum);
+              newTitle.push(e.quiz_name);
+            })
         // console.log("PROPS", this.props)
       )
       .then(() =>
@@ -58,33 +59,27 @@ class TeacherAverageClassBar extends Component {
     };
 
     return (
-      <div>
-        <h2>Student Quiz Scores</h2>
-        <div>
-          <h3>Your average score in {this.props.currentClassroom.title}</h3>
-          <div className="donut" />
-          <p>{}</p>
-        </div>
-        <Bar
-          data={data}
-          width={100}
-          height={50}
-          options={{
-            maintainAspectRatio: true,
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    callback: function(label, index, labels) {
-                      return `${Number(label) * 100}%`;
-                    }
+      <Bar
+        data={data}
+        // width={50}
+        // height={50}
+        options={{
+          maintainAspectRatio: true,
+          responsive: true,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  callback: function(label, index, labels) {
+                    return `${Number(label) * 100}%`;
                   }
                 }
-              ]
-            }
-          }}
-        />
-      </div>
+              }
+            ]
+          }
+        }}
+      />
     );
   }
 }

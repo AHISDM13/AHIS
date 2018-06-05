@@ -100,7 +100,7 @@ video {
 }
 .main {
   position: relative;
-  top: 65px;
+  /* top: 65px; */
   /* height: auto; */
   width: 100%;
 }

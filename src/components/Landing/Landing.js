@@ -7,13 +7,15 @@ const Landing = () => {
       <div className="Landing">
         <SignInPage />
       </div>
-      <h1 className="landing-page-title">No Paperwork Required</h1>
+      <h1 className="landing-page-title">
+        Quiz Creator and Learning Resources Hub
+      </h1>
       <div className="landing-page">
         <div className="landing_text_box">
           <h2 className="landing_title">Prepare</h2>
           <p>
-            Digital flashcards and resource upload instruction materials makes
-            teaching and learning easier
+            Digital flashcards and teacher reources page to store lecture
+            materials
           </p>
         </div>
         <div className="landing_text_box">
@@ -25,10 +27,7 @@ const Landing = () => {
         </div>
         <div className="landing_text_box">
           <h2 className="landing_title">Compare</h2>
-          <p>
-            View immediate results and analytics from test you've created or
-            taken
-          </p>
+          <p>Review results and analytics from test you've created or taken</p>
         </div>
       </div>
     </div>

@@ -113,9 +113,9 @@ class ReQuiz extends Component {
           ) : (
             <div className="fill-in">
               <div> Question: {quest.Q} </div> <div>Answer: {quest.A}</div>
-              <div> False answer: {quest.One} </div>
-              <div>False answer: {quest.Two}</div>
-              <div>False answer: {quest.Three} </div>
+              <div> MC answer: {quest.One} </div>
+              <div>MC answer: {quest.Two}</div>
+              <div>MC answer:{quest.Three} </div>
               <button onClick={() => this.removeQuestion(i)}>Remove</button>
             </div>
           )}

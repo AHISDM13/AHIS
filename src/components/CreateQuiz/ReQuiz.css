@@ -1,10 +1,12 @@
-.fill-in .inputbox-requiz, .outer-box {
+.fill-in .inputbox-requiz,
+.outer-box {
   padding: 5px 10px 5px 25px;
   border: 0;
   outline: 0;
   background: transparent;
   border-bottom: 1px solid black;
-  margin: 10px; }
+  margin: 10px;
+}
 
 .create {
   padding: 10px 30px;
@@ -14,38 +16,47 @@
   border: #74a569;
   border-radius: 8px;
   font-weight: bold;
-  outline: none; }
-  .create:focus {
-    background: #74a569; }
+  outline: none;
+}
+.create:focus {
+  background: #74a569;
+}
 
 .fill-in input[type="submit"] {
   padding: 2px 8px;
   background: #00b8d9;
   box-shadow: 2px 1px 2px #00b8d9;
   color: #fff;
-  border: 1px solid #00b8d9; }
+  border: 1px solid #00b8d9;
+}
 
 .re-container {
   padding-top: 30px;
   width: 80vw;
-  margin: 20px auto; }
+  margin: 20px auto;
+}
 
 .fill-in-text {
   display: flex;
-  justify-content: space-around; }
-  .fill-in-text h1 {
-    text-align: center;
-    font-size: 20px; }
+  justify-content: space-around;
+}
+.fill-in-text h1 {
+  text-align: center;
+  font-size: 20px;
+}
 
 .fill-in {
   display: flex;
-  padding: 20px;
-  justify-content: space-between; }
-  .fill-in div {
-    width: 100%;
-    display: flex;
-    justify-content: space-between; }
-  .fill-in .inputbox-requiz {
-    width: 100%; }
+  padding: 10px;
+  justify-content: space-between;
+}
+.fill-in div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.fill-in .inputbox-requiz {
+  width: 100%;
+}
 
 /*# sourceMappingURL=ReQuiz.css.map */
