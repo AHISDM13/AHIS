@@ -1,5 +1,6 @@
 .graph_size {
   display: flex;
-  height: 400px;
+  height: 45vh;
   width: 40vw;
+  margin-left: 30%;
 }

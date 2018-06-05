@@ -51,11 +51,6 @@
   margin-right: 10px;
 }
 
-.teacher_graph_atoid {
-  /* display: flex; */
-  flex-direction: relative;
-}
-
 @media (max-width: 400px) {
   .landing-page {
     display: flex;
