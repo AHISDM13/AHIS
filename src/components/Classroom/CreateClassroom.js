@@ -2,8 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import { submitClassRoom, getOwnerClasses } from "../../ducks/classRoomReducer";
 import swal from "sweetalert";
+import Button from "@material-ui/core/Button";
 import { withRouter } from "react-router-dom";
 import "./CreateClassroom.css";
+import class_img from "./class.png";
 class CreateClassroom extends React.Component {
   state = {
     classTitle: "",
@@ -22,9 +24,12 @@ class CreateClassroom extends React.Component {
     const { classTitle, password, subject } = this.state;
     const { user, submitClassRoom } = this.props;
     return (
-      <div className="classroom">
-        <div className="createclass">
-          <h1 className="title">Create Classroom</h1>
+      <div className="createclass">
+        <div className="createclass_container">
+          <img src={class_img} alt="classroom" />
+
+          <h1 className="classroom_header">Create Classroom</h1>
+
           <form
             className="pure-form pure-form-aligned"
             onSubmit={e => e.preventDefault()}
@@ -70,8 +75,8 @@ class CreateClassroom extends React.Component {
               </select>
             </div>
 
-            <button
-              disabled
+            <Button
+              className="createclass_button"
               onClick={e => {
                 submitClassRoom(user.id, classTitle, password, subject)
                   .then(
@@ -93,7 +98,7 @@ class CreateClassroom extends React.Component {
               }}
             >
               Create
-            </button>
+            </Button>
           </form>
         </div>
       </div>
