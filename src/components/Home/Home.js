@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getClassroom } from "../../ducks/classRoomReducer";
-// import DownloadMethod from "../Downloard/Downloard";
+// import Download from "../Downloard/Downloard";
 class Home extends Component {
   componentDidMount() {}
   render() {
@@ -48,8 +48,8 @@ class Home extends Component {
       <div className="home_view">
         <div className="main_title_home">
           Welcome, {this.props.user.first_name}.
+          {/* <Download /> */}
         </div>
-        {/* <DownloadMethod /> */}
         <div className="title_home">Joined Classes</div>
         <div className="underline" />
         <div className="class_link" data-cy-joined-classes>

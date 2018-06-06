@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import * as firebase from "firebase";
-const downloadFile = absoluteUrl => {
-  var link = document.createElement("a");
-  link.href = absoluteUrl;
-  link.download = "true";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  delete link;
-};
+import DownloadLink from "react-download-link";
 
 class DownloadMethod extends Component {
   state = {
@@ -22,16 +14,14 @@ class DownloadMethod extends Component {
     starsRef
       .getDownloadURL()
       .then(url => {
-        console.log(url);
         this.setState({ url: url });
-        this.downloadFile(url);
-        // var xhr = new XMLHttpRequest();
-        // xhr.responseType = "blob";
-        // xhr.onload = event => {
-        //   var blob = xhr.response;
-        // };
-        // xhr.open("GET", url);
-        // xhr.send();
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = "blob";
+        xhr.onload = function(event) {
+          var blob = xhr.response;
+        };
+        xhr.open("GET", url);
+        xhr.send();
       })
       .catch(function(error) {
         switch (error.code) {
@@ -51,7 +41,17 @@ class DownloadMethod extends Component {
     return (
       <div>
         <button onClick={() => this.downloadHandler()}>Download</button>
-        <img alt="image" src={this.state.img} />
+
+        {/* <a href={this.state.url} download>click to download</a> */}
+
+        <DownloadLink
+          filename={this.state.url}
+          exportFile={() => "My cached data"}
+          tagName="button"
+        >
+          Save to disk
+        </DownloadLink>
+        <img src={this.state.url} />
       </div>
     );
   }
