@@ -20,8 +20,8 @@ class Quiz extends React.Component {
     });
   }
   render() {
-    const { quizs } = this.props;
-    const displayQuizs = quizs.map((el, i) => {
+    const { quiz } = this.props;
+    const displayQuizs = quiz.map((el, i) => {
       return (
         <div className="Quiz" key={i}>
           <h1 className="Quiz_h1">Quiz {i + 1}</h1>
@@ -66,5 +66,8 @@ const mapStateToProps = state => {
   };
 };
 export default withRouter(
-  connect(mapStateToProps, { getQuestions, getResult })(Quiz)
+  connect(
+    mapStateToProps,
+    { getQuestions, getResult }
+  )(Quiz)
 );

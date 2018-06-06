@@ -24,7 +24,7 @@ class CreateClassroom extends React.Component {
     const { classTitle, password, subject } = this.state;
     const { user, submitClassRoom } = this.props;
     return (
-      <div className="createclass">
+      <div data-cy-create-class-page className="createclass">
         <div className="createclass_container">
           <img src={class_img} alt="classroom" />
 
@@ -77,6 +77,7 @@ class CreateClassroom extends React.Component {
 
             <Button
               className="createclass_button"
+              data-cy-actualcreate-button
               onClick={e => {
                 submitClassRoom(user.id, classTitle, password, subject)
                   .then(
@@ -114,7 +115,8 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, { submitClassRoom, getOwnerClasses })(
-    CreateClassroom
-  )
+  connect(
+    mapStateToProps,
+    { submitClassRoom, getOwnerClasses }
+  )(CreateClassroom)
 );
