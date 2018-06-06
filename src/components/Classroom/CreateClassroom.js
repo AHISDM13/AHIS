@@ -25,7 +25,7 @@ class CreateClassroom extends React.Component {
     const { user, submitClassRoom } = this.props;
     const btnEnabled = classTitle.length > 0;
     return (
-      <div className="createclass">
+      <div data-cy-create-class-page className="createclass">
         <div className="createclass_container">
           <img src={class_img} alt="classroom" />
 
@@ -78,6 +78,7 @@ class CreateClassroom extends React.Component {
 
             <button
               className="createclass_button"
+              data-cy-actualcreate-button
               disabled={!btnEnabled}
               onClick={e => {
                 submitClassRoom(user.id, classTitle, password, subject)

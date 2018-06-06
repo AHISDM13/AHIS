@@ -5,20 +5,23 @@ import Student from "../Student/Student";
 import axios from "axios";
 import { withRouter } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { storeQuizs } from "../../ducks/quizReducer";
 class Classroom extends React.Component {
   state = { quizs: [] };
 
   componentDidMount() {
-    const { match } = this.props;
+    const { match, storeQuizs } = this.props;
     axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
       this.setState(() => ({ quizs: quizs.data }));
+      storeQuizs(quizs.data);
     });
   }
   componentDidUpdate(prevProps, prevState) {
-    const { match } = this.props;
+    const { match, storeQuizs } = this.props;
     if (prevProps.match.params.id !== match.params.id) {
       axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
         this.setState(() => ({ quizs: quizs.data }));
+        storeQuizs(quizs.data);
       });
     }
   }
@@ -32,11 +35,7 @@ class Classroom extends React.Component {
         {isLoading ? (
           <CircularProgress size={50} />
         ) : user.id === currentClassroom.owner_id ? (
-          <TeacherView
-            user={user}
-            currentClassroom={currentClassroom}
-            quizs={quizs}
-          />
+          <TeacherView user={user} currentClassroom={currentClassroom} />
         ) : (
           <Student
             user={user}
@@ -55,4 +54,9 @@ const mapStateToProps = state => {
     isLoading: state.classRoomReducer.isLoading
   };
 };
-export default withRouter(connect(mapStateToProps)(Classroom));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { storeQuizs }
+  )(Classroom)
+);

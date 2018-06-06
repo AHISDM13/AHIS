@@ -99,6 +99,7 @@ class ReQuiz extends Component {
     console.log(newentry);
     Promise.all(newentry).then(response => {
       console.log(response);
+      console.log(this.props.quiz);
       this.props.history.push(`/classroom/${this.props.quiz.classroom_id}`);
     });
     // return newentry;
