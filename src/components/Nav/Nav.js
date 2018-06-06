@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import Drawer from "@material-ui/core/Drawer";
 import { connect } from "react-redux";
 import { getClassroom } from "../../ducks/classRoomReducer";
+
 class Nav extends Component {
   state = { open: false, myclassesShow: false, joinedClassesShow: false };
   handleToggle = val => this.setState(() => ({ open: val }));
@@ -111,4 +112,9 @@ function mapStateToProps(state) {
   };
 }
 
-export default withRouter(connect(mapStateToProps, { getClassroom })(Nav));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getClassroom }
+  )(Nav)
+);

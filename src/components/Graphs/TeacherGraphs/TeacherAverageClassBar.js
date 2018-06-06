@@ -60,33 +60,27 @@ class TeacherAverageClassBar extends Component {
     };
 
     return (
-      <div className="ClassAvg">
-        <h2>Student Quiz Scores</h2>
-        <div>
-          <h3>Your average score in {this.props.currentClassroom.title}</h3>
-          <div className="donut" />
-          <p>{}</p>
-        </div>
-        <Bar
-          data={data}
-          width={100}
-          height={50}
-          options={{
-            maintainAspectRatio: true,
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    callback: function(label, index, labels) {
-                      return `${Number(label) * 100}%`;
-                    }
+      <Bar
+        data={data}
+        // width={50}
+        // height={50}
+        options={{
+          maintainAspectRatio: true,
+          responsive: true,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  callback: function(label, index, labels) {
+                    return `${Number(label) * 100}%`;
                   }
                 }
-              ]
-            }
-          }}
-        />
-      </div>
+              }
+            ]
+          }
+        }}
+      />
     );
   }
 }
@@ -97,6 +91,7 @@ function mapStateToProps(state) {
     ...state.classRoomReducer
   };
 }
-export default connect(mapStateToProps, { getClassQuizResults })(
-  TeacherAverageClassBar
-);
+export default connect(
+  mapStateToProps,
+  { getClassQuizResults }
+)(TeacherAverageClassBar);

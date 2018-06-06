@@ -5,6 +5,7 @@ import swal from "sweetalert";
 import { createQuiz } from "../../ducks/quizReducer";
 import { Link } from "react-router-dom";
 import "./CreateQuiz.css";
+import class_img from "../Classroom/class.png";
 
 class CreateQuiz extends React.Component {
   state = {
@@ -20,10 +21,12 @@ class CreateQuiz extends React.Component {
   render() {
     const { quizName, quizType } = this.state;
     const { createQuiz, match } = this.props;
+    const btnEnabled = quizName.length > 0;
     // console.log(this);
     return (
       <div className="quiz">
         <div className="createquiz">
+          <img src={class_img} alt="classroom" />
           <h1 className="title">Create A Quiz</h1>
           <form
             className="pure-form pure-form-aligned"
@@ -56,6 +59,7 @@ class CreateQuiz extends React.Component {
             <Link to={`/requiz`}>
               <button
                 className="create"
+                disabled={!btnEnabled}
                 onClick={e => createQuiz(match.params.id, quizName, quizType)}
               >
                 Create
@@ -76,4 +80,9 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, { createQuiz })(CreateQuiz));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { createQuiz }
+  )(CreateQuiz)
+);

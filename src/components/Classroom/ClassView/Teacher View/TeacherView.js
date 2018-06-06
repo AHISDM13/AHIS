@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 // import Typography from "@material-ui/core/Typography";
 import "./TeacherView.css";
 // import StudentAvg from "../../../Graphs/TeacherGraphs/TeacherAverageStudentBar";
-import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBar";
+import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBarGraphSize";
 // import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
 import StudentQuizResults from "../../../Graphs/TeacherGraphs/StudentQuizResults";
 
@@ -95,19 +95,18 @@ class TeacherView extends Component {
         ) : value === 2 ? (
           <div className="graphview">
             <h2 style={styles.headline}>Analytics</h2>
-            <div className="teachergraphs">
-              <div className="graphs">
-                <ClassAvg />
-              </div>
-              <div className="graphs">
-                <StudentQuizResults />
-              </div>
-              {/* <div className="graphs">
-                <ClassAvg />
-              </div>
-              <div className="graphs">
-                <AnswerAvg />
-              </div> */}
+            <div className="teacherview_classavg">
+              <h5>
+                Avg of all students who have completed the quiz in this class{" "}
+              </h5>
+              <ClassAvg />
+            </div>
+            <div>
+              <h5>
+                Select student in drop-down menu below to view quiz scores in
+                the class
+              </h5>
+              <StudentQuizResults />
             </div>
           </div>
         ) : (

@@ -22,6 +22,11 @@ $radius: 2px;
   &:focus {
     background: #ffab00;
   }
+  &:disabled {
+    // display: none;
+    background: grey;
+    color: lightgray;
+  }
 }
 
 %question-btn {

@@ -1,10 +1,12 @@
-.fill-in .inputbox-requiz, .outer-box {
+.fill-in .inputbox-requiz,
+.outer-box {
   padding: 5px 10px 5px 25px;
   border: 0;
   outline: 0;
   background: transparent;
   border-bottom: 1px solid black;
-  margin: 10px; }
+  margin: 10px;
+}
 
 .create {
   padding: 10px 30px;
@@ -16,6 +18,9 @@
   outline: none; }
   .create:focus {
     background: #ffab00; }
+  .create:disabled {
+    background: grey;
+    color: lightgray; }
 
 .fill-in input[type="submit"] {
   background: #36b37e;
@@ -23,7 +28,8 @@
   box-shadow: 0px 0px 10px 0px #b8c3db44;
   color: #fff;
   border: 1px solid #36b37e;
-  border-radius: 50px; }
+  border-radius: 50px;
+}
 
 .remove {
   background: #ff5630;
@@ -31,36 +37,44 @@
   box-shadow: 0px 0px 10px 0px #b8c3db44;
   color: #fff;
   border: 1px solid #ff5630;
-  border-radius: 50px; }
+  border-radius: 50px;
+}
 
 .re-container {
   padding-top: 30px;
   width: 70vw;
   margin: auto;
-  margin-left: 20vw; }
+  margin-left: 20vw;
+}
 
 .fill-in-text {
   display: flex;
-  justify-content: space-around; }
+  justify-content: space-around;
+}
 
 .fill-in {
   display: flex;
   padding: 20px;
-  justify-content: space-between; }
-  .fill-in div {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px; }
-  .fill-in .inputbox-requiz {
-    width: 100%; }
+  justify-content: space-between;
+}
+.fill-in div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+.fill-in .inputbox-requiz {
+  width: 100%;
+}
 
 .heading_requiz {
   text-align: center;
   font-size: 30px;
-  color: #172b4d; }
+  color: #172b4d;
+}
 
 p {
-  font-size: 20px; }
+  font-size: 20px;
+}
 
 /*# sourceMappingURL=ReQuiz.css.map */
