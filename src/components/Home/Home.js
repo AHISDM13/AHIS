@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getClassroom } from "../../ducks/classRoomReducer";
+import Download from "../Downloard/Downloard";
 
 class Home extends Component {
   componentDidMount() {}
@@ -48,6 +49,7 @@ class Home extends Component {
       <div className="home_view">
         <div className="main_title_home">
           Welcome, {this.props.user.first_name}.
+          <Download />
         </div>
         <div className="title_home">Joined Classes</div>
         <div className="underline" />
@@ -71,4 +73,9 @@ function mapStateToProps(state) {
     joinedClasses: state.classRoomReducer.joinedClasses
   };
 }
-export default withRouter(connect(mapStateToProps, { getClassroom })(Home));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getClassroom }
+  )(Home)
+);

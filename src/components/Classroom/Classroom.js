@@ -26,6 +26,7 @@ class Classroom extends React.Component {
   render() {
     const { user, currentClassroom, isLoading } = this.props;
     console.log(currentClassroom);
+    console.log(this.state.quizs);
     const { quizs } = this.state;
     return (
       <div className="Classroom">
