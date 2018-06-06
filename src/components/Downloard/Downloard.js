@@ -3,7 +3,7 @@ import axios from "axios";
 import * as firebase from "firebase";
 import DownloadLink from "react-download-link";
 
-class Download extends Component {
+class DownloadMethod extends Component {
   state = {
     url: ""
   };
@@ -57,4 +57,4 @@ class Download extends Component {
   }
 }
 
-export default Download;
+export default DownloadMethod;

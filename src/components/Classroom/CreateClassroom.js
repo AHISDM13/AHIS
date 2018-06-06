@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { submitClassRoom, getOwnerClasses } from "../../ducks/classRoomReducer";
 import swal from "sweetalert";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import { withRouter } from "react-router-dom";
 import "./CreateClassroom.css";
 import class_img from "./class.png";
@@ -23,8 +23,9 @@ class CreateClassroom extends React.Component {
     console.log(this.props);
     const { classTitle, password, subject } = this.state;
     const { user, submitClassRoom } = this.props;
+    const btnEnabled = classTitle.length > 0;
     return (
-      <div className="createclass">
+      <div data-cy-create-class-page className="createclass">
         <div className="createclass_container">
           <img src={class_img} alt="classroom" />
 
@@ -75,8 +76,10 @@ class CreateClassroom extends React.Component {
               </select>
             </div>
 
-            <Button
+            <button
               className="createclass_button"
+              data-cy-actualcreate-button
+              disabled={!btnEnabled}
               onClick={e => {
                 submitClassRoom(user.id, classTitle, password, subject)
                   .then(
@@ -98,7 +101,7 @@ class CreateClassroom extends React.Component {
               }}
             >
               Create
-            </Button>
+            </button>
           </form>
         </div>
       </div>
@@ -114,7 +117,8 @@ const mapStateToProps = state => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, { submitClassRoom, getOwnerClasses })(
-    CreateClassroom
-  )
+  connect(
+    mapStateToProps,
+    { submitClassRoom, getOwnerClasses }
+  )(CreateClassroom)
 );

@@ -15,11 +15,12 @@
   box-shadow: 0px 0px 10px 0px #b8c3db44;
   border: #ffab00;
   border-radius: 8px;
-  outline: none;
-}
-.create:focus {
-  background: #ffab00;
-}
+  outline: none; }
+  .create:focus {
+    background: #ffab00; }
+  .create:disabled {
+    background: grey;
+    color: lightgray; }
 
 .fill-in input[type="submit"] {
   background: #36b37e;

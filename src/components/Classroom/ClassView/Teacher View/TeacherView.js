@@ -120,7 +120,8 @@ class TeacherView extends Component {
 
 function mapStateToProps(state) {
   return {
-    classRooms: state.classRoomReducer.classRooms
+    quiz: state.quizReducer.quiz,
+    quizs: state.quizReducer.quizs
   };
 }
 
