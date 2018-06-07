@@ -74,6 +74,7 @@ class Nav extends Component {
           <Link
             to="/profile"
             className="Nav_link"
+            data-cy-profile-link
             onClick={() => this.handleToggle(false)}
           >
             Profile
@@ -86,7 +87,11 @@ class Nav extends Component {
           >
             Create Class
           </Link>
-          <p className="Nav_link" onClick={() => this.handleMyclasses()}>
+          <p
+            data-cy-myclasses-button
+            className="Nav_link"
+            onClick={() => this.handleMyclasses()}
+          >
             My classes
           </p>
           {this.state.myclassesShow ? createdClasses : null}

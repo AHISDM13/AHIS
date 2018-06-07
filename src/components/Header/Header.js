@@ -5,6 +5,8 @@ import * as routes from "../../constants/routes";
 import SignOutButton from "../SignOut";
 import Nav from "../Nav/Nav";
 import Search from "../Search/Search";
+import logo from "../logo.png";
+
 const Header = ({ user }) => (
   <div className="Header">
     {user !== null ? <NavigationAuth /> : <NavigationNonAuth />}
@@ -17,10 +19,13 @@ class NavigationAuth extends React.Component {
   render() {
     return (
       <div>
+        <div>
+          <img src={logo} alt="logo" className="logo" width="50" />
+        </div>
         <div className="Header_top">
           <Nav />
-          <h1 className="Header_logo">Nito</h1>
         </div>
+
         <div>
           <SignOutButton />
         </div>
