@@ -12,7 +12,8 @@ class Upload extends Component {
   state = {
     selectedFile: null,
     filesToDB: [],
-    open: false
+    open: false,
+    open2: false
   };
 
   componentDidMount() {
@@ -26,6 +27,7 @@ class Upload extends Component {
       starsRef.getDownloadURL().then(url => {
         resources.push(url);
         var image = document.createElement("img");
+        image.id = "willwon";
         image.src = url;
         image.style.width = "300px";
         var container = document.getElementById("Upload_file-container");
@@ -53,6 +55,7 @@ class Upload extends Component {
     this.setState({ open: true });
   }
   uploadHandler = () => {
+    this.setState({ open2: true });
     const { match } = this.props;
     var storageRef = firebase.storage().ref();
     var file = this.state.selectedFile;
@@ -101,27 +104,47 @@ class Upload extends Component {
     if (reason === "clickaway") {
       return;
     }
-    this.setState({ open: false });
+    this.setState({ open: false, open2: false });
   };
   render() {
     console.log(this.props, this.state);
     const { selectedFile } = this.state;
     return (
       <div className="Upload">
-        <input type="file" onChange={this.fileChangedHandler} />
+        <header>
+          <h1>Resources</h1>
+        </header>
+        <input
+          className="Upload_choosefile"
+          type="file"
+          onChange={this.fileChangedHandler}
+        />
         {selectedFile === null ? null : (
-          <div>
-            <img width="400" id="showFile" alt="file" src={selectedFile} />
-            <button onClick={this.uploadHandler}>Upload!</button>
+          <div className="selectedfiles">
+            <img width="600" id="showFile" alt="file" src={selectedFile} />
+            <button
+              style={{ display: "block", margin: "20px auto" }}
+              onClick={this.uploadHandler}
+            >
+              Upload!
+            </button>
           </div>
         )}
         <div id="Upload_file-container">
           {this.props.isLoading && <CircularProgress size={50} />}
         </div>
-        <Button onClick={() => this.handleSave()}>Save</Button>
+        <Button className="savehaydenB" onClick={() => this.handleSave()}>
+          Save
+        </Button>
         <Snackbar
           message="successfully uploaded and saved"
           open={this.state.open}
+          onClose={this.handleClose}
+          autoHideDuration={2000}
+        />
+        <Snackbar
+          message="upload successed save to share with your student"
+          open={this.state.open2}
           onClose={this.handleClose}
           autoHideDuration={2000}
         />

@@ -1,9 +1,26 @@
 .Upload {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 #Upload_file-container {
   background-color: #f4f5f7;
   width: 60vw;
-  height: auto;
-  margin: 0 auto;
+  margin: 50px auto;
+  padding: 40px;
+}
+.Upload_choosefile {
+  margin: 50px;
+}
+.selectedfiles {
+  margin: 10px;
+}
+
+#willwon {
+  margin: 20px;
+}
+#willwon:hover {
+  width: 350px;
+  transition: 0.5s width;
+}
+.savehaydenB {
+  margin-bottom: 100px;
 }

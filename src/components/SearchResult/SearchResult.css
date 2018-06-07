@@ -1,0 +1,16 @@
+.SearchR_listItem {
+  margin: 20px;
+  padding: 20px;
+  font-size: 15px;
+}
+.SearchR_listItem:hover {
+  background-color: #f4f5f7;
+}
+.Search_listItem-h1 {
+  color: #172b4d;
+}
+.Search_listItem-h3 {
+  font-size: 20px;
+  padding: 5px;
+  color: #0052cc;
+}
