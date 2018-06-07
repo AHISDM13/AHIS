@@ -14,7 +14,7 @@ import "./TeacherView.css";
 import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBarGraphSize";
 // import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
 import StudentQuizResults from "../../../Graphs/TeacherGraphs/StudentQuizResults";
-
+import Resource from "../../../Resource/Resource";
 const styles = {
   root: {
     flexGrow: 1
@@ -110,7 +110,8 @@ class TeacherView extends Component {
             </div>
           </div>
         ) : (
-          <Flashcards quizs={quizs} />
+          <Resource />
+          // <Flashcards quizs={quizs} />
         )}
       </div>
     );
@@ -119,7 +120,8 @@ class TeacherView extends Component {
 
 function mapStateToProps(state) {
   return {
-    classRooms: state.classRoomReducer.classRooms
+    quiz: state.quizReducer.quiz,
+    quizs: state.quizReducer.quizs
   };
 }
 
