@@ -1,0 +1,9 @@
+.Upload {
+  margin-top: 50px;
+}
+#Upload_file-container {
+  background-color: #f4f5f7;
+  width: 60vw;
+  height: auto;
+  margin: 0 auto;
+}

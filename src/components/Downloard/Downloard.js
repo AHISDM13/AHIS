@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 import axios from "axios";
 import * as firebase from "firebase";
+import DownloadLink from "react-download-link";
 
-class Download extends Component {
+class DownloadMethod extends Component {
   state = {
-    img: ""
+    url: ""
   };
   downloadHandler() {
     var storage = firebase.storage();
     var storageRef = firebase.storage().ref();
-    var starsRef = storageRef.child("images/_DSC1567.jpg");
+    var imagesRef = storageRef.child("images");
+    console.log(imagesRef);
+    var filename = "";
+    var starsRef = imagesRef.child();
     starsRef
       .getDownloadURL()
-      .then(function(url) {
+      .then(url => {
         console.log(url);
-        this.stateState({ img: url });
-        console.log(this.state);
-        return <img src={url} />;
+        // this.setState({ url: url });
       })
       .catch(function(error) {
         switch (error.code) {
@@ -35,11 +37,21 @@ class Download extends Component {
     console.log(this.state);
     return (
       <div>
-        <button onClick={this.downloadHandler}>Download</button>
-        <img alt="image" src={this.state.img} />
+        <button onClick={() => this.downloadHandler()}>Download</button>
+
+        {/* <a href={this.state.url} download>click to download</a> */}
+
+        <DownloadLink
+          filename={this.state.url}
+          exportFile={() => "My cached data"}
+          tagName="button"
+        >
+          Save to disk
+        </DownloadLink>
+        <img src={this.state.url} />
       </div>
     );
   }
 }
 
-export default Download;
+export default DownloadMethod;

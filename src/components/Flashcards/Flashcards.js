@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getQuiz, getQuestions } from "../../ducks/quizReducer";
 import "./Flashcard.css";
 import { withRouter } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class Flashcards extends Component {
   constructor(props) {
@@ -19,7 +20,9 @@ class Flashcards extends Component {
     this.firstClick = this.firstClick.bind(this);
   }
   componentDidMount() {
-    this.props.getQuiz(this.props.match.params.id);
+    this.props
+      .getQuiz(this.props.match.params.id)
+      .then(resp => console.log(resp));
   }
 
   handleCard() {
@@ -43,9 +46,9 @@ class Flashcards extends Component {
   render() {
     console.log(this.props);
     if (this.props.loading) {
-      return <div>is loading...</div>;
+      return <CircularProgress size={50} />;
     }
-    let quizList = this.props.quiz.map((e, i) => {
+    let quizList = this.props.quizs.map((e, i) => {
       return (
         <div
           onClick={() => this.props.getQuestions(e.quiz_id)}
@@ -105,5 +108,8 @@ function mapStateToProps(state) {
   return { ...state.quizReducer };
 }
 export default withRouter(
-  connect(mapStateToProps, { getQuiz, getQuestions })(Flashcards)
+  connect(
+    mapStateToProps,
+    { getQuiz, getQuestions }
+  )(Flashcards)
 );

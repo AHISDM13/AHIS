@@ -18,12 +18,10 @@ const Header = ({ user }) => (
 class NavigationAuth extends React.Component {
   render() {
     return (
-      <div>
-        <div>
-          <img src={logo} alt="logo" className="logo" width="50" />
-        </div>
+      <div className="Header_full">
         <div className="Header_top">
           <Nav />
+          <img src={logo} alt="logo" className="logo" />
         </div>
 
         <div>
@@ -36,7 +34,9 @@ class NavigationAuth extends React.Component {
 
 const NavigationNonAuth = () => (
   <div className="Header_nav">
-    <span className="Header_logo unauth">Nito</span>
+    <span className="Header_logo unauth">
+      <img src={logo} className="logo" width="50" />
+    </span>
     {/* <Link className="Header_nav_link" to={routes.LANDING}>
       <i className="fas fa-sign-in-alt fa-2x" />
     </Link> */}

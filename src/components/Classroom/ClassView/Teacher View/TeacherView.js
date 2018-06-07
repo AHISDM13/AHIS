@@ -14,7 +14,7 @@ import "./TeacherView.css";
 import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBarGraphSize";
 // import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
 import StudentQuizResults from "../../../Graphs/TeacherGraphs/StudentQuizResults";
-
+import Resource from "../../../Resource/Resource";
 const styles = {
   root: {
     flexGrow: 1
@@ -55,24 +55,17 @@ class TeacherView extends Component {
     });
 
     console.log(this.props);
-    // let classResource = this.props.resources.map((e, i) => {
-    //   return (
-    //     <div>
-    //     key={i}
-    //     title={e.title}
-    //     date={e.date} </div>
-    //   )
-    // })
-    // console.log(typeof this.state.value);
+
     const { quizs } = this.props;
     const { value } = this.state;
     return (
       <div>
         <Tabs value={this.state.value} onChange={this.handleTab} centered>
-          <Tab label="Resources" value="0" />
+          <Tab label="Flash Cards" value="0" />
           <Tab label="Quizzes" value="1" />
 
           <Tab label="Graphs" value="2" />
+          <Tab label="Resources" value="3" />
         </Tabs>
 
         {value === 1 ? (
@@ -80,7 +73,6 @@ class TeacherView extends Component {
             <h2 style={styles.headline}>Quizzes</h2>
             <Button
               variant="raised"
-              // href="#raised-buttons"
               className={classes.button}
               onClick={() =>
                 this.props.history.push(
@@ -110,6 +102,8 @@ class TeacherView extends Component {
               <StudentQuizResults />
             </div>
           </div>
+        ) : value === 3 ? (
+          <Resource />
         ) : (
           <Flashcards quizs={quizs} />
         )}
@@ -120,7 +114,8 @@ class TeacherView extends Component {
 
 function mapStateToProps(state) {
   return {
-    classRooms: state.classRoomReducer.classRooms
+    quiz: state.quizReducer.quiz,
+    quizs: state.quizReducer.quizs
   };
 }
 

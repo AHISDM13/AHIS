@@ -1,19 +1,52 @@
-.Sign_In_Form {
+/* .Sign_Up_Form_page {
+  margin: auto;
+  height: 100vh;
+  padding: 20px;
+  
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: contain;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Sign_Up_Form_page h2 {
+  color: white;
+} */
+
+.Sign_Up_Form {
   /* background-color: rgba(241, 241, 241, 0.507); */
   /* padding: 10px; */
   /* margin-top: 10px; */
+  background-image: url("./Landing/clock.jpg");
   align-self: center;
   height: 100vh;
   /* width: 30vw; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   flex-direction: column;
   align-content: center;
-  background-image: url("./Landing/clock.jpg");
+  width: 100%;
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: bottom left;
   background-size: contain;
   background-size: cover;
+}
+
+.signin {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 60vh;
+  /* width: 30vw; */
+}
+
+.signuph1 {
+  padding-bottom: 5vh;
 }
 
 .input {
@@ -26,10 +59,21 @@
   flex-direction: column;
   align-content: center;
 }
+.Sign_Up_Form button {
+  background-color: #ffab00;
+  width: 25%;
+  margin-top: 5vh;
+}
 
 .SignUp_link {
   background-color: rgba(241, 241, 241, 0.507);
   box-shadow: 0px 0px 5px 0px #8888885e;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+@media (min-width: 767px) {
+  .input {
+    width: 50%;
+  }
 }

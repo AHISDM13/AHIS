@@ -20,6 +20,7 @@ class Quiz extends React.Component {
     });
   }
   render() {
+    console.log(this.props);
     const { quizs } = this.props;
     const displayQuizs = quizs.map((el, i) => {
       return (
@@ -62,9 +63,9 @@ class Quiz extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    // ...state.quizReducer
-  };
+
+  return {};
+
 };
 export default withRouter(
   connect(
