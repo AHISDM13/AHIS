@@ -21,6 +21,8 @@ const sc = require("./controllers/studentCtrl");
 const rc = require("./controllers/resultCtrl");
 const port = process.env.PORT || 3001;
 
+app.use(express.static(path.join(__dirname, "../build")));
+
 massive(process.env.CONNECTION_STRING)
   .then(db => app.set("db", db))
   .catch(err => console.log(err));
@@ -84,8 +86,6 @@ app.post("/api/resource", rec.addNewResource);
 app.get("*", (req, res, next) => {
   res.sendFile(path.join(__dirname, "../build/index.html"));
 });
-app.use(express.static(path.join(__dirname, "../build")));
-console.log(path.join(__dirname, "../build"));
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
