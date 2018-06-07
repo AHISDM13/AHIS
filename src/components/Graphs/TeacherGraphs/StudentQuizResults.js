@@ -103,7 +103,7 @@ class StudentQuizResults extends Component {
           <Line
             data={this.state.studentData}
             options={{
-              maintainAspectRatio: true,
+              maintainAspectRatio: false,
               scales: {
                 yAxes: [
                   {
@@ -148,6 +148,7 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getStudentQuizResults })(
-  StudentQuizResults
-);
+export default connect(
+  mapStateToProps,
+  { getStudentQuizResults }
+)(StudentQuizResults);
