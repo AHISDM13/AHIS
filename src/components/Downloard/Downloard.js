@@ -10,18 +10,15 @@ class DownloadMethod extends Component {
   downloadHandler() {
     var storage = firebase.storage();
     var storageRef = firebase.storage().ref();
-    var starsRef = storageRef.child("images/_DSC1567.jpg");
+    var imagesRef = storageRef.child("images");
+    console.log(imagesRef);
+    var filename = "";
+    var starsRef = imagesRef.child();
     starsRef
       .getDownloadURL()
       .then(url => {
-        this.setState({ url: url });
-        var xhr = new XMLHttpRequest();
-        xhr.responseType = "blob";
-        xhr.onload = function(event) {
-          var blob = xhr.response;
-        };
-        xhr.open("GET", url);
-        xhr.send();
+        console.log(url);
+        // this.setState({ url: url });
       })
       .catch(function(error) {
         switch (error.code) {

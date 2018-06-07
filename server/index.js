@@ -15,7 +15,7 @@ var socket = require("socket.io");
 
 const cc = require("./controllers/classRCtrl");
 const qc = require("./controllers/quizCtrl");
-
+const rec = require("./controllers/resourceCtrl");
 const ac = require("./controllers/userCtrl");
 const sc = require("./controllers/studentCtrl");
 const rc = require("./controllers/resultCtrl");
@@ -81,6 +81,8 @@ app.get(
 app.get(`/api/classresult/:classroom_id`, rc.getClassQuizResults);
 app.get(`/api/studentquizresult/:classroom_id`, rc.getStudentQuizResults);
 
+app.get("/api/resources/:classroom_id", rec.getAllResources);
+app.post("/api/resource", rec.addNewResource);
 // USE FOR PRODUCTION
 // const path = require("path");
 // app.get("*", (req, res, next) => {

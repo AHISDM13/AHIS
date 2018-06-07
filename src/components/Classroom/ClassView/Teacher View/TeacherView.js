@@ -69,10 +69,11 @@ class TeacherView extends Component {
     return (
       <div>
         <Tabs value={this.state.value} onChange={this.handleTab} centered>
-          <Tab label="Resources" value="0" />
+          <Tab label="Flash Cards" value="0" />
           <Tab label="Quizzes" value="1" />
 
           <Tab label="Graphs" value="2" />
+          <Tab label="Resources" value="3" />
         </Tabs>
 
         {value === 1 ? (
@@ -109,9 +110,10 @@ class TeacherView extends Component {
               <StudentQuizResults />
             </div>
           </div>
-        ) : (
+        ) : value === 3 ? (
           <Resource />
-          // <Flashcards quizs={quizs} />
+        ) : (
+          <Flashcards quizs={quizs} />
         )}
       </div>
     );

@@ -6,20 +6,23 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { storeQuizs } from "../../ducks/quizReducer";
+import { getAllFiles } from "../../ducks/searchReducer";
 class Classroom extends React.Component {
   state = { quizs: [] };
 
   componentDidMount() {
-    const { match, storeQuizs } = this.props;
+    const { match, storeQuizs, getAllFiles } = this.props;
     axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
+      getAllFiles(match.params.id);
       this.setState(() => ({ quizs: quizs.data }));
       storeQuizs(quizs.data);
     });
   }
   componentDidUpdate(prevProps, prevState) {
-    const { match, storeQuizs } = this.props;
+    const { match, storeQuizs, getAllFiles } = this.props;
     if (prevProps.match.params.id !== match.params.id) {
       axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
+        getAllFiles(match.params.id);
         this.setState(() => ({ quizs: quizs.data }));
         storeQuizs(quizs.data);
       });
@@ -58,6 +61,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { storeQuizs }
+    { storeQuizs, getAllFiles }
   )(Classroom)
 );
