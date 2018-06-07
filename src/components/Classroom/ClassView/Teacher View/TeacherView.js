@@ -55,15 +55,7 @@ class TeacherView extends Component {
     });
 
     console.log(this.props);
-    // let classResource = this.props.resources.map((e, i) => {
-    //   return (
-    //     <div>
-    //     key={i}
-    //     title={e.title}
-    //     date={e.date} </div>
-    //   )
-    // })
-    // console.log(typeof this.state.value);
+
     const { quizs } = this.props;
     const { value } = this.state;
     return (
@@ -81,7 +73,6 @@ class TeacherView extends Component {
             <h2 style={styles.headline}>Quizzes</h2>
             <Button
               variant="raised"
-              // href="#raised-buttons"
               className={classes.button}
               onClick={() =>
                 this.props.history.push(

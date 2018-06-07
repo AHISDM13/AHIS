@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+// USE FOR PRODUCTION
 // app.use(express.static(path.join(__dirname, "../build")));
 
 require("dotenv").config();
@@ -24,9 +25,6 @@ const port = process.env.PORT || 3001;
 massive(process.env.CONNECTION_STRING)
   .then(db => app.set("db", db))
   .catch(err => console.log(err));
-
-//USE FOR PRODUCTION
-// app.use(express.static(`${__dirname}/../build`));
 
 app.use(json());
 app.use(cors());
@@ -84,7 +82,6 @@ app.get(`/api/studentquizresult/:classroom_id`, rc.getStudentQuizResults);
 app.get("/api/resources/:classroom_id", rec.getAllResources);
 app.post("/api/resource", rec.addNewResource);
 // USE FOR PRODUCTION
-// const path = require("path");
 // app.get("*", (req, res, next) => {
 //   res.sendFile(path.join(__dirname, "/../build/index.html"));
 // });
@@ -92,16 +89,6 @@ app.post("/api/resource", rec.addNewResource);
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
-
-// USE FOR PRODUCTION
-// const path = require("path");
-// app.get("*", (req, res, next) => {
-//   res.sendFile(path.join(__dirname, "/../build/index.html"));
-// });
-
-// server = app.listen(port, () => {
-//   console.log(`Listening on port ${port}`);
-// });
 
 //SOCKET STUFFS
 

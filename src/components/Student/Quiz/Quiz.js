@@ -35,6 +35,7 @@ class Quiz extends React.Component {
                 <Button
                   className="Quiz_button"
                   onClick={() => this.takeQuiz(el.quiz_id)}
+                  data-cy-take-quiz-b
                 >
                   take quiz
                 </Button>
@@ -62,7 +63,9 @@ class Quiz extends React.Component {
 }
 
 const mapStateToProps = state => {
+
   return {};
+
 };
 export default withRouter(
   connect(

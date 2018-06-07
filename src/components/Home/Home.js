@@ -19,6 +19,7 @@ class Home extends Component {
                   this.props.history.push(`/classroom/${e.classroom_id}`)
                 );
               }}
+              data-cy-joinedclass
             >
               <div className="home_class">{e.title}</div>
             </div>

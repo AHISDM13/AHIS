@@ -3,14 +3,15 @@
   height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .createclass_container {
   /* border: 1px solid rgb(165, 165, 165); */
   box-shadow: 3px 3px 9px #172b4d;
-  width: 60%;
-  height: 50%;
-  padding: 20px;
+  min-width: 60%;
+
+  padding: 40px 20px;
   margin: auto;
   align-items: center;
 }
@@ -35,6 +36,7 @@ button:disabled {
   font-size: 40px;
   padding: 20px;
 }
+
 .pure-control-group input,
 .pure-control-group input {
   background: #fafbfc;
