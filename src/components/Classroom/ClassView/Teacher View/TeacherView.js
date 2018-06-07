@@ -89,7 +89,8 @@ class TeacherView extends Component {
             <h2 style={styles.headline}>Analytics</h2>
             <div className="teacherview_classavg">
               <h5>
-                Avg of all students who have completed the quiz in this class{" "}
+                Average of all students who have completed the quiz in this
+                class
               </h5>
               <ClassAvg />
             </div>
