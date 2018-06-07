@@ -56,9 +56,9 @@ class SignUpForm extends Component {
       email === "" ||
       username === "";
     return (
-      <div className="Sign_Up_Form_page">
-        <h2>Sign Up</h2>
-        <form onSubmit={this.onSubmit} className="Sign_Up_Form">
+      <div className="Sign_Up_Form">
+        <form onSubmit={this.onSubmit} className="signin">
+          <h1 className="signuph1">Sign Up</h1>
           <input
             className="input"
             value={username}

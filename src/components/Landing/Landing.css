@@ -34,7 +34,7 @@
 }
 
 .landing-page-title {
-  /* margin-top: 5vh; */
+  margin-top: 2vh;
   font-weight: bold;
   color: #172b4d;
   text-shadow: 2px 2px 8px #9e9e9ead;
@@ -43,12 +43,13 @@
 .landing_text_box {
   width: 25vw;
   margin-top: 3vh;
-  border: 1px solid #9e9e9ead;
-  padding: 2px;
+  /* border: 0.5px solid #9e9e9ead; */
+  box-shadow: 1px 1px 8px 5px #88888833;
+  padding: 7px;
   border-radius: 5px;
   background-color: white;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 @media (max-width: 400px) {
