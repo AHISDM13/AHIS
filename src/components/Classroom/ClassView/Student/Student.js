@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import Flashcards from "../../../Flashcards/Flashcards";
 import { getQuiz } from "../../../../ducks/quizReducer";
 import "./Student.css";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Button from "@material-ui/core/Button";
 
 class Student extends Component {
   constructor(props) {
@@ -56,4 +61,7 @@ function mapStateToProps(state) {
     ...state.classRoomReducer
   };
 }
-export default connect(mapStateToProps, { getQuiz })(Student);
+export default connect(
+  mapStateToProps,
+  { getQuiz }
+)(Student);
