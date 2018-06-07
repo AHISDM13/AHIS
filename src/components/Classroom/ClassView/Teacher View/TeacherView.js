@@ -93,11 +93,12 @@ class TeacherView extends Component {
               </h5>
               <ClassAvg />
             </div>
-            <div>
+            <div className="">
               <h5>
                 Select student in drop-down menu below to view quiz scores in
                 the class
               </h5>
+
               <StudentQuizResults />
             </div>
           </div>
