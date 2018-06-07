@@ -39,7 +39,7 @@ class SearchResult extends React.Component {
       return (
         <div className="SearchR_listItem" key={i}>
           <h1 className="Search_listItem-h1">{el.title}</h1>
-          <h3>#{el.subject}</h3>
+          <h3 className="Search_listItem-h3">#{el.subject}</h3>
           <button
             onClick={() =>
               el.public ? this.join(el.classroom_id) : this.simpleDialog.show()
@@ -84,5 +84,8 @@ const mapStateToProps = state => {
   };
 };
 export default withRouter(
-  connect(mapStateToProps, { getClassroom })(SearchResult)
+  connect(
+    mapStateToProps,
+    { getClassroom }
+  )(SearchResult)
 );

@@ -4,6 +4,7 @@ import { firebase } from "../firebase";
 import "../App.css";
 import Header from "./Header/Header";
 import mySwitch from "../constants/mySwitch";
+import Search from "./Search/Search";
 class App extends Component {
   state = {
     authUser: null
@@ -21,7 +22,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header user={authUser} />
-        <div className="main">{mySwitch}</div>
+        <div className="main">
+          <Search />
+          {mySwitch}
+        </div>
       </div>
     );
   }
