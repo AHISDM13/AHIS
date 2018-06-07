@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { getQuiz, getQuestions } from "../../ducks/quizReducer";
 import "./Flashcard.css";
 import { withRouter } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 class Flashcards extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class Flashcards extends Component {
   render() {
     console.log(this.props);
     if (this.props.loading) {
-      return <div>is loading...</div>;
+      return <CircularProgress size={50} />;
     }
     let quizList = this.props.quizs.map((e, i) => {
       return (
