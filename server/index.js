@@ -82,10 +82,10 @@ app.get("/api/resources/:classroom_id", rec.getAllResources);
 app.post("/api/resource", rec.addNewResource);
 // USE FOR PRODUCTION
 app.get("*", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "/../build/index.html"));
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
 app.use(express.static(path.join(__dirname, "../build")));
-
+console.log(path.join(__dirname, "../build"));
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
