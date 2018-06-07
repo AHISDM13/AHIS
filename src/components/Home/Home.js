@@ -20,6 +20,7 @@ class Home extends Component {
                   this.props.history.push(`/classroom/${e.classroom_id}`)
                 );
               }}
+              data-cy-joinedclass
             >
               <div className="home_class">{e.title}</div>
             </div>
@@ -71,4 +72,9 @@ function mapStateToProps(state) {
     joinedClasses: state.classRoomReducer.joinedClasses
   };
 }
-export default withRouter(connect(mapStateToProps, { getClassroom })(Home));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getClassroom }
+  )(Home)
+);

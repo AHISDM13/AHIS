@@ -41,4 +41,7 @@
     padding-top: 0;
     padding-left: 13px;
   }
+  .logo {
+    display: none;
+  }
 }
