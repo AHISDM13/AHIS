@@ -58,6 +58,8 @@
   overflow: scroll;
   flex-wrap: wrap;
   margin: 20px;
+  height: 40vh;
+  /* background: red; */
 }
 
 .each-resource {
