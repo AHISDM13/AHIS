@@ -102,6 +102,7 @@ video {
 }
 .main {
   flex-grow: 1;
+  overflow: scroll;
 }
 
 button:focus {
