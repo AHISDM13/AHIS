@@ -3,6 +3,11 @@ import { connect } from "react-redux";
 import Flashcards from "../../../Flashcards/Flashcards";
 import { getQuiz } from "../../../../ducks/quizReducer";
 import "./Student.css";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Button from "@material-ui/core/Button";
 
 class Student extends Component {
   constructor(props) {
@@ -14,6 +19,11 @@ class Student extends Component {
   componentDidMount() {
     this.props.getQuiz(this.props.classRooms.id);
   }
+
+  handleTab = (event, value) => {
+    this.setState({ value: +value });
+  };
+
   launchQuiz() {}
   render() {
     // console.log(this.props);
@@ -34,7 +44,13 @@ class Student extends Component {
     // });
     return (
       <div className="student-page">
-        <div className="navigate">Navigation</div>
+        <Tabs value={this.state.value} onChange={this.handleTab} centered>
+          <Tab label="Flash Cards" value="0" />
+          <Tab label="Quizzes" value="1" />
+
+          <Tab label="Graphs" value="2" />
+          <Tab label="Resources" value="3" />
+        </Tabs>
         <div className="student-content">
           <button className="analytics">View Your Scores</button>
           <h2>Quizzes</h2>
@@ -56,4 +72,7 @@ function mapStateToProps(state) {
     ...state.classRoomReducer
   };
 }
-export default connect(mapStateToProps, { getQuiz })(Student);
+export default connect(
+  mapStateToProps,
+  { getQuiz }
+)(Student);

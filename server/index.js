@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const path = require("path");
 // USE FOR PRODUCTION
-// app.use(express.static(path.join(__dirname, "../build")));
 
 require("dotenv").config();
 const { json } = require("body-parser");
@@ -21,6 +20,8 @@ const ac = require("./controllers/userCtrl");
 const sc = require("./controllers/studentCtrl");
 const rc = require("./controllers/resultCtrl");
 const port = process.env.PORT || 3001;
+
+app.use(express.static(path.join(__dirname, "../build")));
 
 massive(process.env.CONNECTION_STRING)
   .then(db => app.set("db", db))
@@ -82,10 +83,9 @@ app.get(`/api/studentquizresult/:classroom_id`, rc.getStudentQuizResults);
 app.get("/api/resources/:classroom_id", rec.getAllResources);
 app.post("/api/resource", rec.addNewResource);
 // USE FOR PRODUCTION
-// app.get("*", (req, res, next) => {
-//   res.sendFile(path.join(__dirname, "/../build/index.html"));
-// });
-
+app.get("*", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
