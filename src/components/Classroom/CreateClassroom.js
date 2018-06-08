@@ -22,7 +22,7 @@ class CreateClassroom extends React.Component {
   render() {
     console.log(this.props);
     const { classTitle, password, subject } = this.state;
-    const { user, submitClassRoom } = this.props;
+    const { user, submitClassRoom, getOwnerClasses } = this.props;
     const btnEnabled = classTitle.length > 0;
     return (
       <div data-cy-create-class-page className="createclass">
@@ -81,23 +81,21 @@ class CreateClassroom extends React.Component {
               data-cy-actualcreate-button
               disabled={!btnEnabled}
               onClick={e => {
-                submitClassRoom(user.id, classTitle, password, subject)
-                  .then(
-                    swal({
-                      title: "Your Classroom has been created.",
-                      text: "Let's go to your classroom.",
-                      icon: "success",
-                      button: "Go to Class"
+                submitClassRoom(user.id, classTitle, password, subject).then(
+                  () =>
+                    getOwnerClasses(user.id).then(() => {
+                      swal({
+                        title: "Your Classroom has been created.",
+                        text: "Let's go to your classroom.",
+                        icon: "success",
+                        button: "Go to Class"
+                      }).then(classr => {
+                        this.props.history.push(
+                          `/classroom/${this.props.classRooms[0].classroom_id}`
+                        );
+                      });
                     })
-                  )
-                  .then(classr => {
-                    this.props.history.push(
-                      `/classroom/${this.props.classRooms[0].classroom_id}`
-                    );
-                  })
-                  .then(() => {
-                    this.props.getOwnerClasses(this.props.user.id);
-                  });
+                );
               }}
             >
               Create

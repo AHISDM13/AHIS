@@ -11,7 +11,7 @@ class Classroom extends React.Component {
   state = { quizs: [] };
 
   componentDidMount() {
-    const { match, storeQuizs, getAllFiles } = this.props;
+    const { match, storeQuizs, getAllFiles, user } = this.props;
     axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
       getAllFiles(match.params.id);
       this.setState(() => ({ quizs: quizs.data }));
@@ -19,7 +19,7 @@ class Classroom extends React.Component {
     });
   }
   componentDidUpdate(prevProps, prevState) {
-    const { match, storeQuizs, getAllFiles } = this.props;
+    const { match, storeQuizs, getAllFiles, user } = this.props;
     if (prevProps.match.params.id !== match.params.id) {
       axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
         getAllFiles(match.params.id);

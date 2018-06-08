@@ -32,7 +32,6 @@ export default function studentReducer(state = initialState, action) {
       };
 
     case `${GET_STUDENT_QUIZ_RESULTS}_FULFILLED`:
-      console.log("REDUCER", action.payload.data);
       return {
         ...state,
         studentQuizResults: action.payload.data
@@ -41,7 +40,6 @@ export default function studentReducer(state = initialState, action) {
     default:
       return state;
   }
-  console.log("REDUCER", action.payload.data);
 }
 
 export function getResult(quiz_id) {
@@ -52,7 +50,6 @@ export function getResult(quiz_id) {
 }
 
 export function getStudentClassResults(user_id, classroom_id) {
-  console.log(classroom_id);
   return {
     type: GET_STUDENT_CLASS_RESULTS,
     payload: axios.get(`/api/studentresult/${user_id}/${classroom_id}`)

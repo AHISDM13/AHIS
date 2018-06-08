@@ -8,8 +8,9 @@ module.exports = {
     req.app
       .get("db")
       .create_class([ownerid, className, subject, true, password, true])
-      .then(classes => {
-        res.status(200).send(classes);
+      .then(classroom => {
+        res.status(200).send(classroom);
+        console.log(classroom);
       })
       .catch(err => res.status(500).send(err));
   },

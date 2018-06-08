@@ -4,7 +4,8 @@ const initialState = {
   classRooms: [],
   classes: [],
   currentClassroom: {},
-  isLoading: false
+  isLoading: false,
+  joinedClasses: []
 };
 const GET_CLASSROOM = "GET_CLASSROOM";
 const SUBMIT_CLASSROOM = "SUBMIT_CLASSROOM";
@@ -14,7 +15,9 @@ const GET_JOINED_CLASSES = "GET_JOINED_CLASSES";
 export default function classRoomReducer(state = initialState, action) {
   switch (action.type) {
     case `${SUBMIT_CLASSROOM}_FULFILLED`:
-      return Object.assign({}, state, { classRooms: action.payload.data });
+      return Object.assign({}, state, {
+        currentClassroom: action.payload.data[0]
+      });
 
     case `${GET_OWNER_CLASSES}_FULFILLED`:
       return Object.assign({}, state, { classRooms: action.payload.data });
