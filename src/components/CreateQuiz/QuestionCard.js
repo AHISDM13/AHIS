@@ -104,8 +104,12 @@ export default class QuestionCard extends React.Component {
                 placeholder="Enter new mulitple choice answer"
                 onChange={e => this.changeState("dummy_data_c", e.target.value)}
               />
-              <button onClick={this.saveChanges}> save changes</button>
+              <button style={{ margin: 10 }} onClick={this.saveChanges}>
+                {" "}
+                save changes
+              </button>
               <button
+                style={{ margin: 10 }}
                 onClick={() =>
                   handleRemove(question.question_id, question.quiz_id)
                 }

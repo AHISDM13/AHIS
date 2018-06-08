@@ -34,7 +34,6 @@ class SignUpForm extends Component {
     auth
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        // console.log(username, authUser.user.email);
         this.setState(() => ({ ...INITIAL_STATE }));
         ////if there's same thing in db don't add...
         addUser(username, authUser.user.email).then(() =>
