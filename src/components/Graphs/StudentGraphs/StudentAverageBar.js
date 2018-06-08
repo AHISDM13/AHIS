@@ -63,7 +63,7 @@ class StudentAverageBar extends Component {
         }
       ]
     };
-    let avg = Math.round(reduced / filtered.length * 100) + "%";
+    let avg = Math.round((reduced / filtered.length) * 100) + "%";
     let pieData = {
       labels: ["", `Your grade: ${avg}`],
       datasets: [
@@ -77,7 +77,7 @@ class StudentAverageBar extends Component {
       ]
     };
 
-    console.log(reduced / filtered.length * 360);
+    console.log((reduced / filtered.length) * 360);
     return (
       <div>
         <h2 style={{ fontSize: "20px" }}>Student Quiz Scores</h2>
@@ -91,8 +91,8 @@ class StudentAverageBar extends Component {
         </div>
         <Bar
           data={data}
-          width={100}
-          height={50}
+          width={75}
+          height={30}
           options={{
             maintainAspectRatio: true,
             scales: {
@@ -108,14 +108,13 @@ class StudentAverageBar extends Component {
             }
           }}
         />
-        <Doughnut
+        {/* <Doughnut
           data={pieData}
           width={100}
           height={200}
           options={{
             maintainAspectRatio: true
-          }}
-        />
+          }} */}
       </div>
     );
   }
@@ -128,6 +127,7 @@ function mapStateToProps(state) {
     ...state.userReducer
   };
 }
-export default connect(mapStateToProps, { getStudentClassResults })(
-  StudentAverageBar
-);
+export default connect(
+  mapStateToProps,
+  { getStudentClassResults }
+)(StudentAverageBar);

@@ -63,6 +63,7 @@ import * as firebase from "firebase";
 import Flashcards from "../Flashcards/Flashcards";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import StudentGraph from "../Graphs/StudentGraphs/StudentAverageBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
@@ -115,6 +116,7 @@ class Student extends React.Component {
           <Tab label="Resources" value="1" />
 
           <Tab label="Flashcards" value="2" />
+          <Tab label="Graphs" value="3" />
         </Tabs>
 
         {value === 0 ? (
@@ -135,10 +137,14 @@ class Student extends React.Component {
               <div id="Student_File">.</div>
             </div>
           </div>
-        ) : (
+        ) : value === 2 ? (
           <div className="Student_Flashcards">
             <h1 className="Student-h1">Flash cards</h1>
             <Flashcards />
+          </div>
+        ) : (
+          <div className="studentviewg">
+            <StudentGraph />
           </div>
         )}
       </div>
