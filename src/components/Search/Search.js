@@ -13,10 +13,16 @@ class Search extends Component {
   handleEnter(e) {
     const { history, getClassesByKeyword } = this.props;
     if (e.keyCode === 13) {
-      getClassesByKeyword(this.state.inputVal).then(() => {
-        history.push("/searchResult");
-      });
+      getClassesByKeyword(this.state.inputVal)
+        .then(() => {
+          history.push("/searchResult");
+        })
+        .then(() => this.clearField());
     }
+  }
+
+  clearField() {
+    this.setState({ inputVal: "" });
   }
   render() {
     return (
@@ -41,5 +47,8 @@ function mapStateToProps(state) {
   };
 }
 export default withRouter(
-  connect(mapStateToProps, { getClassesByKeyword })(Search)
+  connect(
+    mapStateToProps,
+    { getClassesByKeyword }
+  )(Search)
 );

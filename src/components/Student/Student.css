@@ -4,6 +4,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 40px auto;
+  overflow: scroll;
+  height: 59vh;
 }
 
 .studentviewg {
