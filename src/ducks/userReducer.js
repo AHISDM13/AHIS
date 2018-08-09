@@ -2,11 +2,17 @@ import axios from "axios";
 const GET_USER = "GET_USER";
 const ADD_USER = "ADD_USER";
 const UPDATE_USER = "UPDATE_USER";
+const GET_USERINFO ="GET_USERINFO"
 const initialState = {
   users: [],
   user: {}
 };
-
+export function getUserInfo() {
+  return {
+    type: GET_USERINFO,
+    payload: axios.get(`/api/user/userinfo`)
+  };
+}
 export function getUser(email) {
   return {
     type: GET_USER,
@@ -29,6 +35,11 @@ export function updateUser(firstname, lastname, email, id) {
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case `${GET_USER}_FULFILLED`:
+      return {
+        ...state,
+        user: action.payload.data
+      };
+    case `${GET_USERINFO}_FULFILLED`:
       return {
         ...state,
         user: action.payload.data

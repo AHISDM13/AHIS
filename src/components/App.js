@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
 import { firebase } from "../firebase";
 import "../App.css";
 import Header from "./Header/Header";
@@ -18,6 +17,7 @@ class App extends Component {
     });
   }
   render() {
+    console.log(authUser)
     const { authUser } = this.state;
     return (
       <div className="App">

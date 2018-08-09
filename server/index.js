@@ -8,7 +8,6 @@ const { json } = require("body-parser");
 const cors = require("cors");
 const session = require("express-session");
 const massive = require("massive");
-const passport = require("passport");
 // console.log(__dirname);
 
 var socket = require("socket.io");
@@ -21,7 +20,7 @@ const sc = require("./controllers/studentCtrl");
 const rc = require("./controllers/resultCtrl");
 const port = process.env.PORT || 3001;
 
-app.use(express.static(path.join(__dirname, "../build")));
+// app.use(express.static(path.join(__dirname, "../build")));
 
 massive(process.env.CONNECTION_STRING)
   .then(db => app.set("db", db))
@@ -30,19 +29,20 @@ massive(process.env.CONNECTION_STRING)
 app.use(json());
 app.use(cors());
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//       maxAge: 100000
-//     }
-//   })
-// );
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 100000
+    }
+  })
+);
 
 // AUTH ENDPOINTS
 app.post("/api/user", ac.addNewUser);
+app.get('/api/user/userinfo',ac.getUserInfo)
 app.get("/api/user/:email", ac.getUser);
 app.put("/api/user/:id", ac.updateUser);
 //CLASS ROOM ENDPOINTS
@@ -83,9 +83,9 @@ app.get(`/api/studentquizresult/:classroom_id`, rc.getStudentQuizResults);
 app.get("/api/resources/:classroom_id", rec.getAllResources);
 app.post("/api/resource", rec.addNewResource);
 // USE FOR PRODUCTION
-app.get("*", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "../build/index.html"));
-});
+// app.get("*", (req, res, next) => {
+//   res.sendFile(path.join(__dirname, "../build/index.html"));
+// });
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

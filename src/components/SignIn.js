@@ -1,26 +1,14 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./SignIn.css";
-// import Button from "@material-ui/core/Button";
-// import PropTypes from "prop-types";
-// import { withStyles } from "@material-ui/core/styles";
 import { SignUpLink } from "./SignUp";
 import { auth } from "../firebase";
 import * as routes from "../constants/routes";
 import { connect } from "react-redux";
 import { getUser } from "../ducks/userReducer";
 import { getOwnerClasses, getJoinedClasses } from "../ducks/classRoomReducer";
-import { get } from "https";
 import logo from "./logo.png";
 
-// const styles = theme => ({
-//   button: {
-//     margin: theme.spacing.unit
-//   },
-//   input: {
-//     display: "none"
-//   }
-// });
 
 const SignInPage = ({
   history,

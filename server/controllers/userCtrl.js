@@ -1,26 +1,28 @@
 const addNewUser = (req, res) => {
-  // console.log("hit the post /api/user");
   const { displayName, email } = req.body;
-  //console.log(req.body);
   req.app
     .get("db")
     .add_new_user([displayName, email])
     .then(user => {
-      // console.log(user);
       res.status(200).send(user);
     })
     .catch(err => {
       res.status(500).send(err);
     });
 };
+const getUserInfo=(req,res) =>{
+  const {session} =req;
+    res.status(200).send(session.user);
+}
 const getUser = (req, res) => {
   // console.log("hit the get /api/user");
   const { email } = req.params;
+  const {session} = req;
   req.app
     .get("db")
     .get_user([email])
     .then(user => {
-      // console.log(user);
+      session.user = user[0];
       res.status(200).send(user[0]);
     })
     .catch(err => {
@@ -43,5 +45,6 @@ const updateUser = (req, res) => {
 module.exports = {
   addNewUser,
   getUser,
-  updateUser
+  updateUser,
+  getUserInfo
 };

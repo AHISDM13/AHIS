@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import "./Home.css";
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getClassroom } from "../../ducks/classRoomReducer";
+import {getUserInfo} from "../../ducks/userReducer"
 class Home extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.getUserInfo()
+  }
   render() {
-    console.log(this.props);
+    console.log(this.props)
     const { myClassRooms, joinedClasses, getClassroom } = this.props;
     const myJoinedClasses = joinedClasses
       ? joinedClasses.map((e, i) => {
@@ -43,11 +45,10 @@ class Home extends Component {
           );
         })
       : null;
-    console.log(this.props);
     return (
       <div className="home_view">
         <div className="main_title_home">
-          Welcome, {this.props.user.first_name}.
+          Welcome, {this.props.user.username}.
         </div>
         <div className="title_home">Joined Classes</div>
         <div className="underline" />
@@ -74,6 +75,6 @@ function mapStateToProps(state) {
 export default withRouter(
   connect(
     mapStateToProps,
-    { getClassroom }
+    { getClassroom,getUserInfo }
   )(Home)
 );
