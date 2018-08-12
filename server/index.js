@@ -49,6 +49,7 @@ app.put("/api/user/:id", ac.updateUser);
 app.get("/api/classrooms");
 app.get("/api/classlist/:user_id", cc.getStudentClasses);
 app.get("/api/classroom/:classroom_id", sc.getClassroom);
+app.get('/api/classroom/classroominfo',sc.getClassroomInfo)
 app.get("/api/search/:keyword", cc.getClassesByKeywords);
 app.get("/api/classes/:owner_id", cc.getOwnerClasses);
 app.get("/api/joinedClasses/:user_id", cc.getStudentClasses);
@@ -68,7 +69,7 @@ app.put("/api/question", qc.updateQuestion);
 app.delete("/api/question/:id/:quiz_id", qc.deleteQuestion);
 
 ///STUDENT ENPOINTS
-app.post("/api/student/:classroom_id/:user_id", sc.addStudentToClasses);
+app.post("/api/student/:classroom_id", sc.addStudentToClasses);
 
 //RESULT ENDPOINTS
 app.post("/api/result", rc.addResult);

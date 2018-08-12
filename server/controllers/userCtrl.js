@@ -1,10 +1,12 @@
 const addNewUser = (req, res) => {
   const { displayName, email } = req.body;
+  const {session} = req;
   req.app
     .get("db")
     .add_new_user([displayName, email])
     .then(user => {
-      res.status(200).send(user);
+      session.user = user[0];
+      res.status(200).send(user[0]);
     })
     .catch(err => {
       res.status(500).send(err);
@@ -34,10 +36,12 @@ const updateUser = (req, res) => {
   const db = req.app.get("db");
   const { firstname, lastname, email } = req.body;
   const { id } = req.params;
+  const {session} = req;
   db
     .update_user([firstname, lastname, email, id])
-    .then(response => {
-      console.log(response);
+    .then(user => {
+      session.user = user[0];
+      res.status(200).send(user[0]);
     })
     .catch(e => console.log(e));
 };

@@ -1,5 +1,4 @@
 .Sign_Up_Form {
-  background-image: url("./Landing/clock.jpg");
   align-self: center;
   height: 100vh;
   display: flex;
@@ -45,11 +44,8 @@
   margin-top: 5vh;
 }
 
-.SignUp_link {
-  background-color: rgba(241, 241, 241, 0.507);
-  box-shadow: 0px 0px 5px 0px #8888885e;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+.SignUp_link{
+margin-top:50px !important
 }
 
 @media (min-width: 767px) {

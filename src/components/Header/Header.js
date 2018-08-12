@@ -2,9 +2,8 @@ import React from "react";
 import "./Header.css";
 import SignOutButton from "../SignOut";
 import Nav from "../Nav/Nav";
-import logo from "../logo.png";
-
 const Header = ({ user }) => (
+  
   <div className="Header">
     {user !== null ? <NavigationAuth /> : <NavigationNonAuth />}
   </div>
@@ -16,7 +15,9 @@ class NavigationAuth extends React.Component {
       <div className="Header_full">
         <div className="Header_top">
           <Nav />
-          <img src={logo} alt="logo" className="logo" />
+          <span className="Header_logo auth">
+           NITO
+          </span>
         </div>
 
         <div>
@@ -28,9 +29,9 @@ class NavigationAuth extends React.Component {
 }
 
 const NavigationNonAuth = () => (
-  <div className="Header_nav">
+  <div className="Header_full">
     <span className="Header_logo unauth">
-      <img src={logo} className="logo" width="50" />
+    NITO
     </span>
   </div>
 );
