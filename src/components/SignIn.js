@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 import { getUser } from "../ducks/userReducer";
 import TextField from '@material-ui/core/TextField';
 import { getOwnerClasses, getJoinedClasses } from "../ducks/classRoomReducer";
-import logo from "./logo.png";
 
 const SignInPage = ({
   history,
@@ -16,14 +15,12 @@ const SignInPage = ({
   getOwnerClasses,
   getJoinedClasses
 }) => (
-  <div>
     <SignInForm
       history={history}
       getUser={getUser}
       getOwnerClasses={getOwnerClasses}
       getJoinedClasses={getJoinedClasses}
     />
-  </div>
 );
 
 const byPropKey = (propertyName, value) => () => ({

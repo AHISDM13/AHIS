@@ -99,7 +99,3 @@ video {
 button:focus {
   outline: none;
 }
-
-@media (max-width: 767px) {
-
-}

@@ -2,15 +2,13 @@
   background-color: rgba(241, 241, 241, 0.616);
   box-shadow: 0px 0px 5px 0px #8888885e;
   align-self: center;
-  width: 50vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  padding: 30px;
-  margin :auto;
+  padding: 50px;
 }
 .Login_form > div{
   margin:15px;

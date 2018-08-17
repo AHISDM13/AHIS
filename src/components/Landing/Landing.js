@@ -9,20 +9,19 @@ const styles = {
   signIn: {
     backgroundImage: `url(${mainbg})`,
     backgroundSize: "cover",
-    height: "70vh",
-    padding: "120px"
+    padding: "15%"
   }
 };
 export const Public = () => {
   return (
-    <div className="Public" style={styles.signIn}>
+    <div className="Public Landing_top" style={styles.signIn}>
       <SignInPage />
     </div>
   );
 };
 export const Private = () => {
   return (
-    <div className="Private" style={styles.signIn}>
+    <div className="Private Landing_top" style={styles.signIn}>
       <div>Hayden's info</div>
     </div>
   );
@@ -42,10 +41,10 @@ class Landing extends React.Component {
         {user[0] ? <Private /> : <Public />}
         <div className="Landing_main">
           <div className="Landing_page-title">
-            <span className="Landing_page-title-Q">Q.</span>{" "}
+            <span className="Landing_page-title-Q">Q.</span>
             <hr data-aos="fade-down" />
             <h1>
-              <span data-aos="zoom-out">Quiz</span> Creator and{" "}
+              <span data-aos="zoom-out">Quiz</span> Creator and
               <span data-aos="zoom-out">Learning Resources</span> Hub
             </h1>
           </div>
@@ -56,20 +55,20 @@ class Landing extends React.Component {
                 <i className="fas fa-book-open" />
                 <i className="far fa-file-image" />
               </span>
-              <p data-aos="fade-up">
+              <div data-aos="fade-up">
                 Digital flashcards and teacher reources page to store lecture
                 materials
                 <hr/>
                 <hr/>
-              </p>
+              </div>
             </article>
             <article>
-              <p>
+              <div>
               <hr data-aos="fade-down" />
                 Create and participate in custom mulitple choice or
                 fill-in-the-blank quizzes
                 <hr data-aos="fade-up" />
-              </p>
+              </div>
               <span className="Landing_icons">
                 <h2>Test</h2>
                 <i className="fas fa-check" />
@@ -82,11 +81,11 @@ class Landing extends React.Component {
                 <i className="fas fa-comments" />
                 <i className="fas fa-american-sign-language-interpreting" />
               </span>
-              <p data-aos="fade-up">
+              <div data-aos="fade-up">
               <hr/>
               <hr/>
                 Review results and analytics from test you've created or taken
-              </p>
+              </div>
             </article>
           </div>
         </div>

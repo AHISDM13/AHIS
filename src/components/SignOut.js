@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { auth } from "../firebase";
-
+import "./SignOut.css"
 class SignOutButton extends React.Component {
   handleSignOut = () => {
     auth.doSignOut();
@@ -13,7 +13,7 @@ class SignOutButton extends React.Component {
       <button
         type="button"
         data-cy-signout
-        style={{ background: "none", border: "none" }}
+        className="sighoutbtn"
         onClick={this.handleSignOut}
         data-cy-sign-out
       >

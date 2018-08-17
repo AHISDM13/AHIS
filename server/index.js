@@ -3,6 +3,20 @@ const app = express();
 const path = require("path");
 // USE FOR PRODUCTION
 
+//amazon s3 set up
+const s3Config = require("./S3/config");
+const AWS = require("aws-sdk");
+AWS.config = new AWS.Config();
+AWS.config.update(s3Config)
+AWS.config.region ="us-east-1"
+// AWS.config.update(s3Config);
+const s3 = new AWS.S3({
+  credentials: {
+    accessKeyId:  "AKIAJABPSFMUB5HTUL4Q",
+    secretAccessKey:"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",
+  }
+});
+app.set("s3", s3);
 require("dotenv").config();
 const { json } = require("body-parser");
 const cors = require("cors");
@@ -11,7 +25,7 @@ const massive = require("massive");
 // console.log(__dirname);
 
 var socket = require("socket.io");
-
+const s3c = require("./controllers/S3Ctrl");
 const cc = require("./controllers/classRCtrl");
 const qc = require("./controllers/quizCtrl");
 const rec = require("./controllers/resourceCtrl");
@@ -39,17 +53,18 @@ app.use(
     }
   })
 );
-
+//S3 ENDPOINTS
+app.get("/:key/downloadurl", s3c.downloadUrl);
 // AUTH ENDPOINTS
 app.post("/api/user", ac.addNewUser);
-app.get('/api/user/userinfo',ac.getUserInfo)
+app.get("/api/user/userinfo", ac.getUserInfo);
 app.get("/api/user/:email", ac.getUser);
 app.put("/api/user/:id", ac.updateUser);
 //CLASS ROOM ENDPOINTS
 app.get("/api/classrooms");
 app.get("/api/classlist/:user_id", cc.getStudentClasses);
 app.get("/api/classroom/:classroom_id", sc.getClassroom);
-app.get('/api/classroom/classroominfo',sc.getClassroomInfo)
+app.get("/api/classroom/classroominfo", sc.getClassroomInfo);
 app.get("/api/search/:keyword", cc.getClassesByKeywords);
 app.get("/api/classes/:owner_id", cc.getOwnerClasses);
 app.get("/api/joinedClasses/:user_id", cc.getStudentClasses);
