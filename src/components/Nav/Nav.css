@@ -21,12 +21,7 @@
   background-color: #e6eef2;
   color: #212121;
 }
-.hamburger {
-  font-size: 25px;
-  display: inline-block;
-  top: 15px;
-  left: 20px;
-}
+
 .Nav_link_1 {
   margin-top: 2vh;
 }
@@ -35,4 +30,13 @@
   color: white;
   background-color: #212121;
   transition: 0.8s;
+}
+.Nav{
+  display: inline-block;
+}
+.hamburger {
+  font-size: 25px;
+  display: inline-block;
+  position: relative;
+  left:35vw;
 }

@@ -6,9 +6,8 @@ import { auth } from "../firebase";
 import * as routes from "../constants/routes";
 import { connect } from "react-redux";
 import { getUser } from "../ducks/userReducer";
+import TextField from '@material-ui/core/TextField';
 import { getOwnerClasses, getJoinedClasses } from "../ducks/classRoomReducer";
-import logo from "./logo.png";
-
 
 const SignInPage = ({
   history,
@@ -16,15 +15,12 @@ const SignInPage = ({
   getOwnerClasses,
   getJoinedClasses
 }) => (
-  <div>
     <SignInForm
       history={history}
       getUser={getUser}
       getOwnerClasses={getOwnerClasses}
       getJoinedClasses={getJoinedClasses}
     />
-    <SignUpLink />
-  </div>
 );
 
 const byPropKey = (propertyName, value) => () => ({
@@ -76,35 +72,35 @@ class SignInForm extends Component {
     // const { classes } = props;
     return (
       <form className="Login_form" onSubmit={this.onSubmit}>
-        <img src={logo} alt="logo" width="150" />
-        <input
-          data-cy-inputbox-login
-          value={email}
-          data-cy-inputbox-login
+        <span className="Login_logo">NIT<span className="Login_logo-q">Q</span></span>
+         <TextField
+          placeholder="Email Address"
+          type="text"
           onChange={event =>
             this.setState(byPropKey("email", event.target.value))
           }
+          value={email}
           data-cy-inputbox-login
-          type="text"
-          placeholder="Email Address"
-          className="sign_in_input"
+          label="email address"
+          margin="normal"
         />
-        <input
+          <TextField
           data-cy-inputbox-password
-          value={password}
-          data-cy-inputbox-password
+          id="password-input"
+          label="Password"
+          type="password"
+          autoComplete="current-password"
+          margin="normal"
           onChange={event =>
             this.setState(byPropKey("password", event.target.value))
           }
-          data-cy-inputbox-password
-          type="password"
-          placeholder="Password"
-          className="sign_in_input"
+          value={password}
         />
 
         <button disabled={isInvalid} type="submit" data-cy-button-login>
           Sign In
         </button>
+        <SignUpLink />
 
         {error && <p>{error.message}</p>}
       </form>

@@ -13,18 +13,19 @@ class SearchResult extends React.Component {
   }
   join(classroom_id) {
     const { user, getClassroom, history } = this.props;
-    user.id
+    user
       ? axios
-          .post(`/api/student/${classroom_id}/${user.id}`)
+          .post(`/api/student/${classroom_id}`)
           .then(() =>
             getClassroom(classroom_id).then(() =>
               swal({
                 title: "successfully joined the class",
                 icon: "success",
                 button: "explore the class"
-              }).then(history.push(`/classroom/${classroom_id}`))
+              })
             )
           )
+          .then(history.push(`/classroom/${classroom_id}`))
           .catch(err => console.log(err))
       : swal({
           title: "login required",
@@ -33,7 +34,7 @@ class SearchResult extends React.Component {
         }).then(history.push("/signin"));
   }
   render() {
-    const { searchResults, user } = this.props;
+    const { searchResults } = this.props;
     const { password } = this.state;
     const displaySearchResults = searchResults.map((el, i) => {
       return (

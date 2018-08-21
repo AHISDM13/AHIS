@@ -7,14 +7,9 @@ import { withStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Button from "@material-ui/core/Button";
-// import SwipeableViews from "react-swipeable-views";
-// import Typography from "@material-ui/core/Typography";
 import "./TeacherView.css";
-// import StudentAvg from "../../../Graphs/TeacherGraphs/TeacherAverageStudentBar";
 import ClassAvg from "../../../Graphs/TeacherGraphs/TeacherAverageClassBarGraphSize";
-// import AnswerAvg from "../../../Graphs/TeacherGraphs/TeacherAverageAnswerBar";
 import StudentQuizResults from "../../../Graphs/TeacherGraphs/StudentQuizResults";
-import Resource from "../../../Resource/Resource";
 const styles = {
   root: {
     flexGrow: 1
@@ -29,11 +24,6 @@ class TeacherView extends Component {
     };
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.match.params.id !== this.props.match.params.id) {
-  //     this.props.getQuizsList(this.props.match.params.id);
-  //   }
-  // }
 
   handleTab = (event, value) => {
     this.setState({ value: +value });
@@ -41,7 +31,6 @@ class TeacherView extends Component {
 
   render() {
     const { classes } = this.props;
-    // const { value } = this.state;
 
     if (this.props.loading) {
       return <div>is loading...</div>;
@@ -54,7 +43,6 @@ class TeacherView extends Component {
       );
     });
 
-    console.log(this.props);
 
     const { quizs } = this.props;
     const { value } = this.state;
@@ -104,7 +92,7 @@ class TeacherView extends Component {
             </div>
           </div>
         ) : value === 3 ? (
-          <Resource />
+          <div></div>
         ) : (
           <Flashcards quizs={quizs} />
         )}

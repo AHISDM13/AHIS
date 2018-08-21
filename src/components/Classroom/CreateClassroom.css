@@ -1,6 +1,5 @@
 .createclass {
-  margin: 40px auto;
-  height: 100vh;
+  margin:  auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,14 +7,10 @@
 
 .createclass_container {
   /* border: 1px solid rgb(165, 165, 165); */
-  box-shadow: 3px 3px 9px #172b4d;
-  min-width: 60%;
-
-  padding: 40px 20px;
+  box-shadow: 0px 0px 9px lightgrey;
+  padding: 60px 20px;
   margin: auto;
-  align-items: center;
 }
-
 button {
   padding: 10px 30px;
   background: #ffab00;
@@ -30,16 +25,21 @@ button {
 button:disabled {
   background: grey;
   color: lightgray;
+  margin:30px;
 }
 
 .classroom_header {
   font-size: 40px;
   padding: 20px;
 }
-
+.pure-control-group > label{
+  margin-left:10px !important;
+}
 .pure-control-group input,
 .pure-control-group input {
   background: #fafbfc;
+  margin:10px;
+  
 }
 .createclass img {
   width: 100px;

@@ -34,7 +34,6 @@ class Flashcards extends Component {
   }
   handleDecrease() {
     if (this.state.ind > 0) {
-      console.log(this.state.ind);
       this.setState((prevState, props) => ({
         ind: prevState.ind - 1
       }));
@@ -44,7 +43,6 @@ class Flashcards extends Component {
     this.setState({ showHelp: false });
   }
   render() {
-    console.log(this.props);
     if (this.props.loading) {
       return <CircularProgress size={50} />;
     }
@@ -73,10 +71,8 @@ class Flashcards extends Component {
         />
       );
     });
-    console.log(this.props);
     return (
       <div className="flashcard-page">
-        {/* <h3>Select a deck</h3> */}
         <div className="smallcard-row">{quizList}</div>
         <div className="flash_holder">
           {this.props.question.length ? questions : ""}

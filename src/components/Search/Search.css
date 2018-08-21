@@ -1,6 +1,4 @@
 .search-bar {
-  align-self: center;
-  height: auto;
 }
 .search-bar input {
   padding: 10px 0px 10px 30px;
@@ -12,7 +10,7 @@
 }
 
 .search-bar input:focus {
-  width: 30vw;
+  width: 50vw;
   /* padding: 10px 0px 10px 30px; */
   /* background-color: #7fb174; */
   color: #072a24bb;
@@ -27,12 +25,19 @@
   right: -25px;
   color: black;
 }
-/* 
-@media (min-width: 767px) {
+
+@media (max-width: 767px) {
+ 
+  .search-bar input:focus {
+    width: 70vw;
+  }
+}
+@media (max-width: 767px) {
   .search-bar {
     left: 30%;
   }
   .search-bar input:focus {
-    width: 30vw;
+    width: 80vw;
   }
-} */
+}
+

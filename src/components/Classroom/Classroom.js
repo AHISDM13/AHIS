@@ -1,4 +1,4 @@
-import React, { createRef } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import TeacherView from "./ClassView/Teacher View/TeacherView";
 import Student from "../Student/Student";
@@ -7,19 +7,21 @@ import { withRouter } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { storeQuizs } from "../../ducks/quizReducer";
 import { getAllFiles } from "../../ducks/searchReducer";
+import { getClassroomInfo } from "../../ducks/classRoomReducer";
 class Classroom extends React.Component {
   state = { quizs: [] };
 
   componentDidMount() {
-    const { match, storeQuizs, getAllFiles, user } = this.props;
+    const { match, storeQuizs, getAllFiles, getClassroomInfo } = this.props;
+    getClassroomInfo();
     axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
       getAllFiles(match.params.id);
       this.setState(() => ({ quizs: quizs.data }));
       storeQuizs(quizs.data);
     });
   }
-  componentDidUpdate(prevProps, prevState) {
-    const { match, storeQuizs, getAllFiles, user } = this.props;
+  componentDidUpdate(prevProps) {
+    const { match, storeQuizs, getAllFiles } = this.props;
     if (prevProps.match.params.id !== match.params.id) {
       axios.get(`/api/quizs/${match.params.id}`).then(quizs => {
         getAllFiles(match.params.id);
@@ -31,21 +33,24 @@ class Classroom extends React.Component {
 
   render() {
     const { user, currentClassroom, isLoading } = this.props;
-    console.log(currentClassroom);
-    console.log(this.state.quizs);
+    console.log(currentClassroom,user);
     const { quizs } = this.state;
     return (
       <div className="Classroom">
         {isLoading ? (
           <CircularProgress size={50} />
-        ) : user.id === currentClassroom.owner_id ? (
-          <TeacherView user={user} currentClassroom={currentClassroom} />
         ) : (
-          <Student
-            user={user}
-            currentClassroom={currentClassroom}
-            quizs={quizs}
-          />
+          <div>
+            {user.id === currentClassroom.owner_id ? (
+              <TeacherView user={user} currentClassroom={currentClassroom} />
+            ) : (
+              <Student
+                user={user}
+                currentClassroom={currentClassroom}
+                quizs={quizs}
+              />
+            )}
+          </div>
         )}
       </div>
     );
@@ -61,6 +66,6 @@ const mapStateToProps = state => {
 export default withRouter(
   connect(
     mapStateToProps,
-    { storeQuizs, getAllFiles }
+    { storeQuizs, getAllFiles, getClassroomInfo }
   )(Classroom)
 );

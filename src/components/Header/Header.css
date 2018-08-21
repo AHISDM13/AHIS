@@ -1,66 +1,12 @@
-.Header {
-  position: relative;
-  padding-top: 16px;
-  background-color: #0747a6;
-  color: white;
-  height: 100vh;
-  width: 125px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-}
-.Header_full {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  width: 100%;
-}
-.Header_logo {
-  position: relative;
-  /* display: inline; */
-  top: 0;
-  padding: 13px;
-  top: 40%;
-  letter-spacing: 1px;
-}
-.Header_top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 10px;
-  /* margin-bottom: 40px; */
-}
-.logo {
-  width: 75px;
-  margin-top: 10px;
-  margin-left: 5px;
-}
-.Header_nav {
-  margin: 0 auto;
-}
-@media (max-width: 767px) {
-  .Header {
-    height: 75px;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    float: none;
-    padding-top: 0;
-    padding-left: 13px;
+.Header{
+    background-color:#0747a6;
+    color: white;
+    height: 50px;
   }
-
-  .Header_full {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100vw;
-  }
-  .Header_top {
-    justify-content: space-around;
-    width: 25%;
-  }
-}
+  .Header_logo{
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      position: absolute;
+      left: 30px;
+    }
